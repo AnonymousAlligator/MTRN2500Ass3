@@ -18,7 +18,7 @@ Choose a team member from within your tutorial as you will be working in pairs. 
 After the repository was created, you must do the following:
 
 1. Both members need to add an empty file to the root directory of the repository with their zid as the filename in the format `z0000000.txt`. 
-2. One member only will create a `review` branch. The style task will be assessed on that branch. **Do not merge anything into this branch**
+2. One member only will create a `review` branch. The style task will be assessed on that branch. **Do not merge anything into this branch** This branch must be named `review`.
 3. Each member must create their own development branches, each with a meaningful branch name (ie `process_input`). You should be doing work in a development branch and only merge tested working code into the `master` branch after you have completed a requirement. Failure to correctly branch off may lead to team members' code being lost.
 
 **Do not modify `interfaces.hpp`, you may modify all other `hpp` and `cpp` files. If you want to add extra `hpp` or `cpp` files, you need to update `CMakeLists.txt` in the `target_sources` section.**
