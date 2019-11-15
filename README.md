@@ -9,7 +9,8 @@ The assignment specification is available in `assignment3_spec.md`
     `ctrl + alt + t` or `ctrl + shift + T`  
 1. Navigate to your ROS workspace `mtrn2500_ws`
 1. Clone your assignment 3 repository in the same way as assignment 2
-1. You may remove your assignment 2 code if you like, however it will be useful to compare to and is ok to leave as is
+1. You may remove your assignment 2 code if you like, however it will be useful to compare to and is ok to leave as is   
+
 ### Compile and run assignment3:  
 1. Open a new terminal or another terminal tab  
     `ctrl + alt + t` or `ctrl + shift + T`  
@@ -19,7 +20,15 @@ The assignment specification is available in `assignment3_spec.md`
 1. Run the assignment3 program   
     `ros2 run assignment3 assignment3`
 
-### Launching the visualisation environment rviz2:  
+### Launching the Joystick Input node
+1. Open a new terminal or another terminal tab  
+    `ctrl + alt + t` or `ctrl + shift + T`  
+1. Complile:  
+    `. mtrn2500_make` 
+1. Launch the node in the same way as assignment 2
+    `ros2 launch assignment3 joy_node.py`
+
+### Running the visualisation environment rviz2:  
 1. Open a new terminal or another terminal tab  
     `ctrl + alt + t` or `ctrl + shift + T`  
 1. Complile:  
