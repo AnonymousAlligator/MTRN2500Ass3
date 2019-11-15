@@ -21,7 +21,7 @@ After the repository was created, you must do the following:
 2. One member only will create a `review` branch. The style task will be assessed on that branch. **Do not merge anything into this branch** This branch must be named `review`.
 3. Each member must create their own development branches, each with a meaningful branch name (ie `process_input`). You should be doing work in a development branch and only merge tested working code into the `master` branch after you have completed a requirement. Failure to correctly branch off may lead to team members' code being lost.
 
-**Do not modify `interfaces.hpp`, you may modify all other `hpp` and `cpp` files. If you want to add extra `hpp` or `cpp` files, you need to update `CMakeLists.txt` in the `target_sources` section.**
+**Do not modify `interfaces.hpp`, you may modify all other `hpp` and `cpp` files. If you want to add extra `hpp` or `cpp` files, you need to update `CMakeLists.txt`, in the `target_sources` section.**
 
 
 ## Submission process
@@ -43,17 +43,15 @@ Begin by looking at the provided interface diagram, and designing the additional
 
 ### Simulation Scene
 In RVIZ2, show the ground using a green `Flat Plane` shape object. 
-Add some variety to the simulation scene by including some object such as trees and houses.
+Add some variety to the simulation scene by including some object such as trees and houses. They can be fixed in location. You need to use all the shapes at least once. 
 
-For the UAV, you will be designing your own UAV. You can be as creative as you want with your design. Pick any colour for the starting block, attached to the bottom of your UAV.
-
-You need to use each shape at least once in the scene. 
+For the UAV, you will be designing your own UAV. You can be as creative as you want with your design, as along as you use each shapes at least once. You Pick any colour for the starting block, attached to the bottom of your UAV.
 
 ## Tasks
 This assignment is out of 40 marks scaled to to 20% of your course grade.
 
 ### Program Demonstration (20 marks):
-1. Display each of the shapes from the `Shapes Specification` in RVIZ2. You should have done this as part of building your scene. 
+1. Show a variety of static objects on the ground such as trees and rocks. Use each shape at least once. 
 1. Display your UAV in RVIZ2. You will not have to modify the shape of the UAV for demonstration. Your UAV will also be holding a coloured block below it.
 1. Control your UAV using a joystick controller, further requirements are given in UAV controls section.
 1. Release the held block from the UAV by the press of a joystick button. The block will remain at the position and orientation it was released at.
