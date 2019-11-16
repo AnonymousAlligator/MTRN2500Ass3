@@ -24,17 +24,31 @@ auto main(int argc, char * argv[]) -> int
     try
     {
         rclcpp::init(argc, argv); // Initialise ROS2
-        std::cout << "Demo program starting, press enter to display shape.\n";
+        std::cout << "Demo program starting, press enter to display shape.";
         std::cin.ignore();
 
-        auto const my_sphere = std::make_shared<shapes::Sphere>();
-        auto my_shape_display =
-            std::make_shared<display::SingleShapeDisplay>("z0000000", 100ms);
-        my_shape_display->display_object(my_sphere);
-
         auto ros_worker = rclcpp::executors::SingleThreadedExecutor{};
+
+        // Create a sphere and display node for the sphere.
+        auto const my_sphere = std::make_shared<shapes::Sphere>(0);
+        auto my_shape_display =
+            std::make_shared<display::SingleShapeDisplay>("shape_1", 100ms);
+
+        // Set link sphere to the display output
+        my_shape_display->display_object(my_sphere);
+        // Add display node to list of node ros automatically manage.
         ros_worker.add_node(my_shape_display);
+
+        // Create and display another sphere
+        auto const my_sphere_2 = std::make_shared<shapes::Sphere>(1);
+        auto my_shape_display_2 =
+            std::make_shared<display::SingleShapeDisplay>("shape_2", 100ms);
+        my_shape_display_2->display_object(my_sphere_2);
+        ros_worker.add_node(my_shape_display_2);
+
         auto previous_time = std::chrono::steady_clock::now();
+        auto x = shapes::XAxis{0.0};
+        auto const yz = shapes::AnyAxis{0.0};
 
         // Periodically do some work
         while (rclcpp::ok())
@@ -44,6 +58,11 @@ auto main(int argc, char * argv[]) -> int
             {
                 // Meowing at rate of 1hz.
                 std::cout << "meow\n";
+
+                // Also move the sphere a bit
+                x.set_value(x.get_value() + 0.25);
+                my_sphere_2->move_to(x, yz, yz);
+
                 previous_time = current_time;
             }
             ros_worker.spin_some(50ms);

@@ -10,14 +10,15 @@
 #include <tuple>
 #include <utility>
 #include <vector>
-/**
- *  Example of how sphere class may be implemented, the design may not be the
- *most suitable. Trivial functionalities are not implemented.
- **/
 
 namespace shapes
 {
-Sphere::Sphere()
+/**
+ * \brief Example of how sphere class may be implemented, the design may not be
+ *the most suitable. Trivial functionalities are not implemented.
+ **/
+
+Sphere::Sphere(int id)
     : radius_{5.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -26,8 +27,9 @@ Sphere::Sphere()
     // Get a ref to the vector of marker for ease of use
     auto & shapes_list = *shapes_list_ptr_;
     // create a new marker
-    shapes_list.emplace_back(); // get a ref to the new marker
+    shapes_list.emplace_back();
 
+    // get a ref to the new marker.
     auto & shape = shapes_list[0];
     // Parent frame name
     shape.header.frame_id = helper::world_frame_name("z0000000");
@@ -35,8 +37,9 @@ Sphere::Sphere()
 
     // namespace the marker will be in
     shape.ns = "";
-    // used to identify which marker we can adding/modifying/deleting
-    shape.id = 0;
+    // Used to identify which marker we are adding/modifying/deleting
+    // Must be unique between shape objects.
+    shape.id = id;
     // Type of marker we want to display
     shape.type = visualization_msgs::msg::Marker::SPHERE;
     // Add, modify or delete.
@@ -81,6 +84,8 @@ auto Sphere::rescale_imple(AnyAxis const factor) -> void
     radius_ = AllAxis{radius_.get_value() * factor.get_value()};
 }
 
+auto Sphere::get_colour_imple() const -> Colour { return Colour::black; }
+
 auto Sphere::set_parent_frame_name_imple(std::string frame_name) -> void
 {
     parent_frame_name_ = std::move(frame_name);
@@ -97,7 +102,18 @@ auto Sphere::move_to_imple(YAxis const) -> void {}
 
 auto Sphere::move_to_imple(ZAxis const) -> void {}
 
-auto Sphere::move_to_imple(XAxis const, YAxis const, ZAxis const) -> void {}
+/**
+ * \brief Move the shape to a new location.
+ * \param x new x location
+ * \param y new y location
+ * \param z new z location
+ */
+auto Sphere::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
+{
+    shapes_list_ptr_->at(0).pose.position.x = x.get_value();
+    shapes_list_ptr_->at(0).pose.position.y = y.get_value();
+    shapes_list_ptr_->at(0).pose.position.z = z.get_value();
+}
 
 auto Sphere::move_by_imple(YAxis const) -> void {}
 
@@ -105,6 +121,10 @@ auto Sphere::move_by_imple(ZAxis const) -> void {}
 
 auto Sphere::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
 
+/**
+ * \brief Return marker message for displaying the shape
+ * \return shape marker message
+ */
 auto Sphere::get_display_markers_imple()
     -> std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
 {
