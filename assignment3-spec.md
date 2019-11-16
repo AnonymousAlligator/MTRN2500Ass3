@@ -84,10 +84,14 @@ Discuss how you have applied polymorphism, inheritance, composition, functions, 
 
 Your tutor will then ask some questions about your design choices.
 
+**Hint: You are not limited to only implementing the 3D shapes required in this assignment spec.**
+
 ### Teamwork and style (10 marks):
 You need to conduct code reviews and provide feedback on your partner's code in a timely manner. Evidence of this will need to be in GitHub. You are also responsible for testing your partner's code, it is highly recommended you write test cases to make sure your code still works for the demonstration. 
 
 Your tutor may balance the distribution of marks between team members based on objective evidence on GitHub. Please let your tutor or the lecturer know if there are any issues with your group.
+
+**Hint: Github issue tracker, pull requests, and projects can all be used as evidence of a member contribution.**
 
 #### Style
 The most important thing with style is to make your code understandable to other people. 
@@ -204,3 +208,34 @@ You need to design a class hierarchy using polymorphism, class inheritance and c
 1. Flat Plane
 
 How to specify the dimension of each shape is implementation detail you can decide.
+
+**Hint: While RVIZ only have cube, sphere, cylinder, and triangle shapes builtin,
+other shapes can be constructed using those basic shapes.**
+
+## Example Program Overview
+The code provided with this assignment will display two circles in RVIZ, one static and one moving at a slow rate.
+There are two classes used, 
+`Sphere` inheriting from `ShapeCommonInterface` to manage the state of the shape we want to display,
+and `SingleShapeDisplay` implementing `DisplayOutputInterface` for displaying the shape.
+
+`ShapeCommonInterface` exposes a set of useful common functions for manipulating the location,
+dimension, orientation, colour, etc of a shape ]
+that are implemented through a set of corresponding private virtual functions each derived class need to implement.
+There are multiple valid way to implement though functions, `Sphere` class just show one example technique. 
+You might want to think about what infomation you need to ultimately manipulate and display the shape. Is there any common functionalities. Remember [inheritance](https://www.w3resource.com/java-tutorial/inheritance-composition-relationship.php) is best used to represent an `is-a` relationship, while composition is best used for `has-a` relationship.
+
+As its name suggests `SingleShapeDisplay` is a `DisplayOutputInterface` that can be used to display a single shape.
+A marker message has a set `lifetime`,
+new message need to be published to the marker topic to keep the shape displayed.
+Refreshing the message is handled by using a timer to periodically send new message.
+The ROS executor called `ros_worker` need to `spin` periodically to service the timer.
+
+A shape object can be registered with the `SingleShapeDisplay` using the `display_object` function. Actual generating the `marker` message used for display is delegated back the shape object through the `DisplayableInterface`,
+through the `get_display_markers` and `get_display_markers_imple` functions. Of course you can create other classes that also implement `DisplayableInterface` that can be used to display a shape or even the whole UAV at once.
+
+**Hint: Each ROS node need a unique name to differentiate from other nodes.**
+
+## Additional Resources
+[RVIZ visualisation marker documentation](http://wiki.ros.org/rviz/DisplayTypes/Marker)
+[ROS2 installation](https://index.ros.org/doc/ros2/Installation/Dashing/)
+[ROS2 Publisher and Subcriber Tutorial](https://index.ros.org/doc/ros2/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber/)
