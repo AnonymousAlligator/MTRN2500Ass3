@@ -61,11 +61,13 @@ This assignment is out of 40 marks scaled to to 20% of your course grade.
 Your tutor will also assess how well your program works overall.
 
 #### UAV controls
-1. One thumbstick (two axes) to control the x and y position of the UAV.
-2. Left and right triggers to raise and lower the UAV respectively.
-3. Other left/right joystick axis to control the heading (yaw) of the UAV.
-5. One button to release a block. Only release one block per button press.
-5. One button to clear all the blocks.
+1. Left One thumbstick control the x and y position of the UAV.
+2. Left and right triggers raise and lower the UAV respectively.
+3. Right joystick control the heading (yaw) of the UAV.
+5. Button X release a block. Only release one block per button press.
+5. Right shoulder button clear all the blocks.
+
+**Hint: You may want to modify assignment 2 code for this part.**
 
 #### Error handling
 Your program should handle all possible errors including but not limited to:
