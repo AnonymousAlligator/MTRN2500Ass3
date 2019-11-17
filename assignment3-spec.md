@@ -109,7 +109,7 @@ The most important thing with style is to make your code understandable to other
 * Write meaningful commit messages.
 
 We use automated tool to check your code compiles and adhere to the style guide. The tool will compile your code when you merge code to the master branch or when you make a pull request to review branch. You can check the result by going to the check tab of your pull request and click the build link. We run the following tools:
-1. Build 
+1. Colcon to build the project.
 1. Cpplint to check complience with the style guide.
 1. Cppcheck normally dont cause any issue.
 1. Clang-format to check for formatting
@@ -159,6 +159,8 @@ Classes implementing this interface have been provided for you. `XAxis`, `YAxis`
 
 #### DisplayOutputInterface
 `DisplayOutputInterface` will get the marker message from `DisplayableInterface` and send the marker to RVIZ.
+
+**Hint: Think how `std::uniqu_ptr`, `std::shared_ptr` and `std::weak_ptr` can be used to model resources ownerships.**
 
 #### ResizeableInterfaceBase
 `ResizeableInterfaceBase` represents the ability to resizing the object in one of the axes to a new size or rescaling by a factor,
@@ -236,6 +238,6 @@ through the `get_display_markers` and `get_display_markers_imple` functions. Of 
 **Hint: Each ROS node need a unique name to differentiate from other nodes.**
 
 ## Additional Resources
-[RVIZ visualisation marker documentation](http://wiki.ros.org/rviz/DisplayTypes/Marker)
-[ROS2 installation](https://index.ros.org/doc/ros2/Installation/Dashing/)
-[ROS2 Publisher and Subcriber Tutorial](https://index.ros.org/doc/ros2/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber/)
+* [RVIZ visualisation marker documentation](http://wiki.ros.org/rviz/DisplayTypes/Marker)
+* [ROS2 installation](https://index.ros.org/doc/ros2/Installation/Dashing/)
+* [ROS2 Publisher and Subcriber Tutorial](https://index.ros.org/doc/ros2/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber/)
