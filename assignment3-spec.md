@@ -142,9 +142,9 @@ The following interfaces allow the manipulation of a coordinate position and ori
 
 #### AxisInterface
 `AxisInterface` represents some value with respect to some axis of a coordinate system. The value can be modified or rescaled.
-Example of what the value would represent can be location, distance or angle. Axis value can be scaled by using the operator `*`. 
+Example of what the value would represent can be location, distance or angle.
 
-For simplicity in this assignment, some components that would be expected from a fully designed axis library are omitted. For example, additional types could be used to express what units the value represents. Other math operators are also omitted.
+For simplicity in this assignment, some components that would be expected from a fully designed axis library are omitted. For example, additional types could be used to express what units the value represents. Math operators are can be provided to make value manipulation easier.
 
 Classes implementing this interface have been provided for you. `XAxis`, `YAxis`, and `ZAxis` represents the x, y, and z-axis respectively. `AllAxis` represents a value that applies to all three axes. `AnyAxis` represents a value that is not associated with a particular axis, it could be applied to any axis.
 
@@ -160,7 +160,7 @@ Classes implementing this interface have been provided for you. `XAxis`, `YAxis`
 #### DisplayOutputInterface
 `DisplayOutputInterface` will get the marker message from `DisplayableInterface` and send the marker to RVIZ.
 
-**Hint: Think how `std::uniqu_ptr`, `std::shared_ptr` and `std::weak_ptr` can be used to model resources ownerships.**
+**Hint: Think about how `std::uniqu_ptr`, `std::shared_ptr` and `std::weak_ptr` can be used to model resources ownerships.**
 
 #### ResizeableInterfaceBase
 `ResizeableInterfaceBase` represents the ability to resizing the object in one of the axes to a new size or rescaling by a factor,
