@@ -18,10 +18,10 @@ Choose a team member from within your tutorial as you will be working in pairs. 
 After the repository was created, you must do the following:
 
 1. Both members need to add an empty file to the root directory of the repository with their zid as the filename in the format `z0000000.txt`. 
-2. One member only will create a `review` branch. The style task will be assessed on that branch. **Do not merge anything into this branch** This branch must be named `review`.
+2. One member only will create a `review` branch. The style task will be assessed on that branch. **Do not merge anything into this branch**. This branch must be named `review`.
 3. Each member must create their own development branches, each with a meaningful branch name (ie `process_input`). You should be doing work in a development branch and only merge tested working code into the `master` branch after you have completed a requirement. Failure to correctly branch off may lead to team members' code being lost.
 
-**Do not modify `interfaces.hpp`, you may modify all other `hpp` and `cpp` files. If you want to add extra `hpp` or `cpp` files, you need to update `CMakeLists.txt` in the `target_sources` section.**
+**Do not modify `interfaces.hpp`, you may modify all other `hpp` and `cpp` files. If you want to add extra `hpp` or `cpp` files, you need to update `CMakeLists.txt`, in the `target_sources` section.**
 
 
 ## Submission process
@@ -44,17 +44,15 @@ Once you have designed your classes, consider how they will integrate with the j
 
 ### Simulation Scene
 In RVIZ2, show the ground using a green `Flat Plane` shape object. 
-Add some variety to the simulation scene by including some object such as trees and houses.
+Add some variety to the simulation scene by including some object such as trees and houses. They can be fixed in location. You need to use all the shapes at least once. 
 
-For the UAV, you will be designing your own UAV. You can be as creative as you want with your design. Pick any colour for the starting block, attached to the bottom of your UAV.
-
-You need to use each shape at least once in the scene. 
+For the UAV, you will be designing your own UAV. You can be as creative as you want with your design, as along as you use each shapes at least once. You Pick any colour for the starting block, attached to the bottom of your UAV.
 
 ## Tasks
 This assignment is out of 40 marks scaled to to 20% of your course grade.
 
 ### Program Demonstration (20 marks):
-1. Display each of the shapes from the `Shapes Specification` in RVIZ2. You should have done this as part of building your scene. 
+1. Show a variety of static objects in RVIZ2, such as trees and rocks. Use each shape at least once. 
 1. Display your UAV in RVIZ2. You will not have to modify the shape of the UAV for demonstration. Your UAV will also be holding a coloured block below it.
 1. Control your UAV using a joystick controller, further requirements are given in UAV controls section.
 1. Release the held block from the UAV by the press of a joystick button. The block will remain at the position and orientation it was released at.
@@ -64,12 +62,14 @@ This assignment is out of 40 marks scaled to to 20% of your course grade.
 Your tutor will also assess how well your program works overall.
 
 #### UAV controls
-1. One thumbstick (two axes) to control the x and y position of the UAV.
-2. Left and right triggers to raise and lower the UAV respectively.
-3. Other left/right joystick axis to control the heading (yaw) of the UAV.
-4. One button to release a block. Only release one block per button press.
-5. One button to clear all the blocks.
-You can customise these as you wish. If you want to make them editable from a config file, that is neat, but optional. 
+
+1. Left One thumbstick control the x and y position of the UAV.
+2. Left and right triggers raise and lower the UAV respectively.
+3. Right joystick control the heading (yaw) of the UAV.
+5. Button X release a block. Only release one block per button press.
+5. Right shoulder button clear all the blocks.
+
+**Hint: You may be able to modify assignment 2 code for this part.**
 
 #### Error handling
 Your program should handle all possible errors including but not limited to:
@@ -81,15 +81,19 @@ Error handling must not crash the program but may exit the program with an error
 The end-user experience will be taken into consideration in your demonstration.
 
 ### Program Design Presentation (10 marks):
-Prepare a short presentation or talk (around 4 min) for your tutor on the design you have chosen and the reasoning behind your design. 
+Prepare a short presentation or talk (around 4 min) for your tutor on the design you have chosen or rejected, and the reasoning behind your design. 
 Discuss how you have applied polymorphism, inheritance, composition, functions, DRY principles, etc, and the overall structure of your program.
 
 Your tutor will then ask some questions about your design choices.
+
+**Hint: You are not limited to only implementing the 3D shapes required in this assignment spec.**
 
 ### Teamwork and style (10 marks):
 You need to conduct code reviews and provide feedback on your partner's code in a timely manner. Evidence of this will need to be in GitHub. You are also responsible for testing your partner's code, it is highly recommended you write test cases to make sure your code still works for the demonstration. 
 
 Your tutor may balance the distribution of marks between team members based on objective evidence on GitHub. Please let your tutor or the lecturer know if there are any issues with your group.
+
+**Hint: Github issue tracker, pull requests, and projects can all be used as evidence of a member contribution.**
 
 #### Style
 The most important thing with style is to make your code understandable to other people. 
@@ -106,8 +110,8 @@ The most important thing with style is to make your code understandable to other
 * Keep your Github repository up to date with your work. 
 * Write meaningful commit messages.
 
-We use automated tools to check your code compiles and adheres to the style guide. The tool will compile your code when you merge code to the master branch or when you make a pull request to review branch. You can check the result by going to the check tab of your pull request and click the build link. We run the following tools:
-1. Build 
+We use automated tool to check your code compiles and adhere to the style guide. The tool will compile your code when you merge code to the master branch or when you make a pull request to review branch. You can check the result by going to the check tab of your pull request and click the build link. We run the following tools:
+1. Colcon to build the project.
 1. Cpplint to check complience with the style guide.
 1. Cppcheck normally dont cause any issue.
 1. Clang-format to check for formatting
@@ -138,9 +142,9 @@ The following interfaces allow the manipulation of a coordinate position and ori
 
 #### AxisInterface
 `AxisInterface` represents some value with respect to some axis of a coordinate system. The value can be modified or rescaled.
-Example of what the value would represent can be location, distance or angle. Axis value can be scaled by using the operator `*`. 
+Example of what the value would represent can be location, distance or angle.
 
-For simplicity in this assignment, some components that would be expected from a fully designed axis library are omitted. For example, additional types could be used to express what units the value represents. Other math operators are also omitted.
+For simplicity in this assignment, some components that would be expected from a fully designed axis library are omitted. For example, additional types could be used to express what units the value represents. Math operators are can be provided to make value manipulation easier.
 
 Classes implementing this interface have been provided for you. `XAxis`, `YAxis`, and `ZAxis` represents the x, y, and z-axis respectively. `AllAxis` represents a value that applies to all three axes. `AnyAxis` represents a value that is not associated with a particular axis, it could be applied to any axis.
 
@@ -155,6 +159,8 @@ Classes implementing this interface have been provided for you. `XAxis`, `YAxis`
 
 #### DisplayOutputInterface
 `DisplayOutputInterface` will get the marker message from `DisplayableInterface` and send the marker to RVIZ.
+
+**Hint: Think about how `std::uniqu_ptr`, `std::shared_ptr` and `std::weak_ptr` can be used to model resources ownerships.**
 
 #### ResizeableInterfaceBase
 `ResizeableInterfaceBase` represents the ability to resizing the object in one of the axes to a new size or rescaling by a factor,
@@ -203,4 +209,35 @@ You need to design a class hierarchy using polymorphism, class inheritance and c
 1. Cylinder
 1. Flat Plane
 
-How to specify the dimension of each shape is a implementation detail you can decide.
+How to specify the dimension of each shape is implementation detail you can decide.
+
+**Hint: While RVIZ only have cube, sphere, cylinder, and triangle shapes builtin,
+other shapes can be constructed using those basic shapes.**
+
+## Example Program Overview
+The code provided with this assignment will display two circles in RVIZ, one static and one moving at a slow rate.
+There are two classes used, 
+`Sphere` inheriting from `ShapeCommonInterface` to manage the state of the shape we want to display,
+and `SingleShapeDisplay` implementing `DisplayOutputInterface` for displaying the shape.
+
+`ShapeCommonInterface` exposes a set of useful common functions for manipulating the location,
+dimension, orientation, colour, etc of a shape ]
+that are implemented through a set of corresponding private virtual functions each derived class need to implement.
+There are multiple valid way to implement though functions, `Sphere` class just show one example technique. 
+You might want to think about what infomation you need to ultimately manipulate and display the shape. Is there any common functionalities. Remember [inheritance](https://www.w3resource.com/java-tutorial/inheritance-composition-relationship.php) is best used to represent an `is-a` relationship, while composition is best used for `has-a` relationship.
+
+As its name suggests `SingleShapeDisplay` is a `DisplayOutputInterface` that can be used to display a single shape.
+A marker message has a set `lifetime`,
+new message need to be published to the marker topic to keep the shape displayed.
+Refreshing the message is handled by using a timer to periodically send new message.
+The ROS executor called `ros_worker` need to `spin` periodically to service the timer.
+
+A shape object can be registered with the `SingleShapeDisplay` using the `display_object` function. Actual generating the `marker` message used for display is delegated back the shape object through the `DisplayableInterface`,
+through the `get_display_markers` and `get_display_markers_imple` functions. Of course you can create other classes that also implement `DisplayableInterface` that can be used to display a shape or even the whole UAV at once.
+
+**Hint: Each ROS node need a unique name to differentiate from other nodes.**
+
+## Additional Resources
+* [RVIZ visualisation marker documentation](http://wiki.ros.org/rviz/DisplayTypes/Marker)
+* [ROS2 installation](https://index.ros.org/doc/ros2/Installation/Dashing/)
+* [ROS2 Publisher and Subcriber Tutorial](https://index.ros.org/doc/ros2/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber/)

@@ -17,14 +17,13 @@ auto constexpr marker_topic = [](std::string const & zid) {
 
 namespace display
 {
-SingleShapeDisplay::SingleShapeDisplay(
-    std::string const & zid, std::chrono::milliseconds const refresh_period)
-    : rclcpp::Node{helper::marker_node_name(zid)}
+SingleShapeDisplay::SingleShapeDisplay(std::string const & node_name,
+    std::chrono::milliseconds const refresh_period)
+    : rclcpp::Node{node_name}
     , marker_publisher_{create_publisher<visualization_msgs::msg::Marker>(
-          marker_topic(zid), 10)}
+          "z0000000/marker", 10)}
     , timer_{create_wall_timer(
           refresh_period, [this]() -> void { marker_publisher_callback(); })}
-    , zid_{zid}
 {
 }
 

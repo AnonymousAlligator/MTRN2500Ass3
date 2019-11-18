@@ -17,7 +17,7 @@ namespace shapes
 class Sphere : public ShapeCommonInterface
 {
 public:
-    Sphere();
+    explicit Sphere(int id);
 
 protected:
     AllAxis radius_;
@@ -29,12 +29,8 @@ protected:
 
     auto rescale_imple(AnyAxis factor) -> void override;
 
-    auto set_colour_imple(Colour)
-        -> void override{}[[nodiscard]] auto get_colour_imple() const
-        -> Colour override
-    {
-        return Colour::black;
-    }
+    auto set_colour_imple(Colour) -> void override {}
+    [[nodiscard]] auto get_colour_imple() const -> Colour override;
 
     auto set_parent_frame_name_imple(std::string frame_name) -> void override;
 
