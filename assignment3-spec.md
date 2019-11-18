@@ -51,7 +51,7 @@ For the UAV, you will be designing your own UAV. You can be as creative as you w
 This assignment is out of 40 marks scaled to to 20% of your course grade.
 
 ### Program Demonstration (20 marks):
-1. Show a variety of static objects on the ground such as trees and rocks. Use each shape at least once. 
+1. Show a variety of static objects in RVIZ2, such as trees and rocks. Use each shape at least once. 
 1. Display your UAV in RVIZ2. You will not have to modify the shape of the UAV for demonstration. Your UAV will also be holding a coloured block below it.
 1. Control your UAV using a joystick controller, further requirements are given in UAV controls section.
 1. Release the held block from the UAV by the press of a joystick button. The block will remain at the position and orientation it was released at.
@@ -67,7 +67,7 @@ Your tutor will also assess how well your program works overall.
 5. Button X release a block. Only release one block per button press.
 5. Right shoulder button clear all the blocks.
 
-**Hint: You may want to modify assignment 2 code for this part.**
+**Hint: You may be able to modify assignment 2 code for this part.**
 
 #### Error handling
 Your program should handle all possible errors including but not limited to:
@@ -79,7 +79,7 @@ Error handling must not crash the program but may exit the program with an error
 The end-user experience will be taken into consideration in your demonstration.
 
 ### Program Design Presentation (10 marks):
-Prepare a short presentation or talk (around 4 min) for your tutor on the design you have chosen and the reasoning behind your design. 
+Prepare a short presentation or talk (around 4 min) for your tutor on the design you have chosen or rejected, and the reasoning behind your design. 
 Discuss how you have applied polymorphism, inheritance, composition, functions, DRY principles, etc, and the overall structure of your program.
 
 Your tutor will then ask some questions about your design choices.
