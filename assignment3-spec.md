@@ -38,8 +38,9 @@ At least one member must be available for the final demonstration for presenting
 Your team has been tasked with developing a Unmanned Aerial Vehicle (UAV) simulator that shows a single UAV dropping blocks in a Minecraft like game.
 Players will use a game controller to fly the UAV and drop blocks.
 
-Begin by looking at the provided interface diagram, and designing the additional classes that are needed, including the methods that will be required in each class (before you even start thinking about coding them!). These classes will include not only shapes, but one or more vehicle related classes. You will probably want a class to represent your UAV, which you will draw using the shapes listed below.
+Begin by looking at the provided interface diagram, and designing the additional classes that are needed, including the methods that will be required in each class (before you even start thinking about coding them!). These classes will include not only shapes, but one or more vehicle related classes. You will probably want a class to represent your UAV, which you will draw using the shapes listed below (see the sections at the bottom of this document).
 
+Once you have designed your classes, consider how they will integrate with the joystick input topic (the same starting topic as Assignment 2), as well as pushing shapes to your marker topic. The provided code only handles pushing one shape at a time, so think about how you will push a whole set of shapes to be displayed. 
 
 ### Simulation Scene
 In RVIZ2, show the ground using a green `Flat Plane` shape object. 
@@ -66,8 +67,9 @@ Your tutor will also assess how well your program works overall.
 1. One thumbstick (two axes) to control the x and y position of the UAV.
 2. Left and right triggers to raise and lower the UAV respectively.
 3. Other left/right joystick axis to control the heading (yaw) of the UAV.
-5. One button to release a block. Only release one block per button press.
+4. One button to release a block. Only release one block per button press.
 5. One button to clear all the blocks.
+You can customise these as you wish. If you want to make them editable from a config file, that is neat, but optional. 
 
 #### Error handling
 Your program should handle all possible errors including but not limited to:
@@ -104,7 +106,7 @@ The most important thing with style is to make your code understandable to other
 * Keep your Github repository up to date with your work. 
 * Write meaningful commit messages.
 
-We use automated tool to check your code compiles and adhere to the style guide. The tool will compile your code when you merge code to the master branch or when you make a pull request to review branch. You can check the result by going to the check tab of your pull request and click the build link. We run the following tools:
+We use automated tools to check your code compiles and adheres to the style guide. The tool will compile your code when you merge code to the master branch or when you make a pull request to review branch. You can check the result by going to the check tab of your pull request and click the build link. We run the following tools:
 1. Build 
 1. Cpplint to check complience with the style guide.
 1. Cppcheck normally dont cause any issue.
@@ -118,7 +120,6 @@ Must be fully functioning and impress the tutor to get the marks. No help will b
 2. Rather than have the block stay stationary, show the dropped block fall to the ground at a constant velocity of 0.1m/s and stop on the ground plane. You may ignore collision with other objects.
 
 ## Abstract Classes
-
 Through an abstract class, a set of common functionalities shared by all the derived class may be defined. This creates an interface through which user can use any the derived classes. An [interface](https://en.wikipedia.org/wiki/Interface_(computing)) in computing describes the shared boundary between separate components of a program.
 In this assignment abstract classes that specify an interface between different section of the program will be denoted with the word `Interface` in their name. For example if `Sphere` is derived from `ShapeCommonInterface`,then `Sphere` guaranteed to have all the functions specified in `ShapeCommonInterface`.
 
@@ -131,7 +132,6 @@ You need to select the appropriate interfaces for your classes.
 You may need to add additional interfaces.
 
 How the interfaces fits together is illustrated in inheritance_diagram.png.
-
 
 ### Coordinate System Interfaces
 The following interfaces allow the manipulation of a coordinate position and orientation.
@@ -203,4 +203,4 @@ You need to design a class hierarchy using polymorphism, class inheritance and c
 1. Cylinder
 1. Flat Plane
 
-How to specify the dimension of each shape is implementation detail you can decide.
+How to specify the dimension of each shape is a implementation detail you can decide.
