@@ -216,6 +216,7 @@ private:
 
 class ShapeCommonInterface : public virtual BasicResizeableInterface,
                              public virtual LocationInterface,
+                             public virtual YawInterface,
                              public virtual ColourInterface,
                              public virtual DisplayableInterface
 {
@@ -228,16 +229,14 @@ using helper::PolymorphicInterface;
 class DisplayOutputInterface : public PolymorphicInterface
 {
 public:
-    auto display_object(
-        std::shared_ptr<shapes::DisplayableInterface> object)
+    auto display_object(std::shared_ptr<shapes::DisplayableInterface> object)
     {
         return display_object_imple(std::move(object));
     }
 
 private:
     virtual auto display_object_imple(
-        std::shared_ptr<shapes::DisplayableInterface> object)
-        -> void = 0;
+        std::shared_ptr<shapes::DisplayableInterface> object) -> void = 0;
 };
 } // namespace display
 #endif // INTERFACES_HPP_
