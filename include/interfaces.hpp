@@ -3,6 +3,8 @@
 #ifndef INTERFACES_HPP_
 #define INTERFACES_HPP_
 
+auto constexpr interface_version = 11.21;
+
 #include "visualization_msgs/msg/marker.hpp"
 
 #include <memory>
