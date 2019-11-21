@@ -209,6 +209,8 @@ You need to design a class hierarchy using polymorphism, class inheritance and c
 1. Cylinder
 1. Flat Plane
 
+**Note: For simplicity, you can assume all side of octangle are equal.**
+
 How to specify the dimension of each shape is an implementation detail you can decide.
 
 **Hint: While RVIZ only have cube, sphere, cylinder, and triangle shapes built in,
