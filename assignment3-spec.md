@@ -183,9 +183,10 @@ All shapes need to implement this common interface:
 ```c++
 	class ShapeCommonInterface : 
 		public virtual BasicResizeableInterface,
-		public virtual LocationInterface,
-		public virtual YawInterface,
-		public virtual DisplayableInterface
+                public virtual LocationInterface,
+                public virtual YawInterface,
+                public virtual ColourInterface,
+                public virtual DisplayableInterface
 	{
 	};
 ```
