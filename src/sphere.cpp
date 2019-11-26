@@ -131,6 +131,10 @@ auto Sphere::get_display_markers_imple()
     return shapes_list_ptr_;
 }
 
+auto Sphere::rotate_about_axis_to_imple(ZAxis radians) -> void {}
+
+auto Sphere::get_orientation_imple() const -> ZAxis { return ZAxis{0.0}; }
+
 auto Sphere::move_by_imple(XAxis const) -> void {}
 
 } // namespace shapes

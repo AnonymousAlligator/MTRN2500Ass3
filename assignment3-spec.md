@@ -183,9 +183,10 @@ All shapes need to implement this common interface:
 ```c++
 	class ShapeCommonInterface : 
 		public virtual BasicResizeableInterface,
-		public virtual LocationInterface,
-		public virtual YawInterface,
-		public virtual DisplayableInterface
+                public virtual LocationInterface,
+                public virtual YawInterface,
+                public virtual ColourInterface,
+                public virtual DisplayableInterface
 	{
 	};
 ```
@@ -207,6 +208,8 @@ You need to design a class hierarchy using polymorphism, class inheritance and c
 1. Cone
 1. Cylinder
 1. Flat Plane
+
+**Note: For simplicity, you can assume all side of octangle are equal.**
 
 How to specify the dimension of each shape is an implementation detail you can decide.
 

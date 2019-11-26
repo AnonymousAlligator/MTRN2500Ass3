@@ -29,8 +29,9 @@ protected:
 
     auto rescale_imple(AnyAxis factor) -> void override;
 
-    auto set_colour_imple(Colour) -> void override {}
-    [[nodiscard]] auto get_colour_imple() const -> Colour override;
+    auto set_colour_imple(Colour)
+        -> void override{}[[nodiscard]] auto get_colour_imple() const
+        -> Colour override;
 
     auto set_parent_frame_name_imple(std::string frame_name) -> void override;
 
@@ -50,6 +51,10 @@ protected:
 
     auto get_display_markers_imple() -> std::shared_ptr<
         std::vector<visualization_msgs::msg::Marker>> override;
+
+    auto rotate_about_axis_to_imple(ZAxis radians) -> void override;
+
+    [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
 };
 } // namespace shapes
 #endif // SPHERE_HPP_

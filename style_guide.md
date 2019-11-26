@@ -147,16 +147,17 @@ The following language features are banned because either better alternative exi
 This is OK:
 
 ```c++
-
-   int main(int argc, char **argv)
-   {
-       if (condition)
-       {
-           return 0;
-       } else {
-           return 1;
-       }
-   }
+int main(int argc, char ** argv)
+{
+    if (condition)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
 ```
 
 ### Linters
