@@ -13,10 +13,7 @@
 
 namespace shapes
 {
-    /**
-     * \brief Example of how cube class may be implemented, the design may not be
-     *the most suitable. Trivial functionalities are not implemented.
-    **/
+// Rectangular prism implementation
 
     RectPrism::RectPrism(int id)
     : length_{2.0}, breadth_{1.0}, height_{5.0}
@@ -50,19 +47,18 @@ namespace shapes
         shape.pose.position.y = 4;
         shape.pose.position.z = 2.5;
 
-        // Orientation in quaternion. Check transform marker in assignment 2
-        // for how to manipulate it.
+        // Orientation in quaternion
         shape.pose.orientation.x = 0;
         shape.pose.orientation.y = 0;
         shape.pose.orientation.z = 0;
         shape.pose.orientation.w = 1;
 
-        // Scale change the dimension of the sides.
+        // Scale change the dimension of the sides
         shape.scale.x = length_.get_value();
         shape.scale.y = breadth_.get_value();
         shape.scale.z = height_.get_value();
 
-        // colour red, green, blue, alpha (transparency)
+        // Colour red, green, blue, alpha (transparency)
         shape.color.r = 1.0;
         shape.color.g = 0.0;
         shape.color.b = 0.0;
@@ -73,6 +69,8 @@ namespace shapes
         shape.lifetime =
             rclcpp::Duration{1s}; // HOw long our marker message is valid for
     }
+
+    // Basic shape manipulation functions
 
     auto RectPrism::resize_imple(AllAxis const new_size) -> void
     {
@@ -102,12 +100,7 @@ namespace shapes
 
     auto RectPrism::move_to_imple(ZAxis const) -> void {}
 
-    /**
-     * \brief Move the shape to a new location.
-     * \param x new x location
-     * \param y new y location
-     * \param z new z location
-     */
+    // Shape movement
     auto RectPrism::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
     {
         shapes_list_ptr_->at(0).pose.position.x = x.get_value();
@@ -121,10 +114,7 @@ namespace shapes
 
     auto RectPrism::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
 
-    /**
-     * \brief Return marker message for displaying the shape
-     * \return shape marker message
-     */
+    // Return marker message
     auto RectPrism::get_display_markers_imple()
         -> std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
     {

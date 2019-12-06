@@ -48,19 +48,18 @@ Cylinder::Cylinder(int id)
     shape.pose.position.y = 1;
     shape.pose.position.z = 1.1;
 
-    // Orientation in quaternion. Check transform marker in assignment 2
-    // for how to manipulate it.
+    // Orientation in quaternion
     shape.pose.orientation.x = 0;
     shape.pose.orientation.y = 0;
     shape.pose.orientation.z = 0;
     shape.pose.orientation.w = 1;
 
-    // Scale change the dimension of the sides.
+    // Scale change the dimension of the sides
     shape.scale.x = radius_.get_value();
     shape.scale.y = radius_.get_value();
     shape.scale.z = height_.get_value();
 
-    // colour red, green, blue, alpha (transparency)
+    // Colour red, green, blue, alpha (transparency)
     shape.color.r = 1;
     shape.color.g = 0.855;
     shape.color.b = 0.757;
@@ -72,6 +71,7 @@ Cylinder::Cylinder(int id)
         rclcpp::Duration{1s}; // HOw long our marker message is valid for
 }
 
+// Basic shape manipulation functions
 auto Cylinder::resize_imple(AllAxis const new_size) -> void
 {
     radius_ = new_size;
@@ -100,12 +100,7 @@ auto Cylinder::move_to_imple(YAxis const) -> void {}
 
 auto Cylinder::move_to_imple(ZAxis const) -> void {}
 
-/**
- * \brief Move the shape to a new location.
- * \param x new x location
- * \param y new y location
- * \param z new z location
- */
+// Shape movement
 auto Cylinder::move_to_imple(XAxis const x, YAxis const y, ZAxis const z)
     -> void
 {
@@ -120,10 +115,7 @@ auto Cylinder::move_by_imple(ZAxis const) -> void {}
 
 auto Cylinder::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
 
-/**
- * \brief Return marker message for displaying the shape
- * \return shape marker message
- */
+// Return marker message
 auto Cylinder::get_display_markers_imple()
     -> std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
 {
