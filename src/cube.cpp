@@ -15,11 +15,7 @@
 
 namespace shapes
 {
-/**
- * \brief Example of how cube class may be implemented, the design may not be
- *the most suitable. Trivial functionalities are not implemented.
- **/
-
+// Implementation of the cube class
 Cube::Cube(int id)
     : length_{10.0}
     , parent_frame_name_{"local_frame"}
@@ -40,7 +36,6 @@ Cube::Cube(int id)
     // Namespace the marker will be in
     shape.ns = "";
     // Used to identify which marker we are adding/modifying/deleting
-    // Must be unique between shape objects
     shape.id = id;
     // Type of marker we want to display
     shape.type = visualization_msgs::msg::Marker::CUBE;
@@ -75,6 +70,7 @@ Cube::Cube(int id)
         rclcpp::Duration{1s}; // How long our marker message is valid for
 }
 
+// Shape manipulation functions
 auto Cube::resize_imple(AllAxis const new_size) -> void {length_ = new_size;}
 
 auto Cube::rescale_imple(AnyAxis const factor) -> void
@@ -120,10 +116,10 @@ auto Cube::get_display_markers_imple()
 {
     return shapes_list_ptr_;
 }
+
 auto Cube::rotate_about_axis_to_imple(ZAxis radians) -> void {}
 
 auto Cube::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
 
 auto Cube::move_by_imple(XAxis const) -> void {}
-
 } // namespace shapes

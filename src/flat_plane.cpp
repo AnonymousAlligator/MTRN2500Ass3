@@ -15,11 +15,7 @@
 
 namespace shapes
 {
-/**
- * \brief Example of how cube class may be implemented, the design may not be
- *the most suitable. Trivial functionalities are not implemented.
- **/
-
+// Implementation of the cube class to make a flat plane
 FlatPlane::FlatPlane(int id)
     : length_{30.0}
     , parent_frame_name_{"local_frame"}
@@ -40,7 +36,6 @@ FlatPlane::FlatPlane(int id)
     // Namespace the marker will be in
     shape.ns = "";
     // Used to identify which marker we are adding/modifying/deleting
-    // Must be unique between shape objects
     shape.id = id;
     // Type of marker we want to display
     shape.type = visualization_msgs::msg::Marker::CUBE;
@@ -63,10 +58,10 @@ FlatPlane::FlatPlane(int id)
     shape.scale.y = length_.get_value();
     shape.scale.z = 0.1;
 
-    // Colour the flat plane grass green
-    shape.color.r = 0.9;
-    shape.color.g = 0.9;
-    shape.color.b = 0.8;
+    // Colour the flat plane green
+    shape.color.r = 0;
+    shape.color.g = 1;
+    shape.color.b = 0;
     shape.color.a = 1.0;
 
     // body.colors.emplace_back();
@@ -75,6 +70,7 @@ FlatPlane::FlatPlane(int id)
         rclcpp::Duration{1s}; // How long our marker message is valid for
 }
 
+// Shape manipulation functions
 auto FlatPlane::resize_imple(AllAxis const new_size) -> void
 {
     length_ = new_size;
@@ -126,9 +122,6 @@ auto FlatPlane::get_display_markers_imple()
 }
 
 auto FlatPlane::rotate_about_axis_to_imple(ZAxis radians) -> void {}
-
 auto FlatPlane::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
-
 auto FlatPlane::move_by_imple(XAxis const) -> void {}
-
 } // namespace shapes
