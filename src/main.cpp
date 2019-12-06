@@ -11,6 +11,7 @@
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/
 #include "single_shape_display.hpp"
 #include "sphere.hpp"
+#include "flat_plane.hpp"
 
 #include <chrono>
 #include <iostream>
@@ -50,6 +51,13 @@ auto main(int argc, char * argv[]) -> int
         auto x = shapes::XAxis{0.0};
         auto const yz = shapes::AnyAxis{0.0};
 
+        // Create and display the flat plane
+        auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13);
+        auto my_FlatPlane_display = 
+            std::make_shared<disaply::SingleShapeDisplay>("plane", 100ms);
+        myFlatPlane_display->display_object(my_flat_plane);
+        ros_worker.add_node(my_FlatPlane_display);
+        
         // Periodically do some work
         while (rclcpp::ok())
         {
