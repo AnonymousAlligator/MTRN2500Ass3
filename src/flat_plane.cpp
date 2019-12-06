@@ -26,16 +26,16 @@ FlatPlane::FlatPlane(int id)
 {
     // Get a ref to the vector of marker for ease of use
     auto & shapes_list = *shapes_list_ptr_;
-    // create a new marker
+    // Create a new marker
     shapes_list.emplace_back();
 
-    // get a ref to the new marker
+    // Get a ref to the new marker
     auto & shape = shapes_list[0];
     // Parent frame name
     shape.header.frame_id = helper::world_frame_name("z0000000");
     // body.header.stamp
 
-    // namespace the marker will be in
+    // Namespace the marker will be in
     shape.ns = "";
     // Used to identify which marker we are adding/modifying/deleting
     // Must be unique between shape objects

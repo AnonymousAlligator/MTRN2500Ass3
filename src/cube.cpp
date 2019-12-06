@@ -92,11 +92,11 @@ auto Cube::get_location_imple() const -> std::tuple<XAxis, YAxis, ZAxis>
     return std::tuple{XAxis{1.0}, YAxis{2.0}, ZAxis{3.0}};
 }
 
-auto Cube::move_to_imple(XAxis const) -> void{}
+auto Cube::move_to_imple(XAxis const) -> void {}
 
-auto Cube::move_to_imple(YAxis const) -> void{}
+auto Cube::move_to_imple(YAxis const) -> void {}
 
-auto Cube::move_to_imple(ZAxis const) -> void{}
+auto Cube::move_to_imple(ZAxis const) -> void {}
 
 // Move the shape to a new location
 auto Cube::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
@@ -106,11 +106,11 @@ auto Cube::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
     shapes_list_ptr_->at(0).pose.position.z = z.get_value();
 }
 
-auto Cube::move_by_imple(YAxis const) -> void{}
+auto Cube::move_by_imple(YAxis const) -> void {}
 
-auto Cube::move_by_imple(ZAxis const) -> void{}
+auto Cube::move_by_imple(ZAxis const) -> void {}
 
-auto Cube::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void{}
+auto Cube::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
 
 // Return marker message for displaying the shape
 auto Cube::get_display_markers_imple()
@@ -119,6 +119,6 @@ auto Cube::get_display_markers_imple()
     return shapes_list_ptr_;
 }
 
-auto Cube::move_by_imple(XAxis const) -> void{}
+auto Cube::move_by_imple(XAxis const) -> void {}
 
 } // namespace shapes
