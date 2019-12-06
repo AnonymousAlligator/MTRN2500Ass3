@@ -1,4 +1,6 @@
 // Copyright 2019 Zhihao Zhang License MIT
+// Edited by Curtis Ly (z5209698)
+
 #include "flat_plane.hpp"
 
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/
@@ -13,23 +15,19 @@
 
 namespace shapes
 {
-/**
- * \brief Example of how sphere class may be implemented, the design may not be
- *the most suitable. Trivial functionalities are not implemented.
- **/
 
 FlatPlane::FlatPlane(int id)
-    : length_{30}
+    : length_{30.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
 {
     // Get a ref to the vector of marker for ease of use
     auto & shapes_list = *shapes_list_ptr_;
-    // create a new marker
+    // Create a new marker
     shapes_list.emplace_back();
 
-    // get a ref to the new marker.
+    // Get a ref to the new marker
     auto & shape = shapes_list[0];
     // Parent frame name
     shape.header.frame_id = helper::world_frame_name("z0000000");
@@ -50,19 +48,18 @@ FlatPlane::FlatPlane(int id)
     shape.pose.position.y = 0;
     shape.pose.position.z = 0;
 
-    // Orientation in quaternion. Check transform marker in assignment 2
-    // for how to manipulate it.
+    // Orientation in quaternion
     shape.pose.orientation.x = 0;
     shape.pose.orientation.y = 0;
     shape.pose.orientation.z = 0;
     shape.pose.orientation.w = 1;
 
-    // Scale change the dimension of the sides.
+    // Scale change the dimension of the sides
     shape.scale.x = length_.get_value();
     shape.scale.y = length_.get_value();
     shape.scale.z = 0.1;
 
-    // making the flat_plane green
+    // Making the flat_plane green
     shape.color.r = 0.0;
     shape.color.g = 1.0;
     shape.color.b = 0.0;
@@ -102,13 +99,9 @@ auto FlatPlane::move_to_imple(YAxis const) -> void {}
 
 auto FlatPlane::move_to_imple(ZAxis const) -> void {}
 
-/**
- * \brief Move the shape to a new location.
- * \param x new x location
- * \param y new y location
- * \param z new z location
- */
-auto FlatPlane::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
+// Move the flat_plane to a new location
+auto FlatPlane::move_to_imple(XAxis const x, YAxis const y, ZAxis const z)
+    -> void
 {
     shapes_list_ptr_->at(0).pose.position.x = x.get_value();
     shapes_list_ptr_->at(0).pose.position.y = y.get_value();
@@ -121,10 +114,7 @@ auto FlatPlane::move_by_imple(ZAxis const) -> void {}
 
 auto FlatPlane::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
 
-/**
- * \brief Return marker message for displaying the shape
- * \return shape marker message
- */
+// Return the marker message for flat_plane
 auto FlatPlane::get_display_markers_imple()
     -> std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
 {
