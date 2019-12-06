@@ -1,4 +1,5 @@
 // Copyright 2019 Zhihao Zhang License MIT
+// Edited by Curtis Ly (z5209698)
 
 #ifndef FLATPLANE_HPP_
 #define FLATPLANE_HPP_
@@ -14,13 +15,13 @@
 namespace shapes
 {
 // ReSharper disable once CppClassCanBeFinal
-class Sphere : public ShapeCommonInterface
+class FlatPlane : public ShapeCommonInterface
 {
 public:
-    explicit Sphere(int id);
+    explicit FlatPlane(int id);
 
 protected:
-    AllAxis radius_;
+    AllAxis length_;
     std::string parent_frame_name_;
     std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
         shapes_list_ptr_;
@@ -52,9 +53,6 @@ protected:
     auto get_display_markers_imple() -> std::shared_ptr<
         std::vector<visualization_msgs::msg::Marker>> override;
 
-    auto rotate_about_axis_to_imple(ZAxis radians) -> void override;
-
-    [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
 };
 } // namespace shapes
-#endif // SPHERE_HPP_
+#endif // FLATPLANE_HPP_
