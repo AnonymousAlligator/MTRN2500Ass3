@@ -125,11 +125,7 @@ auto RectPrism::get_display_markers_imple()
 {
     return shapes_list_ptr_;
 }
-
 auto RectPrism::rotate_about_axis_to_imple(ZAxis radians) -> void {}
-
 auto RectPrism::get_orientation_imple() const -> ZAxis { return ZAxis{0.0}; }
-
 auto RectPrism::move_by_imple(XAxis const) -> void {}
-
 } // namespace shapes
