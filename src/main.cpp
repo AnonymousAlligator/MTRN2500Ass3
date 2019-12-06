@@ -13,21 +13,22 @@
 #include "sphere.hpp"
 #include "cylinder.hpp"
 #include "rect_prism.hpp"
+#include "cube.hpp"
+#include "flat_plane.hpp"
 
 #include <chrono>
-#include <iostream>
-#include <memory>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <sstream>
-#include <cstdio>
+#include <iostream>
 #include <map>
+#include <memory>
+#include <sstream>
 
 // ReSharper disable once CppParameterMayBeConst
 auto main(int argc, char * argv[]) -> int
 {
     using namespace std::chrono_literals;
-
     try
     {
         rclcpp::init(argc, argv); // Initialise ROS2
@@ -36,7 +37,7 @@ auto main(int argc, char * argv[]) -> int
 
         auto ros_worker = rclcpp::executors::SingleThreadedExecutor{};
 
-        // Create a sphere and display node for the sphere.
+        // Create a sphere and display node for the sphere
         auto const my_sphere = std::make_shared<shapes::Sphere>(0);
         auto my_shape_display =
             std::make_shared<display::SingleShapeDisplay>("shape_1", 100ms);
@@ -59,8 +60,14 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("rectangular_prism", 100ms);
         my_rect_prism_display->display_object(my_rect_prism);
         ros_worker.add_node(my_rect_prism_display);
-
-
+        
+        // Create and display a cube
+        auto const my_cube = std::make_shared<shapes::Cube>(10);
+        auto my_cube_display =
+            std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
+        my_cube_display->display_object(my_cube);
+        ros_worker.add_node(my_cube_display);
+        
         // Create and display a cylinder
         auto const my_cylinder = std::make_shared<shapes::Cylinder>(12);
         auto my_cylinder_display =
@@ -68,24 +75,31 @@ auto main(int argc, char * argv[]) -> int
         my_cylinder_display->display_object(my_cylinder);
         ros_worker.add_node(my_cylinder_display);
 
+        // Create and display the flat plane
+        auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13);
+        auto my_FlatPlane_display =
+            std::make_shared<display::SingleShapeDisplay>("plane", 100ms);
+        my_FlatPlane_display->display_object(my_flat_plane);
+        ros_worker.add_node(my_FlatPlane_display);
 
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
         auto const yz = shapes::AnyAxis{0.0};
-
+        
         // Periodically do some work
         while (rclcpp::ok())
         {
             auto current_time = std::chrono::steady_clock::now();
             if (current_time - previous_time > 1s)
             {
-                // Meowing at rate of 1hz.
+                // Meowing at rate of 1hz
                 std::cout << "meow\n";
 
                 // Also move the sphere a bit
                 x.set_value(x.get_value() + 0.25);
                 my_sphere_2->move_to(x, yz, yz);
-
+                 
+                // Iterator
                 previous_time = current_time;
             }
             ros_worker.spin_some(50ms);
@@ -93,11 +107,9 @@ auto main(int argc, char * argv[]) -> int
     }
     catch (std::exception & e)
     {
-        // Something wrong occured, printing error message.
+        // Something wrong occured, printing error message
         std::cerr << "Error message:" << e.what() << "\n";
     }
-
-    rclcpp::shutdown(); // Cleaning up before exiting.
-
+    rclcpp::shutdown(); // Cleaning up before exiting
     return 0;
 }

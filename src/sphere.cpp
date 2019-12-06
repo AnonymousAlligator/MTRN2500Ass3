@@ -84,7 +84,7 @@ auto Sphere::rescale_imple(AnyAxis const factor) -> void
     radius_ = AllAxis{radius_.get_value() * factor.get_value()};
 }
 
-auto Sphere::get_colour_imple() const -> Colour { return Colour::black; }
+auto Sphere::get_colour_imple() const -> Colour {return Colour::black;}
 
 auto Sphere::set_parent_frame_name_imple(std::string frame_name) -> void
 {
@@ -133,7 +133,7 @@ auto Sphere::get_display_markers_imple()
 
 auto Sphere::rotate_about_axis_to_imple(ZAxis radians) -> void {}
 
-auto Sphere::get_orientation_imple() const -> ZAxis { return ZAxis{0.0}; }
+auto Sphere::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
 
 auto Sphere::move_by_imple(XAxis const) -> void {}
 
