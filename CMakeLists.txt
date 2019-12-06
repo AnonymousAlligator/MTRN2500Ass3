@@ -19,6 +19,7 @@ target_sources(assignment3 PRIVATE
   include/interfaces.hpp
   include/sphere.hpp
   include/flat_plane.hpp
+  include/cube.hpp
 )
 
 target_sources(assignment3 PRIVATE
@@ -26,6 +27,7 @@ target_sources(assignment3 PRIVATE
   src/student_helper.cpp
   src/sphere.cpp
   src/flat_plane.cpp
+  include/cube.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)
