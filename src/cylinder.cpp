@@ -126,5 +126,4 @@ auto Cylinder::get_display_markers_imple()
 auto Cylinder::rotate_about_axis_to_imple(ZAxis radians) -> void {}
 auto Cylinder::get_orientation_imple() const -> ZAxis { return ZAxis{0.0}; }
 auto Cylinder::move_by_imple(XAxis const) -> void {}
-
 } // namespace shapes
