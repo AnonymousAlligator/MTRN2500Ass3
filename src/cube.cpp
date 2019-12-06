@@ -1,4 +1,6 @@
 // Copyright 2019 Zhihao Zhang License MIT
+// Edited by Curtis Ly (z5209698)
+
 #include "cube.hpp"
 
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/
