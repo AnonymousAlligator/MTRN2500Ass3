@@ -64,6 +64,13 @@ auto main(int argc, char * argv[]) -> int
         my_FlatPlane_display->display_object(my_flat_plane);
         ros_worker.add_node(my_FlatPlane_display);
 
+        // Create and display a cube
+        auto const my_cube = std::make_shared<shapes::Cube>(2);
+        auto my_cube_display =
+            std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
+        my_cube_display->display_object(my_cube);
+        ros_worker.add_node(my_cube_display);
+
         // Periodically do some work
         while (rclcpp::ok())
         {
