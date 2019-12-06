@@ -46,7 +46,7 @@ private:
      */
     auto display_object_imple(
         std::shared_ptr<shapes::DisplayableInterface> display_object)
-        -> void override;
+        -> void final;
 };
 } // namespace display
 #endif // SINGLE_SHAPE_DISPLAY_HPP_
