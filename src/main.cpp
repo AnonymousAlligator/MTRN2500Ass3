@@ -65,7 +65,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_FlatPlane_display);
 
         // Create and display a cube
-        auto const my_cube = std::make_shared<shapes::Cube>(2);
+        auto const my_cube = std::make_shared<shapes::Cube>(10);
         auto my_cube_display =
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);

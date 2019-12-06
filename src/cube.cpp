@@ -48,9 +48,9 @@ Cube::Cube(int id)
     shape.action = visualization_msgs::msg::Marker::ADD;
 
     // Position
-    shape.pose.position.x = 3;
-    shape.pose.position.y = 0;
-    shape.pose.position.z = 3;
+    shape.pose.position.x = -3;
+    shape.pose.position.y = -3;
+    shape.pose.position.z = 1.5;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;
