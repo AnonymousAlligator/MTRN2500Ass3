@@ -61,9 +61,9 @@ Cylinder::Cylinder(int id)
     shape.scale.z = height_.get_value();
 
     // colour red, green, blue, alpha (transparency)
-    shape.color.r = 0.6;
-    shape.color.g = 0.3;
-    shape.color.b = 0.0;
+    shape.color.r = 1;
+    shape.color.g = 0.855;
+    shape.color.b = 0.757;
     shape.color.a = 1.0;
 
     // body.colors.emplace_back();

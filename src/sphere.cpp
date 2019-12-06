@@ -48,7 +48,7 @@ Sphere::Sphere(int id)
     // Position
     shape.pose.position.x = 1;
     shape.pose.position.y = 1;
-    shape.pose.position.z = 1;
+    shape.pose.position.z = 2.5;
 
     // Orientation in quaternion. Check transform marker in assignment 2
     // for how to manipulate it.
@@ -58,13 +58,13 @@ Sphere::Sphere(int id)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides.
-    shape.scale.x = 1.0;
-    shape.scale.y = 1.0;
-    shape.scale.z = 1.0;
+    shape.scale.x = 3;
+    shape.scale.y = 3;
+    shape.scale.z = 3;
 
     // colour red, green, blue, alpha (transparency)
-    shape.color.r = 1.0;
-    shape.color.g = 0.0;
+    shape.color.r = 0.0;
+    shape.color.g = 1.0;
     shape.color.b = 0.0;
     shape.color.a = 1.0;
 

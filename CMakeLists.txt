@@ -19,6 +19,7 @@ target_sources(assignment3 PRIVATE
   include/interfaces.hpp
   include/sphere.hpp
   include/cylinder.hpp
+  include/rect_prism.hpp
 )
 
 target_sources(assignment3 PRIVATE
@@ -26,6 +27,7 @@ target_sources(assignment3 PRIVATE
   src/student_helper.cpp
   src/sphere.cpp
   src/cylinder.cpp
+  src/rect_prism.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)

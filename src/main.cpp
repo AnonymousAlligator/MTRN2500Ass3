@@ -12,6 +12,7 @@
 #include "single_shape_display.hpp"
 #include "sphere.hpp"
 #include "cylinder.hpp"
+#include "rect_prism.hpp"
 
 #include <chrono>
 #include <iostream>
@@ -52,12 +53,21 @@ auto main(int argc, char * argv[]) -> int
         my_shape_display_2->display_object(my_sphere_2);
         ros_worker.add_node(my_shape_display_2);
 
+         // Create and display a rectangular prism
+        auto const my_rect_prism = std::make_shared<shapes::RectPrism>(2);
+        auto my_rect_prism_display =
+            std::make_shared<display::SingleShapeDisplay>("rectangular_prism", 100ms);
+        my_rect_prism_display->display_object(my_rect_prism);
+        ros_worker.add_node(my_rect_prism_display);
+
+
         // Create and display a cylinder
         auto const my_cylinder = std::make_shared<shapes::Cylinder>(12);
         auto my_cylinder_display =
             std::make_shared<display::SingleShapeDisplay>("cylinder", 100ms);
         my_cylinder_display->display_object(my_cylinder);
         ros_worker.add_node(my_cylinder_display);
+
 
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
