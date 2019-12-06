@@ -18,12 +18,14 @@ target_sources(assignment3 PRIVATE
   include/student_helper.hpp
   include/interfaces.hpp
   include/sphere.hpp
+  include/flat_plane.hpp
 )
 
 target_sources(assignment3 PRIVATE
   src/single_shape_display.cpp
   src/student_helper.cpp
   src/sphere.cpp
+  src/flat_plane.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)
