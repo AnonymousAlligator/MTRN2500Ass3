@@ -1,6 +1,4 @@
 // Copyright 2019 Zhihao Zhang License MIT
-// Edited by Curtis Ly (z5209698)
-
 #include "flat_plane.hpp"
 
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/
@@ -15,6 +13,10 @@
 
 namespace shapes
 {
+/**
+ * \brief Example of how cube class may be implemented, the design may not be
+ *the most suitable. Trivial functionalities are not implemented.
+ **/
 
 FlatPlane::FlatPlane(int id)
     : length_{30.0}
@@ -24,10 +26,10 @@ FlatPlane::FlatPlane(int id)
 {
     // Get a ref to the vector of marker for ease of use
     auto & shapes_list = *shapes_list_ptr_;
-    // Create a new marker
+    // create a new marker
     shapes_list.emplace_back();
 
-    // Get a ref to the new marker
+    // get a ref to the new marker
     auto & shape = shapes_list[0];
     // Parent frame name
     shape.header.frame_id = helper::world_frame_name("z0000000");
@@ -36,11 +38,11 @@ FlatPlane::FlatPlane(int id)
     // namespace the marker will be in
     shape.ns = "";
     // Used to identify which marker we are adding/modifying/deleting
-    // Must be unique between shape objects.
+    // Must be unique between shape objects
     shape.id = id;
     // Type of marker we want to display
     shape.type = visualization_msgs::msg::Marker::CUBE;
-    // Add, modify or delete.
+    // Add, modify or delete
     shape.action = visualization_msgs::msg::Marker::ADD;
 
     // Position
@@ -59,7 +61,7 @@ FlatPlane::FlatPlane(int id)
     shape.scale.y = length_.get_value();
     shape.scale.z = 0.1;
 
-    // Making the flat_plane green
+    // Colour the flat plane green
     shape.color.r = 0.0;
     shape.color.g = 1.0;
     shape.color.b = 0.0;
@@ -99,7 +101,7 @@ auto FlatPlane::move_to_imple(YAxis const) -> void {}
 
 auto FlatPlane::move_to_imple(ZAxis const) -> void {}
 
-// Move the flat_plane to a new location
+// Move the shape to a new location
 auto FlatPlane::move_to_imple(XAxis const x, YAxis const y, ZAxis const z)
     -> void
 {
@@ -114,7 +116,7 @@ auto FlatPlane::move_by_imple(ZAxis const) -> void {}
 
 auto FlatPlane::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
 
-// Return the marker message for flat_plane
+// Return marker for shape
 auto FlatPlane::get_display_markers_imple()
     -> std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
 {
