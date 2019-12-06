@@ -118,8 +118,6 @@ auto Cube::get_display_markers_imple()
 }
 
 auto Cube::rotate_about_axis_to_imple(ZAxis radians) -> void {}
-
 auto Cube::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
-
 auto Cube::move_by_imple(XAxis const) -> void {}
 } // namespace shapes
