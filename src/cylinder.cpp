@@ -1,4 +1,6 @@
-// Copyright 2019 Kevin Hu License MIT
+// Copyright 2019 Zhihao Zhang License MIT
+// Editted by Kevin Hu
+
 #include "cylinder.hpp"
 
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/

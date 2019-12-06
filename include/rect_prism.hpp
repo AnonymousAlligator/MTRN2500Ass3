@@ -1,4 +1,4 @@
-// Copyright 2019 Zhihao Zhang License MIT
+// Created by Kevin Hu
 
 #ifndef RECTPRISM_HPP_
 #define RECTPRISM_HPP_
@@ -20,7 +20,7 @@ public:
     explicit RectPrism(int id);
 
 protected:
-    AllAxis length_ , breadth_ , height_;
+    AllAxis length_, breadth_, height_;
     std::string parent_frame_name_;
     std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
         shapes_list_ptr_;
@@ -29,8 +29,9 @@ protected:
 
     auto rescale_imple(AnyAxis factor) -> void override;
 
-    auto set_colour_imple(Colour) -> void override {}
-    [[nodiscard]] auto get_colour_imple() const -> Colour override;
+    auto set_colour_imple(Colour)
+        -> void override{}[[nodiscard]] auto get_colour_imple() const
+        -> Colour override;
 
     auto set_parent_frame_name_imple(std::string frame_name) -> void override;
 
