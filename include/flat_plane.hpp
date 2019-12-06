@@ -52,7 +52,10 @@ protected:
 
     auto get_display_markers_imple() -> std::shared_ptr<
         std::vector<visualization_msgs::msg::Marker>> override;
+        
+    auto rotate_about_axis_to_imple(ZAxis radians) -> void override;
 
+    [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
 };
 } // namespace shapes
 #endif // FLATPLANE_HPP_

@@ -85,7 +85,7 @@ auto FlatPlane::rescale_imple(AnyAxis const factor) -> void
     length_ = AllAxis{length_.get_value() * factor.get_value()};
 }
 
-auto FlatPlane::get_colour_imple() const -> Colour { return Colour::black; }
+auto FlatPlane::get_colour_imple() const -> Colour {return Colour::black;}
 
 auto FlatPlane::set_parent_frame_name_imple(std::string frame_name) -> void
 {
@@ -124,6 +124,10 @@ auto FlatPlane::get_display_markers_imple()
 {
     return shapes_list_ptr_;
 }
+
+auto FlatPlane::rotate_about_axis_to_imple(ZAxis radians) -> void {}
+
+auto FlatPlane::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
 
 auto FlatPlane::move_by_imple(XAxis const) -> void {}
 

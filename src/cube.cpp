@@ -75,14 +75,14 @@ Cube::Cube(int id)
         rclcpp::Duration{1s}; // How long our marker message is valid for
 }
 
-auto Cube::resize_imple(AllAxis const new_size) -> void{length_ = new_size;}
+auto Cube::resize_imple(AllAxis const new_size) -> void {length_ = new_size;}
 
 auto Cube::rescale_imple(AnyAxis const factor) -> void
 {
     length_ = AllAxis{length_.get_value() * factor.get_value()};
 }
 
-auto Cube::get_colour_imple() const -> Colour{return Colour::black;}
+auto Cube::get_colour_imple() const -> Colour {return Colour::black;}
 
 auto Cube::set_parent_frame_name_imple(std::string frame_name) -> void
 {
@@ -120,6 +120,9 @@ auto Cube::get_display_markers_imple()
 {
     return shapes_list_ptr_;
 }
+auto Cube::rotate_about_axis_to_imple(ZAxis radians) -> void {}
+
+auto Cube::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
 
 auto Cube::move_by_imple(XAxis const) -> void {}
 
