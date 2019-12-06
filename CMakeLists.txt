@@ -27,7 +27,7 @@ target_sources(assignment3 PRIVATE
   src/student_helper.cpp
   src/sphere.cpp
   src/flat_plane.cpp
-  include/cube.cpp
+  src/cube.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)
