@@ -49,8 +49,8 @@ Cube::Cube(int id)
 
     // Position
     shape.pose.position.x = 3;
-    shape.pose.position.y = 3;
-    shape.pose.position.z = 0;
+    shape.pose.position.y = 0;
+    shape.pose.position.z = 3;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;
