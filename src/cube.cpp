@@ -50,7 +50,7 @@ Cube::Cube(int id)
     // Position
     shape.pose.position.x = 3;
     shape.pose.position.y = 3;
-    shape.pose.position.z = 3;
+    shape.pose.position.z = 0;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;
@@ -59,14 +59,14 @@ Cube::Cube(int id)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides
-    shape.scale.x = 1.0;
-    shape.scale.y = 1.0;
-    shape.scale.z = 1.0;
+    shape.scale.x = 3.0;
+    shape.scale.y = 3.0;
+    shape.scale.z = 3.0;
 
-    // Make the cube red
+    // Make the cube brick-red coloured
     shape.color.r = 1.0;
-    shape.color.g = 0.0;
-    shape.color.b = 0.0;
+    shape.color.g = 0.6;
+    shape.color.b = 0.6;
     shape.color.a = 1.0;
 
     // body.colors.emplace_back();

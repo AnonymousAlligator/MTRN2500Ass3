@@ -63,10 +63,10 @@ FlatPlane::FlatPlane(int id)
     shape.scale.y = length_.get_value();
     shape.scale.z = 0.1;
 
-    // Colour the flat plane green
-    shape.color.r = 0.0;
-    shape.color.g = 1.0;
-    shape.color.b = 0.0;
+    // Colour the flat plane grass green
+    shape.color.r = 0.9;
+    shape.color.g = 0.9;
+    shape.color.b = 0.8;
     shape.color.a = 1.0;
 
     // body.colors.emplace_back();
