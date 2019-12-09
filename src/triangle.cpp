@@ -71,11 +71,11 @@ Triangle::Triangle(int id)
     p.z = length_.get_value();
 
     geometry_msgs::msg::Point p2 = p;
-    p2.x = p.x + 5;
+    p2.x = p.x + 2;
 
     geometry_msgs::msg::Point p3 = p;
     p3.x = p2.x;
-    p3.z = p.z + 5;
+    p3.y = p.y + 2;
 
     shape.points.push_back(p);
     shape.points.push_back(p2);
