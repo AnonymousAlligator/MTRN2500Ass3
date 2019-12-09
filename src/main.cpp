@@ -16,6 +16,7 @@
 #include "cube.hpp"
 #include "flat_plane.hpp"
 #include "triangle.hpp"
+#include "tri_pyr.hpp"
 
 #include <chrono>
 #include <cstdio>
