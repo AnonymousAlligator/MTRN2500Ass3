@@ -7,6 +7,7 @@
 #include "student_helper.hpp"
 
 #include <chrono>
+#include <cmath>
 #include <memory>
 #include <string>
 #include <tuple>
