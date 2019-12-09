@@ -15,6 +15,7 @@
 #include "rect_prism.hpp"
 #include "cube.hpp"
 #include "flat_plane.hpp"
+#include "triangle.hpp"
 
 #include <chrono>
 #include <cstdio>
@@ -81,6 +82,13 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("plane", 100ms);
         my_FlatPlane_display->display_object(my_flat_plane);
         ros_worker.add_node(my_FlatPlane_display);
+
+        // Create and display the triangle
+        auto const my_triangle = std::make_shared<shapes::Triangle>(13);
+        auto my_triangle_display =
+            std::make_shared<display::SingleShapeDisplay>("triangle", 100ms);
+        my_triangle_display->display_object(my_triangle);
+        ros_worker.add_node(my_triangle_display);
 
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
