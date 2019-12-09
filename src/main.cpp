@@ -17,6 +17,7 @@
 #include "flat_plane.hpp"
 #include "triangle.hpp"
 #include "tri_pyr.hpp"
+#include "tri_prism.hpp"
 
 #include <chrono>
 #include <cstdio>
@@ -62,7 +63,21 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("rectangular_prism", 100ms);
         my_rect_prism_display->display_object(my_rect_prism);
         ros_worker.add_node(my_rect_prism_display);
+
+        // Create and display a triangluar prism
+        auto const my_tri_prism = std::make_shared<shapes::TriPrism>(3);
+        auto my_tri_prism_display =
+            std::make_shared<display::SingleShapeDisplay>("triangular_prism", 100ms);
+        my_tri_prism_display->display_object(my_tri_prism);
+        ros_worker.add_node(my_tri_prism_display);
         
+        // Create and display the triangular pyramid
+        auto const my_tri_pyr = std::make_shared<shapes::TriPyr>(6);
+        auto my_tri_pyr_display =
+            std::make_shared<display::SingleShapeDisplay>("tri_pyr", 100ms);
+        my_tri_pyr_display->display_object(my_tri_pyr);
+        ros_worker.add_node(my_tri_pyr_display);
+
         // Create and display a cube
         auto const my_cube = std::make_shared<shapes::Cube>(10);
         auto my_cube_display =
@@ -83,20 +98,6 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("plane", 100ms);
         my_FlatPlane_display->display_object(my_flat_plane);
         ros_worker.add_node(my_FlatPlane_display);
-
-        // Create and display the triangle
-        auto const my_triangle = std::make_shared<shapes::Triangle>(14);
-        auto my_triangle_display =
-            std::make_shared<display::SingleShapeDisplay>("triangle", 100ms);
-        my_triangle_display->display_object(my_triangle);
-        ros_worker.add_node(my_triangle_display);
-
-        // Create and display the triangle
-        auto const my_tri_pyr = std::make_shared<shapes::TriPyr>(6);
-        auto my_tri_pyr_display =
-            std::make_shared<display::SingleShapeDisplay>("tri_pyr", 100ms);
-        my_tri_pyr_display->display_object(my_tri_pyr);
-        ros_worker.add_node(my_tri_pyr_display);
 
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
