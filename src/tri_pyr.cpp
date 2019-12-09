@@ -60,23 +60,43 @@ TriPyr::TriPyr(int id)
     shape.scale.z = 3.0;
 
     // Make the triangle brick-red coloured
-    shape.color.r = 1.0;
-    shape.color.g = 0.6;
-    shape.color.b = 0.6;
+    shape.color.r = 0;
+    shape.color.g = 0;
+    shape.color.b = 1;
     shape.color.a = 1.0;
 
     // Base of pyramid
     geometry_msgs::msg::Point p;
-    p.x = -length_.get_value();
-    p.y = -length_.get_value();
-    p.z = length_.get_value();
+    p.x = -2;
+    p.y = -2;
+    p.z = 2;
 
     geometry_msgs::msg::Point p2 = p;
-    p2.x = p.x + 2;
+    p2.x = -1;
+    p2.y = -2 + sqrt(5);
+    p2.z = 2;
 
     geometry_msgs::msg::Point p3 = p;
-    p2.x = p.x + sqrt(5);
-    p3.y = p.y + 2;
+    p3.x = 0;
+    p3.y = -2;
+    p3.z = 2;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // First side of pyramid
+    p.x = -2;
+    p.y = -2;
+    p.z = 2;
+
+    p2.x = -1;
+    p2.y = -2 + sqrt(5);
+    p2.z = 2;
+
+    p3.x = -1;
+    p3.y = -2 + (sqrt(5)/2);
+    p3.z = 4;
 
     shape.points.push_back(p);
     shape.points.push_back(p2);
