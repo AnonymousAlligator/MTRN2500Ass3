@@ -1,7 +1,7 @@
 // Created by Kevin Hu
 
-#ifndef TRIPRISM_HPP_
-#define TRIPRISM_HPP_
+#ifndef OCTPRISM_HPP_
+#define OCTPRISM_HPP_
 
 #include "interfaces.hpp"
 #include "visualization_msgs/msg/marker.hpp"
@@ -14,10 +14,10 @@
 namespace shapes
 {
 // ReSharper disable once CppClassCanBeFinal
-class TriPrism : public ShapeCommonInterface
+class OctPrism : public ShapeCommonInterface
 {
 public:
-    explicit TriPrism(int id);
+    explicit OctPrism(int id);
 
 protected:
     AllAxis length_;

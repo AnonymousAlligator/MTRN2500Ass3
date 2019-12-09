@@ -25,6 +25,7 @@ target_sources(assignment3 PRIVATE
   include/triangle.hpp
   include/tri_pyr.hpp
   include/tri_prism.hpp
+  include/oct_prism.hpp
 )
 
 target_sources(assignment3 PRIVATE
@@ -38,6 +39,7 @@ target_sources(assignment3 PRIVATE
   src/triangle.cpp
   src/tri_pyr.cpp
   src/tri_prism.cpp
+  src/oct_prism.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)
