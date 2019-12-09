@@ -90,6 +90,13 @@ auto main(int argc, char * argv[]) -> int
         my_triangle_display->display_object(my_triangle);
         ros_worker.add_node(my_triangle_display);
 
+        // Create and display the triangle
+        auto const my_tri_pyr = std::make_shared<shapes::TriPyr>(6);
+        auto my_tri_pyr_display =
+            std::make_shared<display::SingleShapeDisplay>("tri_pyr", 100ms);
+        my_tri_pyr_display->display_object(my_tri_pyr);
+        ros_worker.add_node(my_tri_pyr_display);
+
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
         auto const yz = shapes::AnyAxis{0.0};
