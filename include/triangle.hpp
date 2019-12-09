@@ -58,4 +58,4 @@ protected:
     [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
 };
 } // namespace shapes
-#endif // TRIANGLE_HPP_s
+#endif // TRIANGLE_HPP_
