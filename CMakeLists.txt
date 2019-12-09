@@ -20,6 +20,8 @@ target_sources(assignment3 PRIVATE
   include/sphere.hpp
   include/flat_plane.hpp
   include/cube.hpp
+  include/cylinder.hpp
+  include/rect_prism.hpp
 )
 
 target_sources(assignment3 PRIVATE
@@ -28,6 +30,8 @@ target_sources(assignment3 PRIVATE
   src/sphere.cpp
   src/flat_plane.cpp
   src/cube.cpp
+  src/cylinder.cpp
+  src/rect_prism.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)
