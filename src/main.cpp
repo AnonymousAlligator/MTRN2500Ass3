@@ -84,7 +84,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_FlatPlane_display);
 
         // Create and display the triangle
-        auto const my_triangle = std::make_shared<shapes::Triangle>(13);
+        auto const my_triangle = std::make_shared<shapes::Triangle>(14);
         auto my_triangle_display =
             std::make_shared<display::SingleShapeDisplay>("triangle", 100ms);
         my_triangle_display->display_object(my_triangle);

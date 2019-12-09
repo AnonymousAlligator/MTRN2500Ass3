@@ -65,15 +65,15 @@ Triangle::Triangle(int id)
     shape.color.a = 1.0;
 
     // Finding points for the triangle
-    geometry_msgs::Point p;
+    geometry_msgs::msg::Point p;
     p.x = length_.get_value();
     p.y = length_.get_value();
     p.z = length_.get_value();
 
-    geometry_msgs::Point p2 = p;
+    geometry_msgs::msg::Point p2 = p;
     p2.x = p.x + 5;
 
-    geometry_msgs::Point p3 = p;
+    geometry_msgs::msg::Point p3 = p;
     p3.x = p2.x;
     p3.z = p.z + 5;
 

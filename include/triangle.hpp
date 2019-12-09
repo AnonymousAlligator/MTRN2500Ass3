@@ -15,7 +15,7 @@
 namespace shapes
 {
 // ReSharper disable once CppClassCanBeFinal
-class Cube : public ShapeCommonInterface
+class Triangle : public ShapeCommonInterface
 {
 public:
     explicit Triangle(int id);
