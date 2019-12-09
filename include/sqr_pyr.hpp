@@ -1,7 +1,7 @@
 // Created by Kevin Hu
 
-#ifndef OCTPRISM_HPP_
-#define OCTPRISM_HPP_
+#ifndef SQRPYR_HPP_
+#define SQRPYR_HPP_
 
 #include "interfaces.hpp"
 #include "visualization_msgs/msg/marker.hpp"
@@ -14,10 +14,10 @@
 namespace shapes
 {
 // ReSharper disable once CppClassCanBeFinal
-class OctPrism : public ShapeCommonInterface
+class SqrPyr : public ShapeCommonInterface
 {
 public:
-    explicit OctPrism(int id);
+    explicit SqrPyr(int id);
 
 protected:
     AllAxis length_;
@@ -57,4 +57,4 @@ protected:
     [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
 };
 } // namespace shapes
-#endif // OCTPRISM_HPP_
+#endif // SQRPYR_HPP_
