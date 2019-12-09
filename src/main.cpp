@@ -15,8 +15,9 @@
 #include "rect_prism.hpp"
 #include "cube.hpp"
 #include "flat_plane.hpp"
-#include "triangle.hpp"
+#include "rect_pyr.hpp"
 #include "sqr_pyr.hpp"
+#include "triangle.hpp"
 #include "tri_pyr.hpp"
 #include "tri_prism.hpp"
 #include "oct_prism.hpp"
@@ -73,8 +74,15 @@ auto main(int argc, char * argv[]) -> int
         my_oct_prism_display->display_object(my_oct_prism);
         ros_worker.add_node(my_oct_prism_display);
 
+        // Create and display the rectangular pyramid
+        auto const my_rect_pyr = std::make_shared<shapes::RectPyr>(5);
+        auto my_rect_pyr_display =
+            std::make_shared<display::SingleShapeDisplay>("rect_pyr", 100ms);
+        my_rect_pyr_display->display_object(my_rect_pyr);
+        ros_worker.add_node(my_rect_pyr_display);
+
         // Create and display the square pyramid
-        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(4);
+        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(7);
         auto my_sqr_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("sqr_pyr", 100ms);
         my_sqr_pyr_display->display_object(my_sqr_pyr);
