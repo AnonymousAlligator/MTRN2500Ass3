@@ -1,8 +1,8 @@
 // Copyright 2019 Zhihao Zhang License MIT
 // Edited by Curtis Ly (z5209698)
 
-#ifndef TRIANGLE_HPP_
-#define TRIANGLE_HPP_
+#ifndef TRIPYR_HPP_
+#define TRIPYR_HPP_
 
 #include "interfaces.hpp"
 #include "visualization_msgs/msg/marker.hpp"
@@ -15,10 +15,10 @@
 namespace shapes
 {
 // ReSharper disable once CppClassCanBeFinal
-class Triangle : public ShapeCommonInterface
+class TriPyr : public ShapeCommonInterface
 {
 public:
-    explicit Triangle(int id);
+    explicit TriPyr(int id);
 
 protected:
     AllAxis length_;
@@ -58,4 +58,4 @@ protected:
     [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
 };
 } // namespace shapes
-#endif // TRIANGLE_HPP_
+#endif // TRIPYR_HPP_

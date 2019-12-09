@@ -1,12 +1,13 @@
 // Copyright 2019 Zhihao Zhang License MIT
 // Edited by Curtis Ly (z5209698)
 
-#include "triangle.hpp"
+#include "tri_pyr.hpp"
 
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/
 #include "student_helper.hpp"
 
 #include <chrono>
+#include <cmath>
 #include <memory>
 #include <string>
 #include <tuple>
@@ -16,7 +17,7 @@
 namespace shapes
 {
 // Implementation of the triangle class
-Triangle::Triangle(int id)
+TriPyr::TriPyr(int id)
     : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -59,23 +60,77 @@ Triangle::Triangle(int id)
     shape.scale.z = 3.0;
 
     // Make the triangle brick-red coloured
-    shape.color.r = 1.0;
-    shape.color.g = 0.6;
-    shape.color.b = 0.6;
+    shape.color.r = 0;
+    shape.color.g = 0;
+    shape.color.b = 1;
     shape.color.a = 1.0;
 
-    // Finding points for the triangle
+    // Base of pyramid
     geometry_msgs::msg::Point p;
-    p.x = length_.get_value();
-    p.y = length_.get_value();
-    p.z = length_.get_value();
+    p.x = -2;
+    p.y = -2;
+    p.z = 2;
 
     geometry_msgs::msg::Point p2 = p;
-    p2.x = p.x + 2;
+    p2.x = -1;
+    p2.y = -2 + sqrt(5);
+    p2.z = 2;
 
     geometry_msgs::msg::Point p3 = p;
-    p3.x = p2.x;
-    p3.y = p.y + 2;
+    p3.x = 0;
+    p3.y = -2;
+    p3.z = 2;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // First side of pyramid
+    p.x = -2;
+    p.y = -2;
+    p.z = 2;
+
+    p2.x = -1;
+    p2.y = -2 + sqrt(5);
+    p2.z = 2;
+
+    p3.x = -1;
+    p3.y = -2 + (sqrt(5)/2);
+    p3.z = 4;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // Second side of pyramid
+    p.x = -2;
+    p.y = -2;
+    p.z = 2;
+
+    p2.x = -1;
+    p2.y = -2 + (sqrt(5)/2);
+    p2.z = 4;
+
+    p3.x = 0;
+    p3.y = -2;
+    p3.z = 2;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // Third side of pyramid
+    p.x = -1;
+    p.y = -2 + (sqrt(5)/2);
+    p.z = 4;
+
+    p2.x = -1;
+    p2.y = -2 + sqrt(5);
+    p2.z = 2;
+
+    p3.x = 0;
+    p3.y = -2;
+    p3.z = 2;
 
     shape.points.push_back(p);
     shape.points.push_back(p2);
@@ -88,53 +143,53 @@ Triangle::Triangle(int id)
 }
 
 // Shape manipulation functions
-auto Triangle::resize_imple(AllAxis const new_size) -> void {length_ = new_size;}
+auto TriPyr::resize_imple(AllAxis const new_size) -> void {length_ = new_size;}
 
-auto Triangle::rescale_imple(AnyAxis const factor) -> void
+auto TriPyr::rescale_imple(AnyAxis const factor) -> void
 {
     length_ = AllAxis{length_.get_value() * factor.get_value()};
 }
 
-auto Triangle::get_colour_imple() const -> Colour {return Colour::black;}
+auto TriPyr::get_colour_imple() const -> Colour {return Colour::black;}
 
-auto Triangle::set_parent_frame_name_imple(std::string frame_name) -> void
+auto TriPyr::set_parent_frame_name_imple(std::string frame_name) -> void
 {
     parent_frame_name_ = std::move(frame_name);
 }
 
-auto Triangle::get_location_imple() const -> std::tuple<XAxis, YAxis, ZAxis>
+auto TriPyr::get_location_imple() const -> std::tuple<XAxis, YAxis, ZAxis>
 {
     return std::tuple{XAxis{1.0}, YAxis{2.0}, ZAxis{3.0}};
 }
 
-auto Triangle::move_to_imple(XAxis const) -> void {}
+auto TriPyr::move_to_imple(XAxis const) -> void {}
 
-auto Triangle::move_to_imple(YAxis const) -> void {}
+auto TriPyr::move_to_imple(YAxis const) -> void {}
 
-auto Triangle::move_to_imple(ZAxis const) -> void {}
+auto TriPyr::move_to_imple(ZAxis const) -> void {}
 
 // Move the shape to a new location
-auto Triangle::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
+auto TriPyr::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
 {
     shapes_list_ptr_->at(0).pose.position.x = x.get_value();
     shapes_list_ptr_->at(0).pose.position.y = y.get_value();
     shapes_list_ptr_->at(0).pose.position.z = z.get_value();
 }
 
-auto Triangle::move_by_imple(YAxis const) -> void {}
+auto TriPyr::move_by_imple(YAxis const) -> void {}
 
-auto Triangle::move_by_imple(ZAxis const) -> void {}
+auto TriPyr::move_by_imple(ZAxis const) -> void {}
 
-auto Triangle::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
+auto TriPyr::move_by_imple(XAxis const, YAxis const, ZAxis const) -> void {}
 
 // Return marker message for displaying the shape
-auto Triangle::get_display_markers_imple()
+auto TriPyr::get_display_markers_imple()
     -> std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
 {
     return shapes_list_ptr_;
 }
 
-auto Triangle::rotate_about_axis_to_imple(ZAxis radians) -> void {}
-auto Triangle::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
-auto Triangle::move_by_imple(XAxis const) -> void {}
+auto TriPyr::rotate_about_axis_to_imple(ZAxis radians) -> void {}
+auto TriPyr::get_orientation_imple() const -> ZAxis {return ZAxis{0.0};}
+auto TriPyr::move_by_imple(XAxis const) -> void {}
 } // namespace shapes
