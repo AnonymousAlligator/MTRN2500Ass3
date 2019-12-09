@@ -23,6 +23,7 @@ target_sources(assignment3 PRIVATE
   include/cylinder.hpp
   include/rect_prism.hpp
   include/triangle.hpp
+  include/tri_pyr.hpp
 )
 
 target_sources(assignment3 PRIVATE
@@ -34,6 +35,7 @@ target_sources(assignment3 PRIVATE
   src/cylinder.cpp
   src/rect_prism.cpp
   src/triangle.cpp
+  src/tri_pyr.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)
