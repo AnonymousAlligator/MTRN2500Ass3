@@ -17,7 +17,7 @@ namespace shapes
 {
 // Implementation of the triangle class
 Triangle::Triangle(int id)
-    : length_{10.0}
+    : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
