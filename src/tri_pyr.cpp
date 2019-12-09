@@ -102,6 +102,40 @@ TriPyr::TriPyr(int id)
     shape.points.push_back(p2);
     shape.points.push_back(p3);
 
+    // Second side of pyramid
+    p.x = -2;
+    p.y = -2;
+    p.z = 2;
+
+    p2.x = -1;
+    p2.y = -2 + (sqrt(5)/2);
+    p2.z = 4;
+
+    p3.x = 0;
+    p3.y = -2;
+    p3.z = 2;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // Third side of pyramid
+    p.x = -1;
+    p.y = -2 + (sqrt(5)/2);
+    p.z = 4;
+
+    p2.x = -1;
+    p2.y = -2 + sqrt(5);
+    p2.z = 2;
+
+    p3.x = 0;
+    p3.y = -2;
+    p3.z = 2;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
     shape.lifetime =
