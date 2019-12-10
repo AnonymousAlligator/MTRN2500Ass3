@@ -25,6 +25,7 @@ target_sources(assignment3 PRIVATE
   include/triangle.hpp
   include/tri_pyr.hpp
   include/tri_prism.hpp
+  include/cone.hpp
   include/oct_prism.hpp
   include/sqr_pyr.hpp
   include/rect_pyr.hpp
@@ -42,6 +43,7 @@ target_sources(assignment3 PRIVATE
   src/triangle.cpp
   src/tri_pyr.cpp
   src/tri_prism.cpp
+  src/cone.cpp
   src/oct_prism.cpp
   src/sqr_pyr.cpp
   src/rect_pyr.cpp

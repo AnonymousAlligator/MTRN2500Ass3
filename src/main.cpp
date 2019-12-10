@@ -20,6 +20,7 @@
 #include "triangle.hpp"
 #include "tri_pyr.hpp"
 #include "tri_prism.hpp"
+#include "cone.hpp"
 #include "oct_prism.hpp"
 #include "oct_pyr.hpp"
 
@@ -88,13 +89,6 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("rect_pyr", 100ms);
         my_rect_pyr_display->display_object(my_rect_pyr);
         ros_worker.add_node(my_rect_pyr_display);
-
-        // Create and display the square pyramid
-        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(7,0,0,0);
-        auto my_sqr_pyr_display =
-            std::make_shared<display::SingleShapeDisplay>("sqr_pyr", 100ms);
-        my_sqr_pyr_display->display_object(my_sqr_pyr);
-        ros_worker.add_node(my_sqr_pyr_display);
         
         // Create and display the triangular pyramid
         auto const my_tri_pyr = std::make_shared<shapes::TriPyr>(6,0,0,0);
@@ -102,6 +96,13 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("tri_pyr", 100ms);
         my_tri_pyr_display->display_object(my_tri_pyr);
         ros_worker.add_node(my_tri_pyr_display);
+        
+        // Create and display the square pyramid
+        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(7,0,0,0);
+        auto my_sqr_pyr_display =
+            std::make_shared<display::SingleShapeDisplay>("sqr_pyr", 100ms);
+        my_sqr_pyr_display->display_object(my_sqr_pyr);
+        ros_worker.add_node(my_sqr_pyr_display);
 
         // Create and display a triangluar prism
         auto const my_tri_prism = std::make_shared<shapes::TriPrism>(8,0,0,0);
@@ -116,6 +117,13 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);
         ros_worker.add_node(my_cube_display);
+
+        // Create and display a cone
+        auto const my_cone = std::make_shared<shapes::Cone>(11);
+        auto my_cone_display =
+            std::make_shared<display::SingleShapeDisplay>("cone", 100ms);
+        my_cone_display->display_object(my_cone);
+        ros_worker.add_node(my_cone_display);
         
         // Create and display a cylinder
         auto const my_cylinder = std::make_shared<shapes::Cylinder>(12,0,0,0);
