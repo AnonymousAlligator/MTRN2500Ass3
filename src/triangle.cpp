@@ -16,7 +16,7 @@
 namespace shapes
 {
 // Implementation of the triangle class
-Triangle::Triangle(int id)
+Triangle::Triangle(int id, double posx, double posy, double posz)
     : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{

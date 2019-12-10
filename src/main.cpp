@@ -76,7 +76,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_oct_prism_display);
 
         // Create and display a octagonal pyramid
-        auto const my_oct_pyr = std::make_shared<shapes::OctPyr>(4),0,0,0;
+        auto const my_oct_pyr = std::make_shared<shapes::OctPyr>(4,0,0,0);
         auto my_oct_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("octagonal_pyramid", 100ms);
         my_oct_pyr_display->display_object(my_oct_pyr);
