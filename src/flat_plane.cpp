@@ -17,7 +17,7 @@ namespace shapes
 {
 // Implementation of the cube class to make a flat plane
 FlatPlane::FlatPlane(int id)
-    : length_{30.0}
+    : length_{100}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
