@@ -17,7 +17,7 @@ namespace shapes
 class OctPyr : public ShapeCommonInterface
 {
 public:
-    explicit OctPyr(int id);
+    explicit OctPyr(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis length_;

@@ -16,7 +16,7 @@
 namespace shapes
 {
 // Implementation of the cube class
-Cube::Cube(int id)
+Cube::Cube(int id, double posx, double posy, double posz)
     : length_{10.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{

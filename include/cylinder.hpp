@@ -17,7 +17,7 @@ namespace shapes
 class Cylinder : public ShapeCommonInterface
 {
 public:
-    explicit Cylinder(int id);
+    explicit Cylinder(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis radius_, height_;

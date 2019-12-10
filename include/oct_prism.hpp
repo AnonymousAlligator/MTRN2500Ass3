@@ -17,7 +17,7 @@ namespace shapes
 class OctPrism : public ShapeCommonInterface
 {
 public:
-    explicit OctPrism(int id);
+    explicit OctPrism(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis length_;

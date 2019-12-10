@@ -17,7 +17,7 @@
 namespace shapes
 {
 // Implementation of the square pyramid class
-SqrPyr::SqrPyr(int id)
+SqrPyr::SqrPyr(int id, double posx, double posy, double posz)
     : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -44,9 +44,9 @@ SqrPyr::SqrPyr(int id)
     shape.action = visualization_msgs::msg::Marker::ADD;
 
     // Position
-    shape.pose.position.x = -3;
-    shape.pose.position.y = -3;
-    shape.pose.position.z = 1.5;
+    shape.pose.position.x = 0;
+    shape.pose.position.y = 0;
+    shape.pose.position.z = 0;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;
