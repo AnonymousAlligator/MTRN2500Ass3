@@ -66,31 +66,109 @@ Parallelepiped::Parallelepiped(int id, double posx, double posy, double posz)
     shape.color.b = 0.0;
     shape.color.a = 1.0;
 
-    // Bottom Parallelogram
+    // Parallepiped from Geogebra by harry624
+    // Bottom Parallelogram (ABEF)
     geometry_msgs::msg::Point p;
     p.x = 0;
     p.y = 0;
-    p.z = 1;
+    p.z = 0;
 
     geometry_msgs::msg::Point p2 = p;
-    p2.x = 2;
+    p2.x = 1;
+    p2.y = 5;
+    p2.z = 3;
 
     geometry_msgs::msg::Point p3 = p;
-    p3.x = 1;
+    p3.x = 6;
+    p3.y = 6;
+    p3.z = 6;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    p2.x = 5;
+    p2.y = 1;
+    p2.z = 3;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // Front Parallelogram (ABCD)
+    p.x = 0;
+    p.y = 0;
+    p.z = 0;
+
+    p2.x = 1;
+    p2.y = 5;
+    p2.z = 3;
+
+    p3.x = 0;
+    p3.y = 6;
+    p3.z = 7;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    p2.x = -1;
+    p2.y = 1;
+    p2.z = 4;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // Right Side Parallelogram (ADGF)
+    p.x = 0;
+    p.y = 0;
+    p.z = 0;
+
+    p2.x = 5;
+    p2.y = 1;
+    p2.z = 3;
+
+    p3.x = 4;
     p3.y = 2;
+    p3.z = 7;
 
     shape.points.push_back(p);
     shape.points.push_back(p2);
     shape.points.push_back(p3);
 
-    p.x = 3;
-    p.y = 2;
+    p2.x = -1;
+    p2.y = 1;
+    p2.z = 4;
 
     shape.points.push_back(p);
     shape.points.push_back(p2);
     shape.points.push_back(p3);
 
-    // Front Parallelogram
+    // Left Side Parallelogram (BEHC)
+    p.x = 1;
+    p.y = 5;
+    p.z = 3;
+
+    p2.x = 6;
+    p2.y = 6;
+    p2.z = 6;
+
+    p3.x = 5;
+    p3.y = 7;
+    p3.z = 10;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    p2.x = 0;
+    p2.y = 6;
+    p2.z = 7;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
