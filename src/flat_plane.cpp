@@ -16,7 +16,7 @@
 namespace shapes
 {
 // Implementation of the cube class to make a flat plane
-FlatPlane::FlatPlane(int id)
+FlatPlane::FlatPlane(int id, double posx, double posy, double posz)
     : length_{100}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
