@@ -23,6 +23,7 @@
 #include "cone.hpp"
 #include "oct_prism.hpp"
 #include "oct_pyr.hpp"
+#include "parallelepiped.hpp"
 
 #include <chrono>
 #include <cstdio>
@@ -110,6 +111,13 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("triangular_prism", 100ms);
         my_tri_prism_display->display_object(my_tri_prism);
         ros_worker.add_node(my_tri_prism_display);
+
+        // Create and display a parallelepiped
+        auto const my_parallelepiped = std::make_shared<shapes::Parallelepiped>(9,0,0,0);
+        auto my_parallelepiped_display =
+            std::make_shared<display::SingleShapeDisplay>("my_parallelepiped", 100ms);
+        my_parallelepiped_display->display_object(my_parallelepiped);
+        ros_worker.add_node(my_parallelepiped_display);
 
         // Create and display a cube
         auto const my_cube = std::make_shared<shapes::Cube>(10,0,0,0);
