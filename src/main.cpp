@@ -165,6 +165,7 @@ auto main(int argc, char * argv[]) -> int
                 // Also move the sphere a bit
                 x.set_value(x.get_value() + 0.25);
                 my_sphere_2->move_to(x, yz, yz);
+                my_cylinder->move_to(x, yz, yz); // the cylinder is now moving with the sphere INSIDE it
 
                 // While joystick input is whatever it moved by that much
                 // If button is pressed, then get position of UAV and drop the block
