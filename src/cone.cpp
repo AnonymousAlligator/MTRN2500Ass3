@@ -85,7 +85,7 @@ Cone::Cone(int id)
         p2.x = x;
         p2.y = y;
 
-        geometry_msgs::msg::Point p;
+        geometry_msgs::msg::Point p3 = p;
         p3.x = 0;
         p3.y = 0;
         p3.z = 0;
