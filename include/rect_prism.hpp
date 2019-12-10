@@ -17,7 +17,7 @@ namespace shapes
 class RectPrism : public ShapeCommonInterface
 {
 public:
-    explicit RectPrism(int id);
+    explicit RectPrism(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis length_, breadth_, height_;

@@ -18,7 +18,7 @@ namespace shapes
 class FlatPlane : public ShapeCommonInterface
 {
 public:
-    explicit FlatPlane(int id);
+    explicit FlatPlane(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis length_;

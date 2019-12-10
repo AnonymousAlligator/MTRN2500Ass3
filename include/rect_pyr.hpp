@@ -17,7 +17,7 @@ namespace shapes
 class RectPyr : public ShapeCommonInterface
 {
 public:
-    explicit RectPyr(int id);
+    explicit RectPyr(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis length_;

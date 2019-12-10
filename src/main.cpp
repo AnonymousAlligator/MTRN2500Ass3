@@ -69,7 +69,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_rect_prism_display);
 
         // Create and display a octagonal prism
-        auto const my_oct_prism = std::make_shared<shapes::OctPrism>(3);
+        auto const my_oct_prism = std::make_shared<shapes::OctPrism>(3,0,0,0);
         auto my_oct_prism_display =
             std::make_shared<display::SingleShapeDisplay>("octagonal_prism", 100ms);
         my_oct_prism_display->display_object(my_oct_prism);

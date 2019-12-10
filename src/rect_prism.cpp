@@ -17,7 +17,7 @@ namespace shapes
 {
 // Rectangular prism implementation
 
-RectPrism::RectPrism(int id)
+RectPrism::RectPrism(int id, double posx, double posy, double posz)
     : length_{2.0}
     , breadth_{1.0}
     , height_{5.0}
@@ -47,9 +47,9 @@ RectPrism::RectPrism(int id)
     shape.action = visualization_msgs::msg::Marker::ADD;
 
     // Position
-    shape.pose.position.x = 4;
-    shape.pose.position.y = 4;
-    shape.pose.position.z = 2.5;
+    shape.pose.position.x = -3;
+    shape.pose.position.y = 3;
+    shape.pose.position.z = (height_.get_value())/2;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;

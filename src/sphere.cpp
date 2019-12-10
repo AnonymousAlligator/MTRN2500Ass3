@@ -18,7 +18,7 @@ namespace shapes
  *the most suitable. Trivial functionalities are not implemented.
  **/
 
-Sphere::Sphere(int id)
+Sphere::Sphere(int id, double posx, double posy, double posz)
     : radius_{5.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -45,7 +45,7 @@ Sphere::Sphere(int id)
     // Add, modify or delete.
     shape.action = visualization_msgs::msg::Marker::ADD;
 
-    // Position
+    // Position of the axes
     shape.pose.position.x = 1;
     shape.pose.position.y = 1;
     shape.pose.position.z = 2.5;
