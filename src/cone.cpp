@@ -94,6 +94,36 @@ Cone::Cone(int id)
         shape.points.push_back(p2);
         shape.points.push_back(p3);
     }
+    
+    // Cone face
+    x = 1;
+    y = 0;
+    for(int i = 0; i < 180; i++)
+    {
+        geometry_msgs::msg::Point p;
+        p.x = x;
+        p.y = y;
+        p.z = 0;
+
+        // Set temp values for new x and y
+        float x_ = x;
+        float y_ = y;
+        x = x_ * cos(M_PI/90) - y_ * sin(M_PI/90);
+        y = x_ * sin(M_PI/90) + y_ * cos(M_PI/90);
+
+        geometry_msgs::msg::Point p2 = p;
+        p2.x = x;
+        p2.y = y;
+
+        geometry_msgs::msg::Point p3 = p;
+        p3.x = 0;
+        p3.y = 0;
+        p3.z = 3;
+
+        shape.points.push_back(p);
+        shape.points.push_back(p2);
+        shape.points.push_back(p3);
+    }
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
