@@ -170,6 +170,56 @@ Parallelepiped::Parallelepiped(int id, double posx, double posy, double posz)
     shape.points.push_back(p2);
     shape.points.push_back(p3);
 
+    // Top Parallelogram (DGHC)
+    p.x = -1;
+    p.y = 1;
+    p.z = 4;
+
+    p2.x = 4;
+    p2.y = 2;
+    p2.z = 7;
+
+    p3.x = 5;
+    p3.y = 7;
+    p3.z = 10;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    p2.x = 0;
+    p2.y = 6;
+    p2.z = 7;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    // Rear Parallelogram (FEHG)
+    p.x = 5;
+    p.y = 1;
+    p.z = 3;
+
+    p2.x = 6;
+    p2.y = 6;
+    p2.z = 6;
+
+    p3.x = 5;
+    p3.y = 7;
+    p3.z = 10;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
+    p2.x = 4;
+    p2.y = 2;
+    p2.z = 7;
+
+    shape.points.push_back(p);
+    shape.points.push_back(p2);
+    shape.points.push_back(p3);
+
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
     shape.lifetime =
