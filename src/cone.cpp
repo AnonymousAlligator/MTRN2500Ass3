@@ -18,7 +18,7 @@ namespace shapes
 {
 // Implementation of the cube class
 Cone::Cone(int id)
-    : length_{10.0}
+    : length_{5.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
@@ -55,9 +55,9 @@ Cone::Cone(int id)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides
-    shape.scale.x = 2.0;
-    shape.scale.y = 2.0;
-    shape.scale.z = 2.0;
+    shape.scale.x = 3.0;
+    shape.scale.y = 3.0;
+    shape.scale.z = 3.0;
 
     // Make the cone green like a tree
     shape.color.r = 0.0;
@@ -68,7 +68,7 @@ Cone::Cone(int id)
     // Circular Base
     float x = 1;
     float y = 0;
-    for(int i = 0; i < 360; i++)
+    for(int i = 0; i < 180; i++)
     {
         geometry_msgs::msg::Point p;
         p.x = x;
@@ -78,8 +78,8 @@ Cone::Cone(int id)
         // Set temp values for new x and y
         float x_ = x;
         float y_ = y;
-        x = x_ * cos(M_PI/180) - y_ * sin(M_PI/180);
-        y = x_ * sin(M_PI/180) + y_ * cos(M_PI/180);
+        x = x_ * cos(M_PI/90) - y_ * sin(M_PI/90);
+        y = x_ * sin(M_PI/90) + y_ * cos(M_PI/90);
 
         geometry_msgs::msg::Point p2 = p;
         p2.x = x;
