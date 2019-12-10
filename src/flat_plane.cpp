@@ -62,7 +62,7 @@ FlatPlane::FlatPlane(int id)
     shape.color.r = 0;
     shape.color.g = 1;
     shape.color.b = 0;
-    shape.color.a = 1.0;
+    shape.color.a = 0.7;
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
