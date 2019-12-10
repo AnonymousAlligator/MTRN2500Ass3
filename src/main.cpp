@@ -142,6 +142,8 @@ auto main(int argc, char * argv[]) -> int
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
         auto const yz = shapes::AnyAxis{0.0};
+
+        // Create UAV here
         
         // Periodically do some work
         while (rclcpp::ok())
@@ -155,7 +157,13 @@ auto main(int argc, char * argv[]) -> int
                 // Also move the sphere a bit
                 x.set_value(x.get_value() + 0.25);
                 my_sphere_2->move_to(x, yz, yz);
-                 
+
+                // While joystick input is whatever it moved by that much
+                // If button is pressed, then get position of UAV and drop the block
+                // Cycle to next block colour
+                // Flag for if the RShoulder is pressed
+                // Remove all placed blocks
+
                 // Iterator
                 previous_time = current_time;
             }
