@@ -18,6 +18,7 @@
 #include "triangle.hpp"
 #include "tri_pyr.hpp"
 #include "tri_prism.hpp"
+#include "cone.hpp"
 
 #include <chrono>
 #include <cstdio>
@@ -84,6 +85,13 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);
         ros_worker.add_node(my_cube_display);
+
+        // Create and display a cone
+        auto const my_cone = std::make_shared<shapes::Cone>(11);
+        auto my_cone_display =
+            std::make_shared<display::SingleShapeDisplay>("cone", 100ms);
+        my_cone_display->display_object(my_cone);
+        ros_worker.add_node(my_cone_display);
         
         // Create and display a cylinder
         auto const my_cylinder = std::make_shared<shapes::Cylinder>(12);
