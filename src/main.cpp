@@ -89,13 +89,6 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("rect_pyr", 100ms);
         my_rect_pyr_display->display_object(my_rect_pyr);
         ros_worker.add_node(my_rect_pyr_display);
-
-        // Create and display the square pyramid
-        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(7);
-        auto my_sqr_pyr_display =
-            std::make_shared<display::SingleShapeDisplay>("sqr_pyr", 100ms);
-        my_sqr_pyr_display->display_object(my_sqr_pyr);
-        ros_worker.add_node(my_sqr_pyr_display);
         
         // Create and display the triangular pyramid
         auto const my_tri_pyr = std::make_shared<shapes::TriPyr>(6);
@@ -103,6 +96,13 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("tri_pyr", 100ms);
         my_tri_pyr_display->display_object(my_tri_pyr);
         ros_worker.add_node(my_tri_pyr_display);
+        
+        // Create and display the square pyramid
+        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(7);
+        auto my_sqr_pyr_display =
+            std::make_shared<display::SingleShapeDisplay>("sqr_pyr", 100ms);
+        my_sqr_pyr_display->display_object(my_sqr_pyr);
+        ros_worker.add_node(my_sqr_pyr_display);
 
         // Create and display a triangluar prism
         auto const my_tri_prism = std::make_shared<shapes::TriPrism>(8);
