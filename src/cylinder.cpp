@@ -17,7 +17,7 @@ namespace shapes
 {
 // cylinder class implementation
 
-Cylinder::Cylinder(int id)
+Cylinder::Cylinder(int id, double posx, double posy, double posz)
     : radius_{1.0}
     , height_{2.0}
     , parent_frame_name_{"local_frame"}

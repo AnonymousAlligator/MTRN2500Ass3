@@ -18,7 +18,7 @@ namespace shapes
 class Triangle : public ShapeCommonInterface
 {
 public:
-    explicit Triangle(int id);
+    explicit Triangle(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis length_;

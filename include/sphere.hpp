@@ -17,7 +17,7 @@ namespace shapes
 class Sphere : public ShapeCommonInterface
 {
 public:
-    explicit Sphere(int id);
+    explicit Sphere(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis radius_;
