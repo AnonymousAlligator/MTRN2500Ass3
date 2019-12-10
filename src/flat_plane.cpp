@@ -16,8 +16,8 @@
 namespace shapes
 {
 // Implementation of the cube class to make a flat plane
-FlatPlane::FlatPlane(int id, double posx, double posy, double posz)
-    : length_{30.0}
+FlatPlane::FlatPlane(int id)
+    : length_{100}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
@@ -62,7 +62,7 @@ FlatPlane::FlatPlane(int id, double posx, double posy, double posz)
     shape.color.r = 0;
     shape.color.g = 1;
     shape.color.b = 0;
-    shape.color.a = 1.0;
+    shape.color.a = 0.7;
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
