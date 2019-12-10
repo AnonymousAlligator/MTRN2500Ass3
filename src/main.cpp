@@ -119,7 +119,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_cube_display);
 
         // Create and display a cone
-        auto const my_cone = std::make_shared<shapes::Cone>(11);
+        auto const my_cone = std::make_shared<shapes::Cone>(11,0,0,0);
         auto my_cone_display =
             std::make_shared<display::SingleShapeDisplay>("cone", 100ms);
         my_cone_display->display_object(my_cone);
