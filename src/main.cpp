@@ -145,6 +145,8 @@ auto main(int argc, char * argv[]) -> int
 
         */
 
+       
+
         // Create and display the flat plane
         auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13,0,0,0);
         auto my_FlatPlane_display =
@@ -155,7 +157,8 @@ auto main(int argc, char * argv[]) -> int
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
         auto y = shapes::YAxis{0.0};
-        auto z = shapes::ZAxis{0.0};
+        auto z = shapes::ZAxis{10.0};
+        auto z_ground = shapes::ZAxis{0.0};
 
         // Create and display the UAV
         auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0);
@@ -164,6 +167,7 @@ auto main(int argc, char * argv[]) -> int
         my_uav_display->display_object(my_uav);
         ros_worker.add_node(my_uav_display);
         int m_count = 0;
+        int cube_count = 16;
 
         // Periodically do some work
         while (rclcpp::ok())
@@ -172,21 +176,29 @@ auto main(int argc, char * argv[]) -> int
             if (current_time - previous_time > 1s)
             {
                 // Meowing at rate of 1hz
-                std::cout << "meow" << m_count << std::endl;
+                std::cout << "meow_" << m_count << std::endl;
 
                 // Moving the UAV
                 x.set_value(x.get_value() + 0.25);
                 y.set_value(y.get_value() + 0.25);
-                z.set_value(z.get_value() + 0.25);
                 my_uav->move_to(x, y, z);
+
+                if (m_count % 10 == 0)
+                { 
+                    // Create and display a cube
+                    auto const my_cube = std::make_shared<shapes::Cube>(cube_count,0,0,0);
+                    auto my_cube_display =
+                        std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
+                    my_cube_display->display_object(my_cube);
+                    ros_worker.add_node(my_cube_display);
+                    my_cube->move_to(x, y, z_ground);
+                    std::cout << "Moved Block!" << std::endl;
+                    cube_count++;
+                    // Find a way to change the colour
+                }
                 // my_sphere_2->move_to(x, yz, yz);
                 // my_cylinder->move_to(x, yz, z); the cylinder is now moving with the sphere INSIDE it
 
-                // While joystick input is whatever it moved by that much
-                // If button is pressed, then get position of UAV and drop the block
-                // Cycle to next block colour
-                // Flag for if the RShoulder is pressed
-                // Remove all placed blocks
 
                 // Iterator
                 previous_time = current_time;
