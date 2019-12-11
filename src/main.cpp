@@ -186,13 +186,13 @@ auto main(int argc, char * argv[]) -> int
                 if (m_count % 10 == 0)
                 { 
                     // Create and display a cube
-                    auto const my_cube = std::make_shared<shapes::Cube>(cube_count,0,0,0);
+                    auto const my_cube = std::make_shared<shapes::Cube>(cube_count,x,y,z_ground);
                     auto my_cube_display =
                         std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
                     my_cube_display->display_object(my_cube);
                     ros_worker.add_node(my_cube_display);
-                    my_cube->move_to(x, y, z_ground);
-                    std::cout << "Moved Block!" << std::endl;
+                    // my_cube->move_to(x, y, z_ground);
+                    std::cout << "Created Block!" << std::endl;
                     cube_count++;
                     // Find a way to change the colour
                 }
