@@ -158,7 +158,6 @@ auto main(int argc, char * argv[]) -> int
         auto x = shapes::XAxis{0.0};
         auto y = shapes::YAxis{0.0};
         auto z = shapes::ZAxis{10.0};
-        auto z_ground = shapes::ZAxis{0.0};
 
         // Create and display the UAV
         auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0);
@@ -186,7 +185,7 @@ auto main(int argc, char * argv[]) -> int
                 if (m_count % 10 == 0)
                 { 
                     // Create and display a cube
-                    auto const my_cube = std::make_shared<shapes::Cube>(cube_count,x,y,z_ground);
+                    auto const my_cube = std::make_shared<shapes::Cube>(cube_count, x.get_value(), y.get_value() ,0);
                     auto my_cube_display =
                         std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
                     my_cube_display->display_object(my_cube);
