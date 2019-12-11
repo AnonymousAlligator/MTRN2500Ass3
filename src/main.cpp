@@ -23,6 +23,7 @@
 #include "cone.hpp"
 #include "oct_prism.hpp"
 #include "oct_pyr.hpp"
+#include "joystick_listener.hpp"
 
 #include <chrono>
 #include <cstdio>
@@ -45,6 +46,10 @@ auto main(int argc, char * argv[]) -> int
 
         auto ros_worker = rclcpp::executors::SingleThreadedExecutor{};
 
+        auto input_node = std::make_shared<assignment3::JoystickListener>(
+            "z0000000");
+        ros_worker.add_node(input_node);
+
         // Create a sphere and display node for the sphere
         auto const my_sphere = std::make_shared<shapes::Sphere>(0,0,0,0);
         auto my_shape_display =
@@ -61,7 +66,7 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("shape_2", 100ms);
         my_shape_display_2->display_object(my_sphere_2);
         ros_worker.add_node(my_shape_display_2);
-
+        /*
          // Create and display a rectangular prism
         auto const my_rect_prism = std::make_shared<shapes::RectPrism>(2,0,0,0);
         auto my_rect_prism_display =
@@ -131,7 +136,7 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("cylinder", 100ms);
         my_cylinder_display->display_object(my_cylinder);
         ros_worker.add_node(my_cylinder_display);
-
+        */
         // Create and display the flat plane
         auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13,0,0,0);
         auto my_FlatPlane_display =
@@ -141,7 +146,8 @@ auto main(int argc, char * argv[]) -> int
 
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
-        auto const yz = shapes::AnyAxis{0.0};
+        auto y = shapes::YAxis{0.0};
+        auto z = shapes::ZAxis{0.0};
 
         // Create UAV here
         
@@ -149,14 +155,13 @@ auto main(int argc, char * argv[]) -> int
         while (rclcpp::ok())
         {
             auto current_time = std::chrono::steady_clock::now();
-            if (current_time - previous_time > 1s)
+            if (current_time - previous_time > 0.25s)
             {
-                // Meowing at rate of 1hz
-                std::cout << "meow\n";
-
                 // Also move the sphere a bit
-                x.set_value(x.get_value() + 0.25);
-                my_sphere_2->move_to(x, yz, yz);
+                x.set_value(x.get_value() + input_node->get_x());
+                y.set_value(y.get_value() + input_node->get_y());
+                z.set_value(z.get_value() + input_node->get_z());
+                my_sphere_2->move_to(x, y, z);
 
                 // While joystick input is whatever it moved by that much
                 // If button is pressed, then get position of UAV and drop the block

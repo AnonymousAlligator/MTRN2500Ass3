@@ -21,5 +21,9 @@ auto constexpr marker_node_name = [](std::string const & zid) {
     return zid + "_marker_node";
 };
 
+auto constexpr joy_node_name = [](std::string const & zid) {
+    return zid + "_input_node";
+};
+
 } // namespace helper
 #endif // STUDENT_HELPER_HPP_
