@@ -31,6 +31,7 @@ target_sources(assignment3 PRIVATE
   include/rect_pyr.hpp
   include/oct_pyr.hpp
   include/parallelepiped.hpp
+  include/uav.hpp
 )
 
 target_sources(assignment3 PRIVATE
@@ -50,6 +51,7 @@ target_sources(assignment3 PRIVATE
   src/rect_pyr.cpp
   src/oct_pyr.cpp
   src/parallelepiped.cpp
+  src/uav.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)
