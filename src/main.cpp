@@ -154,16 +154,17 @@ auto main(int argc, char * argv[]) -> int
 
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
-        auto const yz = shapes::AnyAxis{0.0};
-        auto const z = shapes::ZAxis{20};
+        auto y = shapes::YAxis{0.0};
+        auto z = shapes::ZAxis{0.0};
 
         // Create and display the UAV
-        auto const my_uav = std::make_shared<shapes::UAV>(2,0,0,0);
+        auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0);
         auto my_uav_display =
             std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
         my_uav_display->display_object(my_uav);
         ros_worker.add_node(my_uav_display);
-        
+        int m_count = 0;
+
         // Periodically do some work
         while (rclcpp::ok())
         {
@@ -171,11 +172,13 @@ auto main(int argc, char * argv[]) -> int
             if (current_time - previous_time > 1s)
             {
                 // Meowing at rate of 1hz
-                std::cout << "meow\n";
+                std::cout << "meow" << m_count << std::endl;
 
-                // Also move the sphere a bit
+                // Moving the UAV
                 x.set_value(x.get_value() + 0.25);
-                my_uav->move_to(x, yz, z);
+                y.set_value(y.get_value() + 0.25);
+                z.set_value(z.get_value() + 0.25);
+                my_uav->move_to(x, y, z);
                 // my_sphere_2->move_to(x, yz, yz);
                 // my_cylinder->move_to(x, yz, z); the cylinder is now moving with the sphere INSIDE it
 
@@ -187,6 +190,7 @@ auto main(int argc, char * argv[]) -> int
 
                 // Iterator
                 previous_time = current_time;
+                m_count++;
             }
             ros_worker.spin_some(50ms);
         }
