@@ -54,9 +54,9 @@ Cube::Cube(int id, double posx, double posy, double posz)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides
-    shape.scale.x = 1.0;
-    shape.scale.y = 1.0;
-    shape.scale.z = 1.0;
+    shape.scale.x = 5;
+    shape.scale.y = 5;
+    shape.scale.z = 5;
 
     // Make the cube brick-red coloured
     shape.color.r = 1.0;

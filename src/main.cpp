@@ -169,14 +169,12 @@ auto main(int argc, char * argv[]) -> int
         int m_count = 1;
         int cube_count = 16;
 
-        /*
         // Create and display a cube
         auto my_cube = std::make_shared<shapes::Cube>(cube_count, x.get_value(), y.get_value(), z.get_value());
         auto my_cube_display =
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);
         ros_worker.add_node(my_cube_display);
-        */
 
         // Periodically do some work
         while (rclcpp::ok())
@@ -196,6 +194,7 @@ auto main(int argc, char * argv[]) -> int
 
                 if (m_count % 13 == 0)
                 { 
+                    
                     //my_cube->move_to(x, y, z_ground);
                     std::cout << "Created Block!" << std::endl;
                     cube_count++;
