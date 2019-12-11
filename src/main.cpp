@@ -161,7 +161,7 @@ auto main(int argc, char * argv[]) -> int
         auto z_ground = shapes::ZAxis{0.0};
 
         // Create and display the UAV
-        auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0);
+        auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0, ros_worker);
         auto my_uav_display =
             std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
         my_uav_display->display_object(my_uav);
@@ -175,6 +175,7 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);
         ros_worker.add_node(my_cube_display);
+
 
         // Periodically do some work
         while (rclcpp::ok())
@@ -192,9 +193,13 @@ auto main(int argc, char * argv[]) -> int
                 my_uav->move_to(x, y, z);
                 // my_cube->move_to(x, y, z_cube);
 
+                while (m_count < 25) 
+                {
+                    my_cube->move_to(x,y,z);
+                }
+                
                 if (m_count % 13 == 0)
                 { 
-                    
                     //my_cube->move_to(x, y, z_ground);
                     std::cout << "Created Block!" << std::endl;
                     cube_count++;

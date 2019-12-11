@@ -6,19 +6,26 @@
 
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/
 #include "student_helper.hpp"
+#include "single_shape_display.hpp"
 
 #include <chrono>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+#include <map>
 #include <memory>
 #include <string>
+#include <sstream>
 #include <tuple>
 #include <utility>
 #include <vector>
-
+// make a class for each shape and class of uav which incorporates all the shapes
 namespace shapes
 {
 // UAV implementation
 
-UAV::UAV(int id, double posx, double posy, double posz)
+UAV::UAV(int id, double posx, double posy, double posz, auto ros_worker)
     : length_{2.0}
     , breadth_{1.0}
     , height_{1.0}
@@ -26,6 +33,8 @@ UAV::UAV(int id, double posx, double posy, double posz)
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
 {
+    using namespace std::chrono_literals;
+
     // Get a ref to the vector of marker for ease of use
     auto & shapes_list = *shapes_list_ptr_;
     // create a new marker
@@ -70,6 +79,15 @@ UAV::UAV(int id, double posx, double posy, double posz)
     shape.color.a = 1.0;
 
     shapes::Cube(16, posx, posy, posz);
+
+    
+    // Create and display a cube
+    auto my_cube = std::make_shared<shapes::Cube>(30, posx, posy, posz);
+    auto my_cube_display =
+        std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
+    my_cube_display->display_object(my_cube);
+    ros_worker.add_node(my_cube_display);
+    
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
