@@ -17,7 +17,7 @@ namespace shapes
 {
 // Implementation of the cube class
 Cube::Cube(int id, double posx, double posy, double posz)
-    : length_{2.0}
+    : length_{5.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}

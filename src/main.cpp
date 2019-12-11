@@ -169,12 +169,14 @@ auto main(int argc, char * argv[]) -> int
         int m_count = 1;
         int cube_count = 16;
 
+        /*
         // Create and display a cube
         auto my_cube = std::make_shared<shapes::Cube>(cube_count, x.get_value(), y.get_value(), z.get_value());
         auto my_cube_display =
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);
         ros_worker.add_node(my_cube_display);
+        */
 
         // Periodically do some work
         while (rclcpp::ok())
@@ -190,11 +192,11 @@ auto main(int argc, char * argv[]) -> int
                 x.set_value(x.get_value() + 0.25);
                 y.set_value(y.get_value() + 0.25);
                 my_uav->move_to(x, y, z);
-                my_cube->move_to(x, y, z_cube);
+                // my_cube->move_to(x, y, z_cube);
 
                 if (m_count % 13 == 0)
                 { 
-                    my_cube->move_to(x, y, z_ground);
+                    //my_cube->move_to(x, y, z_ground);
                     std::cout << "Created Block!" << std::endl;
                     cube_count++;
                     // Find a way to change the colour

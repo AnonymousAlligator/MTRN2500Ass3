@@ -2,6 +2,7 @@
 // Editted by Curtis Ly (z5209698) and Kevin Hu (z5207293)
 
 #include "uav.hpp"
+#include "cube.hpp"
 
 #include "rclcpp/rclcpp.hpp" // http://docs.ros2.org/dashing/api/rclcpp/
 #include "student_helper.hpp"
@@ -67,6 +68,8 @@ UAV::UAV(int id, double posx, double posy, double posz)
     shape.color.g = 0.0;
     shape.color.b = 0.0;
     shape.color.a = 1.0;
+
+    shapes::Cube(16, posx, posy, posz);
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
