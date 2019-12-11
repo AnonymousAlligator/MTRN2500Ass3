@@ -24,6 +24,7 @@
 #include "oct_prism.hpp"
 #include "oct_pyr.hpp"
 #include "parallelepiped.hpp"
+#include "uav.hpp"
 
 #include <chrono>
 #include <cstdio>
@@ -156,7 +157,12 @@ auto main(int argc, char * argv[]) -> int
         auto const yz = shapes::AnyAxis{0.0};
         auto const z = shapes::ZAxis{20};
 
-        // Create UAV here
+        // Create and display the UAV
+        auto const my_uav = std::make_shared<shapes::UAV>(2,0,0,0);
+        auto my_uav_display =
+            std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
+        my_uav_display->display_object(my_uav);
+        ros_worker.add_node(my_uav_display);
         
         // Periodically do some work
         while (rclcpp::ok())
@@ -169,6 +175,7 @@ auto main(int argc, char * argv[]) -> int
 
                 // Also move the sphere a bit
                 x.set_value(x.get_value() + 0.25);
+                my_uav->move_to(x, yz, z);
                 // my_sphere_2->move_to(x, yz, yz);
                 // my_cylinder->move_to(x, yz, z); the cylinder is now moving with the sphere INSIDE it
 
