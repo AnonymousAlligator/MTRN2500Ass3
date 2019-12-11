@@ -25,7 +25,7 @@ namespace shapes
 {
 // UAV implementation
 
-UAV::UAV(int id, double posx, double posy, double posz, auto ros_worker)
+UAV::UAV(int id, double posx, double posy, double posz)
     : length_{2.0}
     , breadth_{1.0}
     , height_{1.0}
@@ -80,14 +80,14 @@ UAV::UAV(int id, double posx, double posy, double posz, auto ros_worker)
 
     shapes::Cube(16, posx, posy, posz);
 
-    
+    /*
     // Create and display a cube
     auto my_cube = std::make_shared<shapes::Cube>(30, posx, posy, posz);
     auto my_cube_display =
         std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
     my_cube_display->display_object(my_cube);
     ros_worker.add_node(my_cube_display);
-    
+    */
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
