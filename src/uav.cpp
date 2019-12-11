@@ -74,7 +74,7 @@ UAV::UAV(int id, double posx, double posy, double posz)
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
     shape.lifetime =
-        rclcpp::Duration{1s}; // HOw long our marker message is valid for
+        rclcpp::Duration{1s}; // How long our marker message is valid for
 }
 
 // Basic shape manipulation functions
