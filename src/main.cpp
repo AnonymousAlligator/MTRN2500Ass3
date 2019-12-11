@@ -56,6 +56,8 @@ auto main(int argc, char * argv[]) -> int
         // Add display node to list of node ros automatically manage.
         ros_worker.add_node(my_shape_display);
 
+        /*
+
         // Create and display another sphere
         auto const my_sphere_2 = std::make_shared<shapes::Sphere>(1,0,0,0);
         auto my_shape_display_2 =
@@ -140,6 +142,8 @@ auto main(int argc, char * argv[]) -> int
         my_cylinder_display->display_object(my_cylinder);
         ros_worker.add_node(my_cylinder_display);
 
+        */
+
         // Create and display the flat plane
         auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13,0,0,0);
         auto my_FlatPlane_display =
@@ -150,6 +154,7 @@ auto main(int argc, char * argv[]) -> int
         auto previous_time = std::chrono::steady_clock::now();
         auto x = shapes::XAxis{0.0};
         auto const yz = shapes::AnyAxis{0.0};
+        auto const z = shapes::ZAxis{20};
 
         // Create UAV here
         
@@ -164,8 +169,8 @@ auto main(int argc, char * argv[]) -> int
 
                 // Also move the sphere a bit
                 x.set_value(x.get_value() + 0.25);
-                my_sphere_2->move_to(x, yz, yz);
-                my_cylinder->move_to(x, yz, yz); // the cylinder is now moving with the sphere INSIDE it
+                // my_sphere_2->move_to(x, yz, yz);
+                // my_cylinder->move_to(x, yz, z); the cylinder is now moving with the sphere INSIDE it
 
                 // While joystick input is whatever it moved by that much
                 // If button is pressed, then get position of UAV and drop the block
