@@ -39,7 +39,6 @@ double linear_map(double accel, double in_min, double in_max)
     else if (accel < in_min)
     {
         accel = (accel - in_min) * (1 / (1 - in_max));
-        ;
     }
     return accel;
 }
@@ -53,14 +52,20 @@ double JoystickListener::get_z(){
     return storedZ;
 }
 double elevation (double raise, double lower, double in_min, double in_max, double zMove){
-    if ((raise < 0.8) && (lower < 0.8)) {
+    if (zMove > 0.1){
         zMove = 0;
         return zMove;
-    } else if (raise < 0.8 ){
+    } else if ((raise != 0) && (lower != 0)) {
+        zMove = 0;
+        return zMove;
+    } else if ((raise == 0) && (lower == 0)) {
+        zMove = 0;
+        return zMove;
+    } else if (raise != 0){
         zMove = abs(raise);
         zMove = linear_map(zMove, in_min, in_max);
         return zMove;
-    } else if (lower < 0.8) {
+    } else if (lower != 0) {
         zMove = -abs(lower);
         zMove = linear_map(zMove, in_min, in_max);
         return zMove;
@@ -77,6 +82,14 @@ auto JoystickListener::joy_message_callback(
         joy_message->axes.at(5), joy_message->axes.at(3),
         joy_message->axes.at(4)};
 
+    // lambda function that prints values
+    auto print = [](const int & i) { std::cout << '\t' << i; };
+
+    // printing axes values
+    std::cout << "axes status:";
+    std::for_each(axesValues.begin(), axesValues.end(), print);
+    std::cout << '\n';
+
     // putting button presses into a vector
     std::vector<double> buttonValues{joy_message->buttons.at(0),
         joy_message->buttons.at(5)};
@@ -84,7 +97,7 @@ auto JoystickListener::joy_message_callback(
     // accounting for deadzone in joystick in x direction and mapping
     double in_min = -0.05;
     double in_max = 0.05;
-    double xMove = axesValues.at(0);
+    double xMove = -axesValues.at(0);
     storedX = linear_map(xMove, in_min, in_max);
 
     // account for deadzone in joystick y direction and then mapping
@@ -93,15 +106,17 @@ auto JoystickListener::joy_message_callback(
 
     // account for deadzone in joystick z direction and then mapping
     double zMove = 0;
-    zMove = elevation(axesValues.at(2), axesValues.at(3), in_min, in_max, zMove);
+    double raise = axesValues.at(2);
+    double lower = axesValues.at(3);
+    zMove = elevation(raise, lower, in_min, in_max, zMove);
 
     //publishing to topic
     pose_ = std::make_unique<geometry_msgs::msg::PoseStamped>();;
     pose_->header.frame_id = zid_;
     pose_->header.stamp = joy_message->header.stamp;
-    pose_->pose.position.x = storedX + xMove/2;
-    pose_->pose.position.y = storedY + yMove/2;
-    pose_->pose.position.z = storedZ + zMove/5;
+    pose_->pose.position.x = storedX + xMove/1000000;
+    pose_->pose.position.y = storedY + yMove/1000000;
+    pose_->pose.position.z = storedZ + zMove/50;
     // storing current position to use as previous position
     storedX = pose_->pose.position.x;
     storedY = pose_->pose.position.y;

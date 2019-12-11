@@ -155,7 +155,7 @@ auto main(int argc, char * argv[]) -> int
         while (rclcpp::ok())
         {
             auto current_time = std::chrono::steady_clock::now();
-            if (current_time - previous_time > 0.25s)
+            if (current_time - previous_time > 0.2s)
             {
                 // Also move the sphere a bit
                 x.set_value(x.get_value() + input_node->get_x());
