@@ -17,7 +17,7 @@ namespace shapes
 {
 // Implementation of the cube class
 Cube::Cube(int id, double posx, double posy, double posz)
-    : length_{10.0}
+    : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
@@ -43,9 +43,9 @@ Cube::Cube(int id, double posx, double posy, double posz)
     shape.action = visualization_msgs::msg::Marker::ADD;
 
     // Position
-    shape.pose.position.x = -3;
-    shape.pose.position.y = -3;
-    shape.pose.position.z = 1.5;
+    shape.pose.position.x = posx;
+    shape.pose.position.y = posy;
+    shape.pose.position.z = posz;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;
@@ -54,9 +54,9 @@ Cube::Cube(int id, double posx, double posy, double posz)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides
-    shape.scale.x = 3.0;
-    shape.scale.y = 3.0;
-    shape.scale.z = 3.0;
+    shape.scale.x = 1.0;
+    shape.scale.y = 1.0;
+    shape.scale.z = 1.0;
 
     // Make the cube brick-red coloured
     shape.color.r = 1.0;
