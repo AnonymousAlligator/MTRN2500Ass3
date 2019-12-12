@@ -163,26 +163,26 @@ auto main(int argc, char * argv[]) -> int
                 z.set_value(z.get_value() + input_node->get_z());
 
                 // Checking if UAV is still in the allowed boundaries
-                if (x.get_value() > 10){
+                if (x.get_value() > 40){
                     std::cout << "leaving x boundaries, please go back" << std::endl;
-                    x.set_value(9);
-                } else if (x.get_value() < -10){
+                    x.set_value(39);
+                } else if (x.get_value() < -40){
                     std::cout << "leaving x boundaries, please go back" << std::endl;
-                    x.set_value(-9);
+                    x.set_value(-39);
                 }
-                if (y.get_value() > 10){
+                if (y.get_value() > 40){
                     std::cout << "leaving y boundaries, please go back" << std::endl;
-                    y.set_value(9);
-                } else if (y.get_value() < -10){
+                    y.set_value(39);
+                } else if (y.get_value() < -40){
                     std::cout << "leaving y boundaries, please go back" << std::endl;
-                    y.set_value(-9);
+                    y.set_value(-39);
                 }
-                if (z.get_value() > 10){
+                if (z.get_value() > 40){
                     std::cout << "leaving z boundaries, please go back" << std::endl;
-                    z.set_value(9);
-                } else if (z.get_value() < -10){
+                    z.set_value(39);
+                } else if (z.get_value() < -40){
                     std::cout << "leaving z boundaries, please go back" << std::endl;
-                    z.set_value(-9);
+                    z.set_value(-39);
                 }
                 my_sphere_2->move_to(x, y, z);
 
