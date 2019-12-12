@@ -1,12 +1,14 @@
-// Copyright 2019 Zhihao Zhang License MIT
-// Edited by Curtis Ly (z5209698)
+// Created by Curtis Ly (z5209698)
 
-#ifndef CUBE_HPP_
-#define CUBE_HPP_
+#ifndef UAV_HPP_
+#define UAV_HPP_
 
 #include "interfaces.hpp"
 #include "visualization_msgs/msg/marker.hpp"
+#include "single_shape_display.hpp"
+#include "cube.hpp"
 
+#include <cstdlib>
 #include <memory>
 #include <string>
 #include <tuple>
@@ -15,13 +17,14 @@
 namespace shapes
 {
 // ReSharper disable once CppClassCanBeFinal
-class Cube : public ShapeCommonInterface
+class UAV : public ShapeCommonInterface
 {
 public:
-    explicit Cube(int id, double posx, double posy, double posz, double r, double g, double b, double scale);
+    explicit UAV(int id, double posx, double posy, double posz);
+    // std::shared_ptr<display::SingleShapeDisplay> get_cube_display();
 
 protected:
-    AllAxis length_;
+    AllAxis length_, breadth_, height_;
     std::string parent_frame_name_;
     std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
         shapes_list_ptr_;
@@ -52,10 +55,13 @@ protected:
 
     auto get_display_markers_imple() -> std::shared_ptr<
         std::vector<visualization_msgs::msg::Marker>> override;
-        
+
     auto rotate_about_axis_to_imple(ZAxis radians) -> void override;
 
     [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
+
+    // std::shared_ptr <shapes::Cube> uav_cube;
+    // std::shared_ptr <display::SingleShapeDisplay> uav_cube_display;
 };
 } // namespace shapes
-#endif // CUBE_HPP_
+#endif // UAV_HPP_
