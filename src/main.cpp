@@ -253,7 +253,8 @@ auto main(int argc, char * argv[]) -> int
 
                     }
                 } else if (input_node->get_clear_flag() == 1){
-                    std::cout << "beep" << std::endl;
+                    std::cout << "Removing blocks!" << std::endl;
+                    my_cube_g1->set_a(0.0);
                 }
                 previousPress = currentPress;
                 // Iterator
