@@ -17,10 +17,10 @@ namespace shapes
 class Cylinder : public ShapeCommonInterface
 {
 public:
-    explicit Cylinder(int id, double posx, double posy, double posz, double a);
+    explicit Cylinder(int id, double posx, double posy, double posz, double a, double height);
 
 protected:
-    AllAxis radius_, height_;
+    AllAxis radius_;
     std::string parent_frame_name_;
     std::shared_ptr<std::vector<visualization_msgs::msg::Marker>>
         shapes_list_ptr_;
