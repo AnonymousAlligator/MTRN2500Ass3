@@ -18,7 +18,7 @@ namespace shapes
 class Cube : public ShapeCommonInterface
 {
 public:
-    explicit Cube(int id, double posx, double posy, double posz);
+    explicit Cube(int id, double posx, double posy, double posz, double r, double g, double b, double scale);
 
 protected:
     AllAxis length_;

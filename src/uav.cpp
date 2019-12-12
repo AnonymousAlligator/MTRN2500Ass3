@@ -25,6 +25,13 @@ namespace shapes
 {
 // UAV implementation
 
+/*
+std::shared_ptr<display::SingleShapeDisplay> UAV::get_cube_display()
+{
+    return uav_cube_display;
+}
+*/
+
 UAV::UAV(int id, double posx, double posy, double posz)
     : length_{2.0}
     , breadth_{1.0}
@@ -34,6 +41,7 @@ UAV::UAV(int id, double posx, double posy, double posz)
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
 {
     using namespace std::chrono_literals;
+
 
     // Get a ref to the vector of marker for ease of use
     auto & shapes_list = *shapes_list_ptr_;
@@ -57,9 +65,9 @@ UAV::UAV(int id, double posx, double posy, double posz)
     shape.action = visualization_msgs::msg::Marker::ADD;
 
     // Position
-    shape.pose.position.x = 0;
-    shape.pose.position.y = 0;
-    shape.pose.position.z = 20;
+    shape.pose.position.x = posx;
+    shape.pose.position.y = posy;
+    shape.pose.position.z = posz;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;
@@ -78,15 +86,14 @@ UAV::UAV(int id, double posx, double posy, double posz)
     shape.color.b = 0.0;
     shape.color.a = 1.0;
 
-    shapes::Cube(16, posx, posy, posz);
+    // shapes::Cube(16, posx, posy, posz);
 
     /*
     // Create and display a cube
-    auto my_cube = std::make_shared<shapes::Cube>(30, posx, posy, posz);
-    auto my_cube_display =
-        std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
-    my_cube_display->display_object(my_cube);
-    ros_worker.add_node(my_cube_display);
+    auto uav_cube = std::make_shared<shapes::Cube>(30, posx, posy, posz, 1, 1, 0);
+    auto uav_cube_display =
+        std::make_shared<display::SingleShapeDisplay>("uav_cube", 100ms);
+    uav_cube_display->display_object(uav_cube);
     */
 
     // body.colors.emplace_back();
@@ -149,4 +156,5 @@ auto UAV::get_display_markers_imple()
 auto UAV::rotate_about_axis_to_imple(ZAxis radians) -> void {}
 auto UAV::get_orientation_imple() const -> ZAxis { return ZAxis{0.0}; }
 auto UAV::move_by_imple(XAxis const) -> void {}
+
 } // namespace shapes

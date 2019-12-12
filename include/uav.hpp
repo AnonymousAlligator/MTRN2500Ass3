@@ -5,7 +5,10 @@
 
 #include "interfaces.hpp"
 #include "visualization_msgs/msg/marker.hpp"
+#include "single_shape_display.hpp"
+#include "cube.hpp"
 
+#include <cstdlib>
 #include <memory>
 #include <string>
 #include <tuple>
@@ -18,6 +21,7 @@ class UAV : public ShapeCommonInterface
 {
 public:
     explicit UAV(int id, double posx, double posy, double posz);
+    // std::shared_ptr<display::SingleShapeDisplay> get_cube_display();
 
 protected:
     AllAxis length_, breadth_, height_;
@@ -55,6 +59,9 @@ protected:
     auto rotate_about_axis_to_imple(ZAxis radians) -> void override;
 
     [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
+
+    // std::shared_ptr <shapes::Cube> uav_cube;
+    // std::shared_ptr <display::SingleShapeDisplay> uav_cube_display;
 };
 } // namespace shapes
 #endif // UAV_HPP_

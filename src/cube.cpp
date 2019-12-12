@@ -16,7 +16,7 @@
 namespace shapes
 {
 // Implementation of the cube class
-Cube::Cube(int id, double posx, double posy, double posz)
+Cube::Cube(int id, double posx, double posy, double posz, double r, double g, double b, double scale)
     : length_{3.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -54,14 +54,14 @@ Cube::Cube(int id, double posx, double posy, double posz)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides
-    shape.scale.x = 1;
-    shape.scale.y = 1;
-    shape.scale.z = 1;
+    shape.scale.x = scale;
+    shape.scale.y = scale;
+    shape.scale.z = scale;
 
-    // Make the cube brick-red coloured
-    shape.color.r = 1.0;
-    shape.color.g = 0.6;
-    shape.color.b = 0.6;
+    // Colour the shape through initialisation
+    shape.color.r = r;
+    shape.color.g = g;
+    shape.color.b = b;
     shape.color.a = 1.0;
 
     // body.colors.emplace_back();

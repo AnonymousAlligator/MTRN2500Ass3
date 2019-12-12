@@ -166,20 +166,30 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
         my_uav_display->display_object(my_uav);
         ros_worker.add_node(my_uav_display);
+        // ros_worker.add_node(my_uav.get_cube_display());
         int m_count = 1;
         int cube_count = 16;
 
-        // Create and display a cube
-        auto my_cube = std::make_shared<shapes::Cube>(cube_count, x.get_value(), y.get_value(), z.get_value());
-        auto my_cube_display =
-            std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
-        my_cube_display->display_object(my_cube);
-        ros_worker.add_node(my_cube_display);
+        
+        // Create and display a red cube
+        auto my_cube_r1 = std::make_shared<shapes::Cube>(100, x.get_value(), y.get_value(), z.get_value(), 1, 0, 0, 1);
+        auto my_cube_r1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_r1", 100ms);
+        my_cube_r1_display->display_object(my_cube_r1);
+        ros_worker.add_node(my_cube_r1_display);
 
+        // Create and display a green cube
+        auto my_cube_g1 = std::make_shared<shapes::Cube>(101, x.get_value(), y.get_value(), z.get_value(), 0, 1, 0, 0.9);
+        auto my_cube_g1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_g1", 100ms);
+        my_cube_g1_display->display_object(my_cube_g1);
+        ros_worker.add_node(my_cube_g1_display);
+        
 
         // Periodically do some work
         while (rclcpp::ok())
         {
+            // std::cout << "Program start!" << std::endl;
             auto current_time = std::chrono::steady_clock::now();
 
             if (current_time - previous_time > 1s)
@@ -191,24 +201,23 @@ auto main(int argc, char * argv[]) -> int
                 x.set_value(x.get_value() + 0.25);
                 y.set_value(y.get_value() + 0.25);
                 my_uav->move_to(x, y, z);
-                // my_cube->move_to(x, y, z_cube);
+                
 
-                if (m_count < 25) 
+                if (m_count < 60) 
                 {
-                    my_cube->move_to(x,y,z);
+                    my_cube_g1->move_to(x, y, z_cube);
+                    if (m_count < 35) 
+                    {
+                        my_cube_r1->move_to(x, y, z_cube);
+                    }
                 }
 
-                if (m_count % 13 == 0)
+                if (m_count % 35 == 0 || m_count % 60 == 0)
                 { 
-                    //my_cube->move_to(x, y, z_ground);
-                    std::cout << "Created Block!" << std::endl;
+                    std::cout << "Block stopped!" << std::endl;
                     cube_count++;
-                    // Find a way to change the colour
                 }
-                // my_sphere_2->move_to(x, yz, yz);
-                // my_cylinder->move_to(x, yz, z); the cylinder is now moving with the sphere INSIDE it
-
-
+                
                 // Iterator
                 previous_time = current_time;
                 m_count++;
