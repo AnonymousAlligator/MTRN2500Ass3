@@ -284,7 +284,6 @@ auto main(int argc, char * argv[]) -> int
         auto z = shapes::ZAxis{3};
 
         // Create and display the UAV
-
         auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0);
         auto my_uav_display =
             std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
@@ -315,36 +314,45 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("uav_octagonal_prism", 100ms);
         uav_oct_prism_display->display_object(uav_oct_prism);
         ros_worker.add_node(uav_oct_prism_display);
+        uav_oct_prism->move_to(x,y,z);
         auto const uav_oct_pyr = std::make_shared<shapes::OctPyr>(20,0,0,0,0.3);
         auto uav_oct_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_octagonal_pyramid", 100ms);
         uav_oct_pyr_display->display_object(uav_oct_pyr);
         ros_worker.add_node(uav_oct_pyr_display);        
         auto const uav_rect_pyr = std::make_shared<shapes::RectPyr>(21,0,0,0,0.3);
+        uav_oct_pyr->move_to(x,y,z);   
+        auto const uav_rect_pyr = std::make_shared<shapes::RectPyr>(21,0,0,0);
         auto uav_rect_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_rect_pyr", 100ms);
         uav_rect_pyr_display->display_object(uav_rect_pyr);
         ros_worker.add_node(uav_rect_pyr_display);
+        uav_rect_pyr->move_to(x,y,z);
         auto const uav_tri_pyr = std::make_shared<shapes::TriPyr>(22,0,0,0,0.3);
         auto uav_tri_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_tri_pyr", 100ms);
         uav_tri_pyr_display->display_object(uav_tri_pyr);
         ros_worker.add_node(uav_tri_pyr_display);
+        uav_tri_pyr->move_to(x,y,z);
         auto const uav_sqr_pyr = std::make_shared<shapes::SqrPyr>(23,0,0,0,0.3);
         auto uav_sqr_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_sqr_pyr", 100ms);
         uav_sqr_pyr_display->display_object(uav_sqr_pyr);
         ros_worker.add_node(uav_sqr_pyr_display);
+        uav_sqr_pyr->move_to(x,y,z);
         auto const uav_tri_prism = std::make_shared<shapes::TriPrism>(24,0,0,0,0.3);
         auto uav_tri_prism_display =
             std::make_shared<display::SingleShapeDisplay>("uav_triangular_prism", 100ms);
         uav_tri_prism_display->display_object(uav_tri_prism);
         ros_worker.add_node(uav_tri_prism_display);
+        uav_tri_prism->move_to(x,y,z);
         auto const uav_parallelepiped = std::make_shared<shapes::Parallelepiped>(25,0,0,0,0.3);
         auto uav_parallelepiped_display =
             std::make_shared<display::SingleShapeDisplay>("uav_parallelepiped", 100ms);
         uav_parallelepiped_display->display_object(uav_parallelepiped);
         ros_worker.add_node(uav_parallelepiped_display);
+        uav_parallelepiped->move_to(x,y,z);
+
         int m_count = 1;
         
 
@@ -365,23 +373,23 @@ auto main(int argc, char * argv[]) -> int
                 z.set_value(z.get_value() + input_node->get_z());
 
                 // Checking if UAV is still in the allowed boundaries
-                if (x.get_value() > 40){
+                if (x.get_value() > 20){
                     std::cout << "leaving x boundaries, please go back" << std::endl;
-                    x.set_value(39);
-                } else if (x.get_value() < -40){
+                    x.set_value(20);
+                } else if (x.get_value() < -20){
                     std::cout << "leaving x boundaries, please go back" << std::endl;
-                    x.set_value(-39);
+                    x.set_value(-20);
                 }
-                if (y.get_value() > 40){
+                if (y.get_value() > 20){
                     std::cout << "leaving y boundaries, please go back" << std::endl;
-                    y.set_value(39);
-                } else if (y.get_value() < -40){
+                    y.set_value(20);
+                } else if (y.get_value() < -20){
                     std::cout << "leaving y boundaries, please go back" << std::endl;
-                    y.set_value(-39);
+                    y.set_value(-20);
                 }
-                if (z.get_value() > 40){
+                if (z.get_value() > 20){
                     std::cout << "leaving z boundaries, please go back" << std::endl;
-                    z.set_value(39);
+                    z.set_value(20);
                 } else if (z.get_value() < 1){
                     std::cout << "About to hit the ground!" << std::endl;
                     z.set_value(1);
