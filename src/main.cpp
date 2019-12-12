@@ -249,7 +249,7 @@ auto main(int argc, char * argv[]) -> int
         auto x = shapes::XAxis{0};
         auto y = shapes::YAxis{0};
         auto z = shapes::ZAxis{3};
-        auto z_cube = shapes::ZAxis{9.0};
+        auto z_cube = shapes::ZAxis{0.0};
         auto z_ground = shapes::ZAxis{0.0};
 
         // Create and display the UAV
@@ -258,12 +258,12 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
         my_uav_display->display_object(my_uav);
         ros_worker.add_node(my_uav_display);
-        // ros_worker.add_node(my_uav.get_cube_display());
+        auto uav_cube = std::make_shared<shapes::Cube>(15, 0, 0, 0, 1, 0, 1, 1, 1);
+        auto my_uav_cube_display =
+            std::make_shared<display::SingleShapeDisplay>("uav_cube", 100ms);
+        my_uav_cube_display->display_object(my_uav_cube);
+        ros_worker.add_node(my_uav_cube_display);
         int m_count = 1;
-        int cube_count = 16;
-        
-        
-        
 
         // Periodically do some work
         while (rclcpp::ok())
@@ -280,6 +280,7 @@ auto main(int argc, char * argv[]) -> int
                 x.set_value(x.get_value() + input_node->get_x());
                 y.set_value(y.get_value() + input_node->get_y());
                 z.set_value(z.get_value() + input_node->get_z());
+                z_cube = z.set_value(z.get_value() + input_node->get_z() - 1);
 
                 // Checking if UAV is still in the allowed boundaries
                 if (x.get_value() > 40){
@@ -305,7 +306,7 @@ auto main(int argc, char * argv[]) -> int
                 }
              
                 my_uav->move_to(x, y, z);
-                //my_cube_r1->move_to(x, y, z);
+                uav_cube->move_to(x, y, z_cube);
                 
                 if(input_node->get_x_signal() == 1){
                     counter++;
