@@ -151,6 +151,92 @@ auto main(int argc, char * argv[]) -> int
 
         */
 
+       // Creating cubes
+
+       // Create and display a red cube 
+        auto my_cube_r1 = std::make_shared<shapes::Cube>(100, 0, 0, 0, 1, 0, 0, 0, 1);
+        auto my_cube_r1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_r1", 100ms);
+        my_cube_r1_display->display_object(my_cube_r1);
+        ros_worker.add_node(my_cube_r1_display);
+
+        // Create and display a yellow cube
+        auto my_cube_y1 = std::make_shared<shapes::Cube>(101, 0, 0, 0, 1, 1, 0, 0, 1);
+        auto my_cube_y1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_y1", 100ms);
+        my_cube_y1_display->display_object(my_cube_y1);
+        ros_worker.add_node(my_cube_y1_display);
+
+        // Create and display a green cube
+        auto my_cube_g1 = std::make_shared<shapes::Cube>(102, 0, 0, 0, 0, 1, 0, 0, 1);
+        auto my_cube_g1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_g1", 100ms);
+        my_cube_g1_display->display_object(my_cube_g1);
+        ros_worker.add_node(my_cube_g1_display);
+
+        // Create and display a blue cube
+        auto my_cube_blue1 = std::make_shared<shapes::Cube>(103, 0, 0, 0, 0, 0, 1, 0, 1);
+        auto my_cube_blue1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_blue1", 100ms);
+        my_cube_blue1_display->display_object(my_cube_blue1);
+        ros_worker.add_node(my_cube_blue1_display);
+
+        // Create and display a black cube
+        auto my_cube_black1 = std::make_shared<shapes::Cube>(104, 0, 0, 0, 0, 0, 0, 0, 1);
+        auto my_cube_black1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_black1", 100ms);
+        my_cube_black1_display->display_object(my_cube_black1);
+        ros_worker.add_node(my_cube_black1_display);
+
+        // Create and display a white cube
+        auto my_cube_w1 = std::make_shared<shapes::Cube>(105, 0, 0, 0, 1, 1, 1, 0, 1);
+        auto my_cube_w1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_w1", 100ms);
+        my_cube_w1_display->display_object(my_cube_w1);
+        ros_worker.add_node(my_cube_w1_display);
+
+        // Create and display a red cube 
+        auto my_cube_r2 = std::make_shared<shapes::Cube>(106, 0, 0, 0, 1, 0, 0, 0, 1);
+        auto my_cube_r2_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_r2", 100ms);
+        my_cube_r2_display->display_object(my_cube_r2);
+        ros_worker.add_node(my_cube_r2_display);
+
+        // Create and display a yellow cube
+        auto my_cube_y2 = std::make_shared<shapes::Cube>(107, 0, 0, 0, 1, 1, 0, 0, 1);
+        auto my_cube_y2_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_y2", 100ms);
+        my_cube_y2_display->display_object(my_cube_y2);
+        ros_worker.add_node(my_cube_y2_display);
+
+        // Create and display a green cube
+        auto my_cube_g2 = std::make_shared<shapes::Cube>(108, 0, 0, 0, 0, 1, 0, 0, 1);
+        auto my_cube_g2_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_g2", 100ms);
+        my_cube_g2_display->display_object(my_cube_g2);
+        ros_worker.add_node(my_cube_g2_display);
+
+        // Create and display a blue cube
+        auto my_cube_blue2 = std::make_shared<shapes::Cube>(109, 0, 0, 0, 0, 0, 1, 0, 1);
+        auto my_cube_blue2_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_blue2", 100ms);
+        my_cube_blue2_display->display_object(my_cube_blue2);
+        ros_worker.add_node(my_cube_blue2_display);
+
+        // Create and display a black cube
+        auto my_cube_black2 = std::make_shared<shapes::Cube>(110, 0, 0, 0, 0, 0, 0, 0, 1);
+        auto my_cube_black2_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_black2", 100ms);
+        my_cube_black2_display->display_object(my_cube_black2);
+        ros_worker.add_node(my_cube_black2_display);
+
+        // Create and display a white cube
+        auto my_cube_w2 = std::make_shared<shapes::Cube>(111, 0, 0, 0, 1, 1, 1, 0, 1);
+        auto my_cube_w2_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_w2", 100ms);
+        my_cube_w2_display->display_object(my_cube_w2);
+        ros_worker.add_node(my_cube_w2_display);
+
         // Create and display the flat plane
         auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13,0,0,0);
         auto my_FlatPlane_display =
@@ -176,21 +262,7 @@ auto main(int argc, char * argv[]) -> int
         int m_count = 1;
         int cube_count = 16;
         
-        // Create and display a red cube 
-
-        auto my_cube_r1 = std::make_shared<shapes::Cube>(100, 0, 0, 0, 1, 0, 0, 0, 1);
-        auto my_cube_r1_display =
-            std::make_shared<display::SingleShapeDisplay>("cube_r1", 100ms);
-        my_cube_r1_display->display_object(my_cube_r1);
-        ros_worker.add_node(my_cube_r1_display);
-
-
-        // Create and display a green cube
-        auto my_cube_g1 = std::make_shared<shapes::Cube>(101, 0, 0, 0, 0, 1, 0, 0, 1);
-        auto my_cube_g1_display =
-            std::make_shared<display::SingleShapeDisplay>("cube_g1", 100ms);
-        my_cube_g1_display->display_object(my_cube_g1);
-        ros_worker.add_node(my_cube_g1_display);
+        
         
 
         // Periodically do some work
@@ -241,10 +313,64 @@ auto main(int argc, char * argv[]) -> int
                     std::cout << "Block stopped!" << std::endl;
                     if (counter == 1)
                     {
+                        my_cube_r1->move_to(x, y, z);
+                        my_cube_r1->set_a(1.0);
+                    }
+                    if (counter == 2)
+                    {
+                        my_cube_y1->move_to(x, y, z);
+                        my_cube_y1->set_a(1.0);
+                    }
+                    if (counter == 3)
+                    {
                         my_cube_g1->move_to(x, y, z);
                         my_cube_g1->set_a(1.0);
                     }
-                    
+                    if (counter == 4)
+                    {
+                        my_cube_blue1->move_to(x, y, z);
+                        my_cube_blue1->set_a(1.0);
+                    }
+                    if (counter == 5)
+                    {
+                        my_cube_black1->move_to(x, y, z);
+                        my_cube_black1->set_a(1.0);
+                    }
+                    if (counter == 6)
+                    {
+                        my_cube_w1->move_to(x, y, z);
+                        my_cube_w1->set_a(1.0);
+                    }
+                    if (counter == 7)
+                    {
+                        my_cube_r2->move_to(x, y, z);
+                        my_cube_r2->set_a(1.0);
+                    }
+                    if (counter == 8)
+                    {
+                        my_cube_y2->move_to(x, y, z);
+                        my_cube_y2->set_a(1.0);
+                    }
+                    if (counter == 9)
+                    {
+                        my_cube_g2->move_to(x, y, z);
+                        my_cube_g2->set_a(1.0);
+                    }
+                    if (counter == 10)
+                    {
+                        my_cube_blue2->move_to(x, y, z);
+                        my_cube_blue2->set_a(1.0);
+                    }
+                    if (counter == 11)
+                    {
+                        my_cube_black2->move_to(x, y, z);
+                        my_cube_black2->set_a(1.0);
+                    }
+                    if (counter == 12)
+                    {
+                        my_cube_w2->move_to(x, y, z);
+                        my_cube_w2->set_a(1.0);
+                    }
 
                 } else if (input_node->get_clear_flag() == 1){
                     std::cout << "beep" << std::endl;
