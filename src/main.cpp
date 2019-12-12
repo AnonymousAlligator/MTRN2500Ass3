@@ -161,6 +161,29 @@ auto main(int argc, char * argv[]) -> int
                 x.set_value(x.get_value() + input_node->get_x());
                 y.set_value(y.get_value() + input_node->get_y());
                 z.set_value(z.get_value() + input_node->get_z());
+
+                // Checking if UAV is still in the allowed boundaries
+                if (x.get_value() > 10){
+                    std::cout << "leaving x boundaries, please go back" << std::endl;
+                    x.set_value(9);
+                } else if (x.get_value() < -10){
+                    std::cout << "leaving x boundaries, please go back" << std::endl;
+                    x.set_value(-9);
+                }
+                if (y.get_value() > 10){
+                    std::cout << "leaving y boundaries, please go back" << std::endl;
+                    y.set_value(9);
+                } else if (y.get_value() < -10){
+                    std::cout << "leaving y boundaries, please go back" << std::endl;
+                    y.set_value(-9);
+                }
+                if (z.get_value() > 10){
+                    std::cout << "leaving z boundaries, please go back" << std::endl;
+                    z.set_value(9);
+                } else if (z.get_value() < -10){
+                    std::cout << "leaving z boundaries, please go back" << std::endl;
+                    z.set_value(-9);
+                }
                 my_sphere_2->move_to(x, y, z);
 
                 if(input_node->get_x_signal() == 1){
@@ -168,7 +191,6 @@ auto main(int argc, char * argv[]) -> int
                 } else if (input_node->get_clear_flag() == 1){
                     std::cout << "beep" << std::endl;
                 }
-                // While joystick input is whatever it moved by that much
                 // If button is pressed, then get position of UAV and drop the block
                 // Cycle to next block colour
                 // Flag for if the RShoulder is pressed
