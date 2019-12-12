@@ -18,7 +18,7 @@ namespace shapes
  *the most suitable. Trivial functionalities are not implemented.
  **/
 
-Sphere::Sphere(int id, double posx, double posy, double posz)
+Sphere::Sphere(int id, double posx, double posy, double posz, double scale, double a)
     : radius_{5.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -58,15 +58,15 @@ Sphere::Sphere(int id, double posx, double posy, double posz)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides.
-    shape.scale.x = 3;
-    shape.scale.y = 3;
-    shape.scale.z = 3;
+    shape.scale.x = scale;
+    shape.scale.y = scale;
+    shape.scale.z = scale;
 
     // colour red, green, blue, alpha (transparency)
     shape.color.r = 0.0;
     shape.color.g = 1.0;
     shape.color.b = 0.0;
-    shape.color.a = 1.0;
+    shape.color.a = a;
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
