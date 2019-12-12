@@ -228,6 +228,48 @@ auto main(int argc, char * argv[]) -> int
         my_cube_w2_display->display_object(my_cube_w2);
         ros_worker.add_node(my_cube_w2_display);
 
+        // Create and display a red cube 
+        auto my_cube_r3 = std::make_shared<shapes::Cube>(112, 0, 0, 0, 1, 0, 0, 0, 1);
+        auto my_cube_r3_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_r3", 100ms);
+        my_cube_r3_display->display_object(my_cube_r3);
+        ros_worker.add_node(my_cube_r3_display);
+
+        // Create and display a yellow cube
+        auto my_cube_y3 = std::make_shared<shapes::Cube>(113, 0, 0, 0, 1, 1, 0, 0, 1);
+        auto my_cube_y3_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_y3", 100ms);
+        my_cube_y3_display->display_object(my_cube_y3);
+        ros_worker.add_node(my_cube_y3_display);
+
+        // Create and display a green cube
+        auto my_cube_g3 = std::make_shared<shapes::Cube>(114, 0, 0, 0, 0, 1, 0, 0, 1);
+        auto my_cube_g3_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_g3", 100ms);
+        my_cube_g3_display->display_object(my_cube_g3);
+        ros_worker.add_node(my_cube_g3_display);
+
+        // Create and display a blue cube
+        auto my_cube_blue3 = std::make_shared<shapes::Cube>(115, 0, 0, 0, 0, 0, 1, 0, 1);
+        auto my_cube_blue3_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_blue3", 100ms);
+        my_cube_blue3_display->display_object(my_cube_blue3);
+        ros_worker.add_node(my_cube_blue3_display);
+
+        // Create and display a black cube
+        auto my_cube_black3 = std::make_shared<shapes::Cube>(116, 0, 0, 0, 0, 0, 0, 0, 1);
+        auto my_cube_black3_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_black3", 100ms);
+        my_cube_black3_display->display_object(my_cube_black3);
+        ros_worker.add_node(my_cube_black3_display);
+
+        // Create and display a white cube
+        auto my_cube_w3 = std::make_shared<shapes::Cube>(117, 0, 0, 0, 1, 1, 1, 0, 1);
+        auto my_cube_w3_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_w3", 100ms);
+        my_cube_w3_display->display_object(my_cube_w3);
+        ros_worker.add_node(my_cube_w3_display);
+
         // Create and display the flat plane
         auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13,0,0,0);
         auto my_FlatPlane_display =
@@ -307,7 +349,14 @@ auto main(int argc, char * argv[]) -> int
                 uav_cube->move_to(x, y, z);
                 uav_sphere->move_to(x,y,z);
                 uav_cylinder->move_to(x,y,z);
-                
+                uav_oct_prism->move_to(x,y,z);
+                uav_cone->move_to(x,y,z);
+                uav_oct_pyr->move_to(x,y,z);
+                uav_parallelipied->move_to(x,y,z);
+                uav_rect_pyr->move_to(x,y,z);
+                uav_sqr_pyr->move_to(x,y,z);
+                uav_tri_prism->move_to(x,y,z);
+                uav_tri_pyr->move_to(x,y,z);
                 // Logging state of the button
                 currentPress = input_node->get_x_signal();
                 
@@ -393,6 +442,42 @@ auto main(int argc, char * argv[]) -> int
                             my_cube_w2->set_a(1.0);
                             previousPress = currentPress;
                         }
+                        if (counter == 13)
+                        {
+                            my_cube_r3->move_to(x, y, z);
+                            my_cube_r3->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 14)
+                        {
+                            my_cube_y3->move_to(x, y, z);
+                            my_cube_y3->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 15)
+                        {
+                            my_cube_g3->move_to(x, y, z);
+                            my_cube_g3->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 16)
+                        {
+                            my_cube_blue3->move_to(x, y, z);
+                            my_cube_blue3->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 17)
+                        {
+                            my_cube_black3->move_to(x, y, z);
+                            my_cube_black3->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 18)
+                        {
+                            my_cube_w3->move_to(x, y, z);
+                            my_cube_w3->set_a(1.0);
+                            previousPress = currentPress;
+                        }
                     }
                 // removing blocks where RS is pressed
                 } else if (input_node->get_clear_flag() == 1){
@@ -410,6 +495,12 @@ auto main(int argc, char * argv[]) -> int
                     my_cube_blue2->set_a(0.0);
                     my_cube_black2->set_a(0.0);
                     my_cube_w2->set_a(0.0);
+                    my_cube_r3->set_a(0.0);
+                    my_cube_y3->set_a(0.0);
+                    my_cube_g3->set_a(0.0);
+                    my_cube_blue3->set_a(0.0);
+                    my_cube_black3->set_a(0.0);
+                    my_cube_w3->set_a(0.0);
 
                 }
                 previousPress = currentPress;
