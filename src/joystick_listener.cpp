@@ -57,6 +57,9 @@ double JoystickListener::get_x_signal(){
 double JoystickListener::get_clear_flag(){
     return clearFlag;
 }
+double JoystickListener::get_z_cube(){
+    return zCube;
+}
 double elevation (double raise, double lower, double in_min, double in_max, double zMove){
     if (zMove > 0.1){
         zMove = 0;
@@ -122,7 +125,7 @@ auto JoystickListener::joy_message_callback(
     storedX = pose_->pose.position.x;
     storedY = pose_->pose.position.y;
     storedZ = pose_->pose.position.z;
-
+    zCube = storedZ - 1;
     pose_output_->publish(std::move(pose_));
 
 };

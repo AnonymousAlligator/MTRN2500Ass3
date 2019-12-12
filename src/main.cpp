@@ -65,7 +65,7 @@ auto main(int argc, char * argv[]) -> int
         // Add display node to list of node ros automatically manage.
         ros_worker.add_node(my_shape_display);
 
-        /*
+        
 
         // Create and display another sphere
         auto const my_sphere_2 = std::make_shared<shapes::Sphere>(1,0,0,0);
@@ -131,7 +131,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_parallelepiped_display);
 
         // Create and display a cube
-        auto const my_cube = std::make_shared<shapes::Cube>(10,0,0,0);
+        auto const my_cube = std::make_shared<shapes::Cube>(10,0,0,0,0,0,0,1,1);
         auto my_cube_display =
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);
@@ -151,7 +151,7 @@ auto main(int argc, char * argv[]) -> int
         my_cylinder_display->display_object(my_cylinder);
         ros_worker.add_node(my_cylinder_display);
 
-        */
+        
 
        // Creating cubes
 
@@ -273,7 +273,7 @@ auto main(int argc, char * argv[]) -> int
             // std::cout << "Program start!" << std::endl;
             auto current_time = std::chrono::steady_clock::now();
 
-            if (current_time - previous_time > 1s)
+            if (current_time - previous_time > 1.0s)
             {
                 // Meowing at rate of 1hz
                 std::cout << "meow_" << m_count << std::endl;
@@ -396,12 +396,23 @@ auto main(int argc, char * argv[]) -> int
                             previousPress = currentPress;
                         }
                     }
-                }
                 // removing blocks where RS is pressed
                 } else if (input_node->get_clear_flag() == 1){
                     std::cout << "Removing blocks!" << std::endl;
                     counter = 0;
+                    my_cube_r1->set_a(0.0);
+                    my_cube_y1->set_a(0.0);
                     my_cube_g1->set_a(0.0);
+                    my_cube_blue1->set_a(0.0);
+                    my_cube_black1->set_a(0.0);
+                    my_cube_w1->set_a(0.0);
+                    my_cube_r2->set_a(0.0);
+                    my_cube_y2->set_a(0.0);
+                    my_cube_g2->set_a(0.0);
+                    my_cube_blue2->set_a(0.0);
+                    my_cube_black2->set_a(0.0);
+                    my_cube_w2->set_a(0.0);
+
                 }
                 previousPress = currentPress;
                 // Iterator
