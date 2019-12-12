@@ -251,7 +251,6 @@ auto main(int argc, char * argv[]) -> int
         auto x = shapes::XAxis{0};
         auto y = shapes::YAxis{0};
         auto z = shapes::ZAxis{3};
-        auto z_cube = shapes::ZAxis{0.0};
         auto z_ground = shapes::ZAxis{0.0};
 
         // Create and display the UAV
@@ -282,7 +281,6 @@ auto main(int argc, char * argv[]) -> int
                 x.set_value(x.get_value() + input_node->get_x());
                 y.set_value(y.get_value() + input_node->get_y());
                 z.set_value(z.get_value() + input_node->get_z());
-                z_cube = input_node->get_z_cube();
 
                 // Checking if UAV is still in the allowed boundaries
                 if (x.get_value() > 40){
@@ -308,7 +306,7 @@ auto main(int argc, char * argv[]) -> int
                 }
              
                 my_uav->move_to(x, y, z);
-                uav_cube->move_to(x, y, z_cube);
+                uav_cube->move_to(x, y, z);
                 
                 // Logging state of the button
                 currentPress = input_node->get_x_signal();
