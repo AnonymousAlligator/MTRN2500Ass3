@@ -51,6 +51,12 @@ double JoystickListener::get_y(){
 double JoystickListener::get_z(){
     return storedZ;
 }
+double JoystickListener::get_x_signal(){
+    return xSignal;
+}
+double JoystickListener::get_clear_flag(){
+    return clearFlag;
+}
 double elevation (double raise, double lower, double in_min, double in_max, double zMove){
     if (zMove > 0.1){
         zMove = 0;
@@ -82,17 +88,12 @@ auto JoystickListener::joy_message_callback(
         joy_message->axes.at(5), joy_message->axes.at(3),
         joy_message->axes.at(4)};
 
-    // lambda function that prints values
-    auto print = [](const int & i) { std::cout << '\t' << i; };
-
-    // printing axes values
-    std::cout << "axes status:";
-    std::for_each(axesValues.begin(), axesValues.end(), print);
-    std::cout << '\n';
-
     // putting button presses into a vector
-    std::vector<double> buttonValues{joy_message->buttons.at(0),
+    std::vector<double> buttonValues{joy_message->buttons.at(2),
         joy_message->buttons.at(5)};
+
+    xSignal = buttonValues.at(0);
+    clearFlag = buttonValues.at(1);
 
     // accounting for deadzone in joystick in x direction and mapping
     double in_min = -0.05;
@@ -106,8 +107,8 @@ auto JoystickListener::joy_message_callback(
 
     // account for deadzone in joystick z direction and then mapping
     double zMove = 0;
-    double raise = axesValues.at(2);
-    double lower = axesValues.at(3);
+    double raise = axesValues.at(3);
+    double lower = axesValues.at(2);
     zMove = elevation(raise, lower, in_min, in_max, zMove);
 
     //publishing to topic

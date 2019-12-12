@@ -163,6 +163,11 @@ auto main(int argc, char * argv[]) -> int
                 z.set_value(z.get_value() + input_node->get_z());
                 my_sphere_2->move_to(x, y, z);
 
+                if(input_node->get_x_signal() == 1){
+                    std::cout << "boop" << std::endl;
+                } else if (input_node->get_clear_flag() == 1){
+                    std::cout << "beep" << std::endl;
+                }
                 // While joystick input is whatever it moved by that much
                 // If button is pressed, then get position of UAV and drop the block
                 // Cycle to next block colour
