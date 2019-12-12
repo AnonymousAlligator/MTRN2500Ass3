@@ -117,7 +117,7 @@ auto JoystickListener::joy_message_callback(
     pose_->header.stamp = joy_message->header.stamp;
     pose_->pose.position.x = storedX + xMove/1000000;
     pose_->pose.position.y = storedY + yMove/1000000;
-    pose_->pose.position.z = storedZ + zMove/25;
+    pose_->pose.position.z = storedZ + zMove/20;
     // storing current position to use as previous position
     storedX = pose_->pose.position.x;
     storedY = pose_->pose.position.y;

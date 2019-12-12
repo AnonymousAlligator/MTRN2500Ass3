@@ -19,7 +19,6 @@ namespace shapes
 
 Cylinder::Cylinder(int id, double posx, double posy, double posz, double a, double height)
     : radius_{1.0}
-    , height_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
