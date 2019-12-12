@@ -1,8 +1,7 @@
-// Copyright 2019 Zhihao Zhang License MIT
-// Edited by Curtis Ly (z5209698)
+// Created by Curtis Ly (z5209698)
 
-#ifndef CUBE_HPP_
-#define CUBE_HPP_
+#ifndef PARALLELEPIPED_HPP_
+#define PARALLELEPIPED_HPP_
 
 #include "interfaces.hpp"
 #include "visualization_msgs/msg/marker.hpp"
@@ -15,10 +14,10 @@
 namespace shapes
 {
 // ReSharper disable once CppClassCanBeFinal
-class Cube : public ShapeCommonInterface
+class Parallelepiped : public ShapeCommonInterface
 {
 public:
-    explicit Cube(int id, double posx, double posy, double posz, double r, double g, double b, double scale);
+    explicit Parallelepiped(int id, double posx, double posy, double posz);
 
 protected:
     AllAxis length_;
@@ -58,4 +57,4 @@ protected:
     [[nodiscard]] auto get_orientation_imple() const -> ZAxis override;
 };
 } // namespace shapes
-#endif // CUBE_HPP_
+#endif // PARALLELEPIPED_HPP_

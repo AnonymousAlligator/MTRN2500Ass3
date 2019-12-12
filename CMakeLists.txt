@@ -30,6 +30,8 @@ target_sources(assignment3 PRIVATE
   include/sqr_pyr.hpp
   include/rect_pyr.hpp
   include/oct_pyr.hpp
+  include/parallelepiped.hpp
+  include/uav.hpp
   include/joystick_listener.hpp
 )
 
@@ -49,6 +51,8 @@ target_sources(assignment3 PRIVATE
   src/sqr_pyr.cpp
   src/rect_pyr.cpp
   src/oct_pyr.cpp
+  src/parallelepiped.cpp
+  src/uav.cpp
   src/joystick_listener.cpp
 )
 

@@ -23,6 +23,8 @@
 #include "cone.hpp"
 #include "oct_prism.hpp"
 #include "oct_pyr.hpp"
+#include "parallelepiped.hpp"
+#include "uav.hpp"
 #include "joystick_listener.hpp"
 
 #include <chrono>
@@ -59,6 +61,8 @@ auto main(int argc, char * argv[]) -> int
         my_shape_display->display_object(my_sphere);
         // Add display node to list of node ros automatically manage.
         ros_worker.add_node(my_shape_display);
+
+        /*
 
         // Create and display another sphere
         auto const my_sphere_2 = std::make_shared<shapes::Sphere>(1,0,0,0);
@@ -116,6 +120,13 @@ auto main(int argc, char * argv[]) -> int
         my_tri_prism_display->display_object(my_tri_prism);
         ros_worker.add_node(my_tri_prism_display);
 
+        // Create and display a parallelepiped
+        auto const my_parallelepiped = std::make_shared<shapes::Parallelepiped>(9,0,0,0);
+        auto my_parallelepiped_display =
+            std::make_shared<display::SingleShapeDisplay>("my_parallelepiped", 100ms);
+        my_parallelepiped_display->display_object(my_parallelepiped);
+        ros_worker.add_node(my_parallelepiped_display);
+
         // Create and display a cube
         auto const my_cube = std::make_shared<shapes::Cube>(10,0,0,0);
         auto my_cube_display =
@@ -136,7 +147,9 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("cylinder", 100ms);
         my_cylinder_display->display_object(my_cylinder);
         ros_worker.add_node(my_cylinder_display);
+
         */
+
         // Create and display the flat plane
         auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13,0,0,0);
         auto my_FlatPlane_display =
@@ -145,32 +158,74 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_FlatPlane_display);
 
         auto previous_time = std::chrono::steady_clock::now();
-        auto x = shapes::XAxis{0.0};
-        auto y = shapes::YAxis{0.0};
-        auto z = shapes::ZAxis{0.0};
 
-        // Create UAV here
+        auto x = shapes::XAxis{11.0};
+        auto y = shapes::YAxis{11.0};
+        auto z = shapes::ZAxis{10.0};
+        auto z_cube = shapes::ZAxis{9.0};
+        auto z_ground = shapes::ZAxis{0.0};
+
+        // Create and display the UAV
+        auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0);
+        auto my_uav_display =
+            std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
+        my_uav_display->display_object(my_uav);
+        ros_worker.add_node(my_uav_display);
+        // ros_worker.add_node(my_uav.get_cube_display());
+        int m_count = 1;
+        int cube_count = 16;
         
+        // Create and display a red cube
+        auto my_cube_r1 = std::make_shared<shapes::Cube>(100, x.get_value(), y.get_value(), z.get_value(), 1, 0, 0, 1);
+        auto my_cube_r1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_r1", 100ms);
+        my_cube_r1_display->display_object(my_cube_r1);
+        ros_worker.add_node(my_cube_r1_display);
+
+        // Create and display a green cube
+        auto my_cube_g1 = std::make_shared<shapes::Cube>(101, x.get_value(), y.get_value(), z.get_value(), 0, 1, 0, 0.9);
+        auto my_cube_g1_display =
+            std::make_shared<display::SingleShapeDisplay>("cube_g1", 100ms);
+        my_cube_g1_display->display_object(my_cube_g1);
+        ros_worker.add_node(my_cube_g1_display);
+        
+
         // Periodically do some work
         while (rclcpp::ok())
         {
+            // std::cout << "Program start!" << std::endl;
             auto current_time = std::chrono::steady_clock::now();
-            if (current_time - previous_time > 0.25s)
+
+            if (current_time - previous_time > 1s)
             {
-                // Also move the sphere a bit
+                // Meowing at rate of 1hz
+                std::cout << "meow_" << m_count << std::endl;
+
+                // Moving the UAV
                 x.set_value(x.get_value() + input_node->get_x());
                 y.set_value(y.get_value() + input_node->get_y());
                 z.set_value(z.get_value() + input_node->get_z());
-                my_sphere_2->move_to(x, y, z);
+                my_uav->move_to(x, y, z);
+                
 
-                // While joystick input is whatever it moved by that much
-                // If button is pressed, then get position of UAV and drop the block
-                // Cycle to next block colour
-                // Flag for if the RShoulder is pressed
-                // Remove all placed blocks
+                if (m_count < 60) 
+                {
+                    my_cube_g1->move_to(x, y, z_cube);
+                    if (m_count < 35) 
+                    {
+                        my_cube_r1->move_to(x, y, z_cube);
+                    }
+                }
 
+                if (m_count % 35 == 0 || m_count % 60 == 0)
+                { 
+                    std::cout << "Block stopped!" << std::endl;
+                    cube_count++;
+                }
+                
                 // Iterator
                 previous_time = current_time;
+                m_count++;
             }
             ros_worker.spin_some(50ms);
         }
