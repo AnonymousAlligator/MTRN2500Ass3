@@ -18,7 +18,7 @@ namespace shapes
 class TriPyr : public ShapeCommonInterface
 {
 public:
-    explicit TriPyr(int id, double posx, double posy, double posz);
+    explicit TriPyr(int id, double posx, double posy, double posz, double a);
 
 protected:
     AllAxis length_;

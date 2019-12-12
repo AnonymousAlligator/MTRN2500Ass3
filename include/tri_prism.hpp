@@ -17,7 +17,7 @@ namespace shapes
 class TriPrism : public ShapeCommonInterface
 {
 public:
-    explicit TriPrism(int id, double posx, double posy, double posz);
+    explicit TriPrism(int id, double posx, double posy, double posz, double a);
 
 protected:
     AllAxis length_;

@@ -17,7 +17,7 @@ namespace shapes
 class Parallelepiped : public ShapeCommonInterface
 {
 public:
-    explicit Parallelepiped(int id, double posx, double posy, double posz);
+    explicit Parallelepiped(int id, double posx, double posy, double posz, double a);
 
 protected:
     AllAxis length_;

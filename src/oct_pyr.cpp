@@ -16,7 +16,7 @@
 namespace shapes
 {
 // Implementation of the octagonal pyramid class
-OctPyr::OctPyr(int id, double posx, double posy, double posz)
+OctPyr::OctPyr(int id, double posx, double posy, double posz, double a)
     : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -62,7 +62,7 @@ OctPyr::OctPyr(int id, double posx, double posy, double posz)
     shape.color.r = 1.0;
     shape.color.g = 0.0;
     shape.color.b = 0.0;
-    shape.color.a = 1.0;
+    shape.color.a = a;
 
 // Triangle 1 top 12 oclock
     geometry_msgs::msg::Point p;
