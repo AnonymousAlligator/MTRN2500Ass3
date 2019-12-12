@@ -33,9 +33,9 @@ std::shared_ptr<display::SingleShapeDisplay> UAV::get_cube_display()
 */
 
 UAV::UAV(int id, double posx, double posy, double posz)
-    : length_{2.0}
-    , breadth_{1.0}
-    , height_{1.0}
+    : length_{3.0}
+    , breadth_{2.0}
+    , height_{0.5}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
           std::make_shared<std::vector<visualization_msgs::msg::Marker>>()}
