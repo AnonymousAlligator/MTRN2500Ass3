@@ -37,6 +37,8 @@
 #include <sstream>
 
 int counter = 0;
+int previous = 0;
+int current = 0;
 // ReSharper disable once CppParameterMayBeConst
 auto main(int argc, char * argv[]) -> int
 {
@@ -234,22 +236,26 @@ auto main(int argc, char * argv[]) -> int
              
                 my_uav->move_to(x, y, z);
                 //my_cube_r1->move_to(x, y, z);
-                
+                    currentPress = input_node->get_x_signal();
                 if(input_node->get_x_signal() == 1){
-                    counter++;
-                    std::cout << counter << std::endl;
-                    std::cout << "Block stopped!" << std::endl;
-                    if (counter == 1)
+                    currentPress = input_node->get_x_signal();
+                    if(previousPress != currentPress)
                     {
-                        my_cube_g1->move_to(x, y, z);
-                        my_cube_g1->set_a(1.0);
-                    }
-                    
+                        counter++;
+                        std::cout << counter << std::endl;
+                        std::cout << "Block stopped!" << std::endl;
+                        if (counter == 1)
+                        {
+                            my_cube_g1->move_to(x, y, z);
+                            my_cube_g1->set_a(1.0);
+                            previousPress = currentPress;
+                        }
 
+                    }
                 } else if (input_node->get_clear_flag() == 1){
                     std::cout << "beep" << std::endl;
                 }
-                
+                previousPress = currentPress;
                 // Iterator
                 previous_time = current_time;
                 m_count++;
