@@ -71,49 +71,49 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_rect_prism_display);
 
         // Create and display a octagonal prism
-        auto const my_oct_prism = std::make_shared<shapes::OctPrism>(3,0,0,0);
+        auto const my_oct_prism = std::make_shared<shapes::OctPrism>(3,0,0,0,1);
         auto my_oct_prism_display =
             std::make_shared<display::SingleShapeDisplay>("octagonal_prism", 100ms);
         my_oct_prism_display->display_object(my_oct_prism);
         ros_worker.add_node(my_oct_prism_display);
 
         // Create and display a octagonal pyramid
-        auto const my_oct_pyr = std::make_shared<shapes::OctPyr>(4,0,0,0);
+        auto const my_oct_pyr = std::make_shared<shapes::OctPyr>(4,0,0,0,1);
         auto my_oct_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("octagonal_pyramid", 100ms);
         my_oct_pyr_display->display_object(my_oct_pyr);
         ros_worker.add_node(my_oct_pyr_display);        
 
         // Create and display the rectangular pyramid
-        auto const my_rect_pyr = std::make_shared<shapes::RectPyr>(5,0,0,0);
+        auto const my_rect_pyr = std::make_shared<shapes::RectPyr>(5,0,0,0,1);
         auto my_rect_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("rect_pyr", 100ms);
         my_rect_pyr_display->display_object(my_rect_pyr);
         ros_worker.add_node(my_rect_pyr_display);
         
         // Create and display the triangular pyramid
-        auto const my_tri_pyr = std::make_shared<shapes::TriPyr>(6,0,0,0);
+        auto const my_tri_pyr = std::make_shared<shapes::TriPyr>(6,0,0,0,1);
         auto my_tri_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("tri_pyr", 100ms);
         my_tri_pyr_display->display_object(my_tri_pyr);
         ros_worker.add_node(my_tri_pyr_display);
         
         // Create and display the square pyramid
-        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(7,0,0,0);
+        auto const my_sqr_pyr = std::make_shared<shapes::SqrPyr>(7,0,0,0,1);
         auto my_sqr_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("sqr_pyr", 100ms);
         my_sqr_pyr_display->display_object(my_sqr_pyr);
         ros_worker.add_node(my_sqr_pyr_display);
 
         // Create and display a triangluar prism
-        auto const my_tri_prism = std::make_shared<shapes::TriPrism>(8,0,0,0);
+        auto const my_tri_prism = std::make_shared<shapes::TriPrism>(8,0,0,0,1);
         auto my_tri_prism_display =
             std::make_shared<display::SingleShapeDisplay>("triangular_prism", 100ms);
         my_tri_prism_display->display_object(my_tri_prism);
         ros_worker.add_node(my_tri_prism_display);
 
         // Create and display a parallelepiped
-        auto const my_parallelepiped = std::make_shared<shapes::Parallelepiped>(9,0,0,0);
+        auto const my_parallelepiped = std::make_shared<shapes::Parallelepiped>(9,0,0,0,1);
         auto my_parallelepiped_display =
             std::make_shared<display::SingleShapeDisplay>("my_parallelepiped", 100ms);
         my_parallelepiped_display->display_object(my_parallelepiped);
@@ -127,7 +127,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_cube_display);
 
         // Create and display a cone
-        auto const my_cone = std::make_shared<shapes::Cone>(11,0,0,0);
+        auto const my_cone = std::make_shared<shapes::Cone>(11,0,0,0,1);
         auto my_cone_display =
             std::make_shared<display::SingleShapeDisplay>("cone", 100ms);
         my_cone_display->display_object(my_cone);
@@ -313,42 +313,42 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("uav_cylinder", 100ms);
         uav_cylinder_display->display_object(uav_cylinder);
         ros_worker.add_node(uav_cylinder_display);
-        auto const uav_cone = std::make_shared<shapes::Cone>(18,0,0,0);
+        auto const uav_cone = std::make_shared<shapes::Cone>(18,0,0,0,0.3);
         auto uav_cone_display =
             std::make_shared<display::SingleShapeDisplay>("uav_cone", 100ms);
         uav_cone_display->display_object(uav_cone);
         ros_worker.add_node(uav_cone_display);
-        auto const uav_oct_prism = std::make_shared<shapes::OctPrism>(19,0,0,0);
+        auto const uav_oct_prism = std::make_shared<shapes::OctPrism>(19,0,0,0,0.3);
         auto uav_oct_prism_display =
             std::make_shared<display::SingleShapeDisplay>("uav_octagonal_prism", 100ms);
         uav_oct_prism_display->display_object(uav_oct_prism);
         ros_worker.add_node(uav_oct_prism_display);
-        auto const uav_oct_pyr = std::make_shared<shapes::OctPyr>(20,0,0,0);
+        auto const uav_oct_pyr = std::make_shared<shapes::OctPyr>(20,0,0,0,0.3);
         auto uav_oct_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_octagonal_pyramid", 100ms);
         uav_oct_pyr_display->display_object(uav_oct_pyr);
         ros_worker.add_node(uav_oct_pyr_display);        
-        auto const uav_rect_pyr = std::make_shared<shapes::RectPyr>(21,0,0,0);
+        auto const uav_rect_pyr = std::make_shared<shapes::RectPyr>(21,0,0,0,0.3);
         auto uav_rect_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_rect_pyr", 100ms);
         uav_rect_pyr_display->display_object(uav_rect_pyr);
         ros_worker.add_node(uav_rect_pyr_display);
-        auto const uav_tri_pyr = std::make_shared<shapes::TriPyr>(22,0,0,0);
+        auto const uav_tri_pyr = std::make_shared<shapes::TriPyr>(22,0,0,0,0.3);
         auto uav_tri_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_tri_pyr", 100ms);
         uav_tri_pyr_display->display_object(uav_tri_pyr);
         ros_worker.add_node(uav_tri_pyr_display);
-        auto const uav_sqr_pyr = std::make_shared<shapes::SqrPyr>(23,0,0,0);
+        auto const uav_sqr_pyr = std::make_shared<shapes::SqrPyr>(23,0,0,0,0.3);
         auto uav_sqr_pyr_display =
             std::make_shared<display::SingleShapeDisplay>("uav_sqr_pyr", 100ms);
         uav_sqr_pyr_display->display_object(uav_sqr_pyr);
         ros_worker.add_node(uav_sqr_pyr_display);
-        auto const uav_tri_prism = std::make_shared<shapes::TriPrism>(24,0,0,0);
+        auto const uav_tri_prism = std::make_shared<shapes::TriPrism>(24,0,0,0,0.3);
         auto uav_tri_prism_display =
             std::make_shared<display::SingleShapeDisplay>("uav_triangular_prism", 100ms);
         uav_tri_prism_display->display_object(uav_tri_prism);
         ros_worker.add_node(uav_tri_prism_display);
-        auto const uav_parallelepiped = std::make_shared<shapes::Parallelepiped>(25,0,0,0);
+        auto const uav_parallelepiped = std::make_shared<shapes::Parallelepiped>(25,0,0,0,0.3);
         auto uav_parallelepiped_display =
             std::make_shared<display::SingleShapeDisplay>("uav_parallelepiped", 100ms);
         uav_parallelepiped_display->display_object(uav_parallelepiped);

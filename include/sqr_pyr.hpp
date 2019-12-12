@@ -17,7 +17,7 @@ namespace shapes
 class SqrPyr : public ShapeCommonInterface
 {
 public:
-    explicit SqrPyr(int id, double posx, double posy, double posz);
+    explicit SqrPyr(int id, double posx, double posy, double posz, double a);
 
 protected:
     AllAxis length_;

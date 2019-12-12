@@ -17,7 +17,7 @@
 namespace shapes
 {
 // Implementation of the cube class
-Cone::Cone(int id, double posx, double posy, double posz)
+Cone::Cone(int id, double posx, double posy, double posz, double a)
     : length_{5.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -63,7 +63,7 @@ Cone::Cone(int id, double posx, double posy, double posz)
     shape.color.r = 0.0;
     shape.color.g = 0.8;
     shape.color.b = 0.0;
-    shape.color.a = 1.0;
+    shape.color.a = a;
 
     // Circular Base
     float x = 1;

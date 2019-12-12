@@ -17,7 +17,7 @@
 namespace shapes
 {
 // Implementation of the triangular pyramid class
-TriPyr::TriPyr(int id, double posx, double posy, double posz)
+TriPyr::TriPyr(int id, double posx, double posy, double posz, double a)
     : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -63,7 +63,7 @@ TriPyr::TriPyr(int id, double posx, double posy, double posz)
     shape.color.r = 0;
     shape.color.g = 0;
     shape.color.b = 1;
-    shape.color.a = 1.0;
+    shape.color.a = a;
 
     // Base of pyramid
     geometry_msgs::msg::Point p;

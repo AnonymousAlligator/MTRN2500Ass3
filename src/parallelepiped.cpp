@@ -17,7 +17,7 @@ namespace shapes
 {
 // Parallelepiped implementation
 
-Parallelepiped::Parallelepiped(int id, double posx, double posy, double posz)
+Parallelepiped::Parallelepiped(int id, double posx, double posy, double posz, double a)
     : length_{2.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -64,7 +64,7 @@ Parallelepiped::Parallelepiped(int id, double posx, double posy, double posz)
     shape.color.r = 1.0;
     shape.color.g = 1.0;
     shape.color.b = 0.0;
-    shape.color.a = 1.0;
+    shape.color.a = a;
 
     // Parallepiped from Geogebra by harry624
     // Bottom Parallelogram (ABEF)

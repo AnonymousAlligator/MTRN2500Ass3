@@ -18,7 +18,7 @@ namespace shapes
 class Cone : public ShapeCommonInterface
 {
 public:
-    explicit Cone(int id, double posx, double posy, double posz);
+    explicit Cone(int id, double posx, double posy, double posz, double a);
 
 protected:
     AllAxis length_;
