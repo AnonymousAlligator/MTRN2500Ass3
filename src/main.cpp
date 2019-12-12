@@ -37,6 +37,8 @@
 #include <sstream>
 
 int counter = 0;
+int previousPress = 0;
+int currentPress = 0;
 // ReSharper disable once CppParameterMayBeConst
 auto main(int argc, char * argv[]) -> int
 {
@@ -280,7 +282,7 @@ auto main(int argc, char * argv[]) -> int
                 x.set_value(x.get_value() + input_node->get_x());
                 y.set_value(y.get_value() + input_node->get_y());
                 z.set_value(z.get_value() + input_node->get_z());
-                z_cube = z.set_value(z.get_value() + input_node->get_z() - 1);
+                z_cube = input_node->get_z_cube();
 
                 // Checking if UAV is still in the allowed boundaries
                 if (x.get_value() > 40){
@@ -308,75 +310,100 @@ auto main(int argc, char * argv[]) -> int
                 my_uav->move_to(x, y, z);
                 uav_cube->move_to(x, y, z_cube);
                 
-                if(input_node->get_x_signal() == 1){
-                    counter++;
-                    std::cout << counter << std::endl;
-                    std::cout << "Block stopped!" << std::endl;
-                    if (counter == 1)
-                    {
-                        my_cube_r1->move_to(x, y, z);
-                        my_cube_r1->set_a(1.0);
-                    }
-                    if (counter == 2)
-                    {
-                        my_cube_y1->move_to(x, y, z);
-                        my_cube_y1->set_a(1.0);
-                    }
-                    if (counter == 3)
-                    {
-                        my_cube_g1->move_to(x, y, z);
-                        my_cube_g1->set_a(1.0);
-                    }
-                    if (counter == 4)
-                    {
-                        my_cube_blue1->move_to(x, y, z);
-                        my_cube_blue1->set_a(1.0);
-                    }
-                    if (counter == 5)
-                    {
-                        my_cube_black1->move_to(x, y, z);
-                        my_cube_black1->set_a(1.0);
-                    }
-                    if (counter == 6)
-                    {
-                        my_cube_w1->move_to(x, y, z);
-                        my_cube_w1->set_a(1.0);
-                    }
-                    if (counter == 7)
-                    {
-                        my_cube_r2->move_to(x, y, z);
-                        my_cube_r2->set_a(1.0);
-                    }
-                    if (counter == 8)
-                    {
-                        my_cube_y2->move_to(x, y, z);
-                        my_cube_y2->set_a(1.0);
-                    }
-                    if (counter == 9)
-                    {
-                        my_cube_g2->move_to(x, y, z);
-                        my_cube_g2->set_a(1.0);
-                    }
-                    if (counter == 10)
-                    {
-                        my_cube_blue2->move_to(x, y, z);
-                        my_cube_blue2->set_a(1.0);
-                    }
-                    if (counter == 11)
-                    {
-                        my_cube_black2->move_to(x, y, z);
-                        my_cube_black2->set_a(1.0);
-                    }
-                    if (counter == 12)
-                    {
-                        my_cube_w2->move_to(x, y, z);
-                        my_cube_w2->set_a(1.0);
-                    }
-
-                } else if (input_node->get_clear_flag() == 1){
-                    std::cout << "beep" << std::endl;
-                }
+                // Logging state of the button
+                currentPress = input_node->get_x_signal();
                 
+                // Place blocks
+                if(input_node->get_x_signal() == 1){
+                    currentPress = input_node->get_x_signal();
+                    // Checking to see if button is being held down
+                    if(previousPress != currentPress)
+                    {
+                        counter++;
+                        std::cout << counter << std::endl;
+                        std::cout << "Block dropped!" << std::endl;
+                        if (counter == 1)
+                        {
+                            my_cube_r1->move_to(x, y, z);
+                            my_cube_r1->set_a(1.0);
+                            // set previous state as current state
+                            previousPress = currentPress;
+                        }
+                        if (counter == 2)
+                        {
+                            my_cube_y1->move_to(x, y, z);
+                            my_cube_y1->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 3)
+                        {
+                            my_cube_g1->move_to(x, y, z);
+                            my_cube_g1->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 4)
+                        {
+                            my_cube_blue1->move_to(x, y, z);
+                            my_cube_blue1->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 5)
+                        {
+                            my_cube_black1->move_to(x, y, z);
+                            my_cube_black1->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 6)
+                        {
+                            my_cube_w1->move_to(x, y, z);
+                            my_cube_w1->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 7)
+                        {
+                            my_cube_r2->move_to(x, y, z);
+                            my_cube_r2->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 8)
+                        {
+                            my_cube_y2->move_to(x, y, z);
+                            my_cube_y2->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 9)
+                        {
+                            my_cube_g2->move_to(x, y, z);
+                            my_cube_g2->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 10)
+                        {
+                            my_cube_blue2->move_to(x, y, z);
+                            my_cube_blue2->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 11)
+                        {
+                            my_cube_black2->move_to(x, y, z);
+                            my_cube_black2->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                        if (counter == 12)
+                        {
+                            my_cube_w2->move_to(x, y, z);
+                            my_cube_w2->set_a(1.0);
+                            previousPress = currentPress;
+                        }
+                    }
+                }
+                // removing blocks where RS is pressed
+                } else if (input_node->get_clear_flag() == 1){
+                    std::cout << "Removing blocks!" << std::endl;
+                    counter = 0;
+                    my_cube_g1->set_a(0.0);
+                }
+                previousPress = currentPress;
                 // Iterator
                 previous_time = current_time;
                 m_count++;
