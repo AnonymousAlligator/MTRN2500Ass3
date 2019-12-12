@@ -285,14 +285,6 @@ auto main(int argc, char * argv[]) -> int
 
         // Create and display the UAV
 
-        uav_oct_prism->move_to(x,y,z);
-        uav_oct_pyr->move_to(x,y,z);
-        uav_parallelipied->move_to(x,y,z);
-        uav_rect_pyr->move_to(x,y,z);
-        uav_sqr_pyr->move_to(x,y,z);
-        uav_tri_prism->move_to(x,y,z);
-        uav_tri_pyr->move_to(x,y,z);
-        //
         auto const my_uav = std::make_shared<shapes::UAV>(14,0,0,0);
         auto my_uav_display =
             std::make_shared<display::SingleShapeDisplay>("uav", 100ms);
@@ -402,7 +394,7 @@ auto main(int argc, char * argv[]) -> int
                 uav_oct_prism->move_to(x,y,z);
                 uav_cone->move_to(x,y,z);
                 uav_oct_pyr->move_to(x,y,z);
-                uav_parallelipied->move_to(x,y,z);
+                uav_parallelepiped->move_to(x,y,z);
                 uav_rect_pyr->move_to(x,y,z);
                 uav_sqr_pyr->move_to(x,y,z);
                 uav_tri_prism->move_to(x,y,z);
