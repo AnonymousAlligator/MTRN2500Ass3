@@ -37,8 +37,8 @@
 #include <sstream>
 
 int counter = 0;
-int previous = 0;
-int current = 0;
+int previousPress = 0;
+int currentPress = 0;
 // ReSharper disable once CppParameterMayBeConst
 auto main(int argc, char * argv[]) -> int
 {
@@ -236,9 +236,12 @@ auto main(int argc, char * argv[]) -> int
              
                 my_uav->move_to(x, y, z);
                 //my_cube_r1->move_to(x, y, z);
-                    currentPress = input_node->get_x_signal();
+                // Logging state of the button
+                currentPress = input_node->get_x_signal();
+                // Place blocks
                 if(input_node->get_x_signal() == 1){
                     currentPress = input_node->get_x_signal();
+                    // Checking to see if button is being held down
                     if(previousPress != currentPress)
                     {
                         counter++;
@@ -248,12 +251,15 @@ auto main(int argc, char * argv[]) -> int
                         {
                             my_cube_g1->move_to(x, y, z);
                             my_cube_g1->set_a(1.0);
+                            // set previous state as current state
                             previousPress = currentPress;
                         }
 
                     }
+                // removing blocks where RS is pressed
                 } else if (input_node->get_clear_flag() == 1){
                     std::cout << "Removing blocks!" << std::endl;
+                    counter = 0;
                     my_cube_g1->set_a(0.0);
                 }
                 previousPress = currentPress;
