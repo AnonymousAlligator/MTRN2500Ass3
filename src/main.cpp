@@ -71,7 +71,7 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("shape_2", 100ms);
         my_shape_display_2->display_object(my_sphere_2);
         ros_worker.add_node(my_shape_display_2);
-        /*
+        
          // Create and display a rectangular prism
         auto const my_rect_prism = std::make_shared<shapes::RectPrism>(2,0,0,0);
         auto my_rect_prism_display =
@@ -259,10 +259,10 @@ auto main(int argc, char * argv[]) -> int
         my_uav_display->display_object(my_uav);
         ros_worker.add_node(my_uav_display);
         auto uav_cube = std::make_shared<shapes::Cube>(15, 0, 0, 0, 1, 0, 1, 1, 1);
-        auto my_uav_cube_display =
+        auto uav_cube_display =
             std::make_shared<display::SingleShapeDisplay>("uav_cube", 100ms);
-        my_uav_cube_display->display_object(my_uav_cube);
-        ros_worker.add_node(my_uav_cube_display);
+        uav_cube_display->display_object(uav_cube);
+        ros_worker.add_node(uav_cube_display);
         int m_count = 1;
 
         // Periodically do some work
