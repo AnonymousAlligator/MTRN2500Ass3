@@ -17,7 +17,7 @@ namespace shapes
 {
 // cylinder class implementation
 
-Cylinder::Cylinder(int id, double posx, double posy, double posz)
+Cylinder::Cylinder(int id, double posx, double posy, double posz, double a)
     : radius_{1.0}
     , height_{2.0}
     , parent_frame_name_{"local_frame"}
@@ -65,7 +65,7 @@ Cylinder::Cylinder(int id, double posx, double posy, double posz)
     shape.color.r = 1;
     shape.color.g = 0.855;
     shape.color.b = 0.757;
-    shape.color.a = 1.0;
+    shape.color.a = a;
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
