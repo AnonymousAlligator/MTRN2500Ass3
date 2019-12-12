@@ -20,12 +20,14 @@ public:
     double storedZ = 0;
     double xSignal = 0;
     double clearFlag = 0;
+    double zCube = 0;
     
     double get_x();
     double get_y();
     double get_z();
     double get_x_signal();
     double get_clear_flag();
+    double get_z_cube();
 
 private:
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joystick_input_;
