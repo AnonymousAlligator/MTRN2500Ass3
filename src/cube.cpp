@@ -16,7 +16,7 @@
 namespace shapes
 {
 // Implementation of the cube class
-Cube::Cube(int id, double posx, double posy, double posz, double r, double g, double b, double scale)
+Cube::Cube(int id, double posx, double posy, double posz, double r, double g, double b, double a, double scale)
     : length_{3.0}
     , parent_frame_name_{"local_frame"}
     , shapes_list_ptr_{
@@ -62,7 +62,7 @@ Cube::Cube(int id, double posx, double posy, double posz, double r, double g, do
     shape.color.r = r;
     shape.color.g = g;
     shape.color.b = b;
-    shape.color.a = 1.0;
+    shape.color.a = a;
 
     // body.colors.emplace_back();
     using namespace std::chrono_literals;
@@ -78,7 +78,11 @@ auto Cube::rescale_imple(AnyAxis const factor) -> void
     length_ = AllAxis{length_.get_value() * factor.get_value()};
 }
 
-auto Cube::get_colour_imple() const -> Colour {return Colour::black;}
+auto Cube::get_colour_imple() const -> Colour 
+{
+
+    return Colour::black;
+}
 
 auto Cube::set_parent_frame_name_imple(std::string frame_name) -> void
 {
@@ -103,7 +107,10 @@ auto Cube::move_to_imple(XAxis const x, YAxis const y, ZAxis const z) -> void
     shapes_list_ptr_->at(0).pose.position.y = y.get_value();
     shapes_list_ptr_->at(0).pose.position.z = z.get_value();
 }
-
+double Cube::set_a(double a)
+{
+    shapes_list_ptr_->at(0).color.a = a;
+}
 auto Cube::move_by_imple(YAxis const) -> void {}
 
 auto Cube::move_by_imple(ZAxis const) -> void {}
