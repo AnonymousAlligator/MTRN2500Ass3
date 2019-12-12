@@ -17,7 +17,7 @@ namespace shapes
 {
 // cylinder class implementation
 
-Cylinder::Cylinder(int id, double posx, double posy, double posz, double a)
+Cylinder::Cylinder(int id, double posx, double posy, double posz, double a, double height)
     : radius_{1.0}
     , height_{2.0}
     , parent_frame_name_{"local_frame"}
@@ -59,7 +59,7 @@ Cylinder::Cylinder(int id, double posx, double posy, double posz, double a)
     // Scale change the dimension of the sides
     shape.scale.x = radius_.get_value();
     shape.scale.y = radius_.get_value();
-    shape.scale.z = height_.get_value();
+    shape.scale.z = height;
 
     // Colour red, green, blue, alpha (transparency)
     shape.color.r = 1;

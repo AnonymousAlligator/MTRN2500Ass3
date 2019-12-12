@@ -145,7 +145,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_cone_display);
         
         // Create and display a cylinder
-        auto const my_cylinder = std::make_shared<shapes::Cylinder>(12,0,0,0,1);
+        auto const my_cylinder = std::make_shared<shapes::Cylinder>(12,0,0,0,1,3.0);
         auto my_cylinder_display =
             std::make_shared<display::SingleShapeDisplay>("cylinder", 100ms);
         my_cylinder_display->display_object(my_cylinder);
@@ -264,12 +264,12 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("uav_cube", 100ms);
         uav_cube_display->display_object(uav_cube);
         ros_worker.add_node(uav_cube_display);
-        auto const uav_sphere = std::make_shared<shapes::Sphere>(16,0,0,0,1,0.6);
+        auto const uav_sphere = std::make_shared<shapes::Sphere>(16,0,0,0,2.5,0.6);
         auto uav_sphere_display =
             std::make_shared<display::SingleShapeDisplay>("uav_sphere", 100ms);
         uav_sphere_display->display_object(uav_sphere);
         ros_worker.add_node(uav_sphere_display);
-        auto const uav_cylinder = std::make_shared<shapes::Cylinder>(17,0,0,0,0.4);
+        auto const uav_cylinder = std::make_shared<shapes::Cylinder>(17,0,0,0,0.4,4.5);
         auto uav_cylinder_display =
             std::make_shared<display::SingleShapeDisplay>("cylinder", 100ms);
         uav_cylinder_display->display_object(uav_cylinder);
