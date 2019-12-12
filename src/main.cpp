@@ -36,6 +36,7 @@
 #include <memory>
 #include <sstream>
 
+int counter = 0;
 // ReSharper disable once CppParameterMayBeConst
 auto main(int argc, char * argv[]) -> int
 {
@@ -159,9 +160,9 @@ auto main(int argc, char * argv[]) -> int
 
         auto previous_time = std::chrono::steady_clock::now();
 
-        auto x = shapes::XAxis{11.0};
-        auto y = shapes::YAxis{11.0};
-        auto z = shapes::ZAxis{10.0};
+        auto x = shapes::XAxis{0};
+        auto y = shapes::YAxis{0};
+        auto z = shapes::ZAxis{3};
         auto z_cube = shapes::ZAxis{9.0};
         auto z_ground = shapes::ZAxis{0.0};
 
@@ -175,15 +176,17 @@ auto main(int argc, char * argv[]) -> int
         int m_count = 1;
         int cube_count = 16;
         
-        // Create and display a red cube
-        auto my_cube_r1 = std::make_shared<shapes::Cube>(100, x.get_value(), y.get_value(), z.get_value(), 1, 0, 0, 1);
+        // Create and display a red cube 
+
+        auto my_cube_r1 = std::make_shared<shapes::Cube>(100, 0, 0, 0, 1, 0, 0, 0, 1);
         auto my_cube_r1_display =
             std::make_shared<display::SingleShapeDisplay>("cube_r1", 100ms);
         my_cube_r1_display->display_object(my_cube_r1);
         ros_worker.add_node(my_cube_r1_display);
 
+
         // Create and display a green cube
-        auto my_cube_g1 = std::make_shared<shapes::Cube>(101, x.get_value(), y.get_value(), z.get_value(), 0, 1, 0, 0.9);
+        auto my_cube_g1 = std::make_shared<shapes::Cube>(101, 0, 0, 0, 0, 1, 0, 0, 1);
         auto my_cube_g1_display =
             std::make_shared<display::SingleShapeDisplay>("cube_g1", 100ms);
         my_cube_g1_display->display_object(my_cube_g1);
@@ -224,33 +227,27 @@ auto main(int argc, char * argv[]) -> int
                 if (z.get_value() > 40){
                     std::cout << "leaving z boundaries, please go back" << std::endl;
                     z.set_value(39);
-                } else if (z.get_value() < -40){
-                    std::cout << "leaving z boundaries, please go back" << std::endl;
-                    z.set_value(-39);
-                }
-                
-
-                if(input_node->get_x_signal() == 1){
-                    std::cout << "boop" << std::endl;
-                } else if (input_node->get_clear_flag() == 1){
-                    std::cout << "beep" << std::endl;
+                } else if (z.get_value() < 1){
+                    std::cout << "About to hit the ground!" << std::endl;
+                    z.set_value(1);
                 }
              
                 my_uav->move_to(x, y, z);
+                //my_cube_r1->move_to(x, y, z);
                 
-                if (m_count < 60) 
-                {
-                    my_cube_g1->move_to(x, y, z_cube);
-                    if (m_count < 35) 
-                    {
-                        my_cube_r1->move_to(x, y, z_cube);
-                    }
-                }
-
-                if (m_count % 35 == 0 || m_count % 60 == 0)
-                { 
+                if(input_node->get_x_signal() == 1){
+                    counter++;
+                    std::cout << counter << std::endl;
                     std::cout << "Block stopped!" << std::endl;
-                    cube_count++;
+                    if (counter == 1)
+                    {
+                        my_cube_g1->move_to(x, y, z);
+                        my_cube_g1->set_a(1.0);
+                    }
+                    
+
+                } else if (input_node->get_clear_flag() == 1){
+                    std::cout << "beep" << std::endl;
                 }
                 
                 // Iterator
