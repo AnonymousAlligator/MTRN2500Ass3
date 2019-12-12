@@ -32,6 +32,7 @@ target_sources(assignment3 PRIVATE
   include/oct_pyr.hpp
   include/parallelepiped.hpp
   include/uav.hpp
+  include/joystick_listener.hpp
 )
 
 target_sources(assignment3 PRIVATE
@@ -52,6 +53,7 @@ target_sources(assignment3 PRIVATE
   src/oct_pyr.cpp
   src/parallelepiped.cpp
   src/uav.cpp
+  src/joystick_listener.cpp
 )
 
 target_include_directories(assignment3 PRIVATE include)

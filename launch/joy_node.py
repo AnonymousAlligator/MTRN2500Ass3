@@ -5,7 +5,7 @@ import launch
 import launch_ros.actions
 from ament_index_python.packages import get_package_share_directory
 
-package_name = "assignment2"
+package_name = "assignment3"
 game_master_namespace = "/z0000000"
 
 joy_node_config_yaml =  os.path.join(

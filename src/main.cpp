@@ -25,6 +25,7 @@
 #include "oct_pyr.hpp"
 #include "parallelepiped.hpp"
 #include "uav.hpp"
+#include "joystick_listener.hpp"
 
 #include <chrono>
 #include <cstdio>
@@ -47,6 +48,10 @@ auto main(int argc, char * argv[]) -> int
 
         auto ros_worker = rclcpp::executors::SingleThreadedExecutor{};
 
+        auto input_node = std::make_shared<assignment3::JoystickListener>(
+            "z0000000");
+        ros_worker.add_node(input_node);
+
         // Create a sphere and display node for the sphere
         auto const my_sphere = std::make_shared<shapes::Sphere>(0,0,0,0);
         auto my_shape_display =
@@ -65,7 +70,7 @@ auto main(int argc, char * argv[]) -> int
             std::make_shared<display::SingleShapeDisplay>("shape_2", 100ms);
         my_shape_display_2->display_object(my_sphere_2);
         ros_worker.add_node(my_shape_display_2);
-
+        /*
          // Create and display a rectangular prism
         auto const my_rect_prism = std::make_shared<shapes::RectPrism>(2,0,0,0);
         auto my_rect_prism_display =
@@ -145,7 +150,6 @@ auto main(int argc, char * argv[]) -> int
 
         */
 
-       
         // Create and display the flat plane
         auto const my_flat_plane = std::make_shared<shapes::FlatPlane>(13,0,0,0);
         auto my_FlatPlane_display =
@@ -154,6 +158,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_FlatPlane_display);
 
         auto previous_time = std::chrono::steady_clock::now();
+
         auto x = shapes::XAxis{11.0};
         auto y = shapes::YAxis{11.0};
         auto z = shapes::ZAxis{10.0};
@@ -169,7 +174,6 @@ auto main(int argc, char * argv[]) -> int
         // ros_worker.add_node(my_uav.get_cube_display());
         int m_count = 1;
         int cube_count = 16;
-
         
         // Create and display a red cube
         auto my_cube_r1 = std::make_shared<shapes::Cube>(100, x.get_value(), y.get_value(), z.get_value(), 1, 0, 0, 1);
@@ -198,8 +202,9 @@ auto main(int argc, char * argv[]) -> int
                 std::cout << "meow_" << m_count << std::endl;
 
                 // Moving the UAV
-                x.set_value(x.get_value() + 0.25);
-                y.set_value(y.get_value() + 0.25);
+                x.set_value(x.get_value() + input_node->get_x());
+                y.set_value(y.get_value() + input_node->get_y());
+                z.set_value(z.get_value() + input_node->get_z());
                 my_uav->move_to(x, y, z);
                 
 
