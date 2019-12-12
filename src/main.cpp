@@ -205,9 +205,39 @@ auto main(int argc, char * argv[]) -> int
                 x.set_value(x.get_value() + input_node->get_x());
                 y.set_value(y.get_value() + input_node->get_y());
                 z.set_value(z.get_value() + input_node->get_z());
-                my_uav->move_to(x, y, z);
+
+                // Checking if UAV is still in the allowed boundaries
+                if (x.get_value() > 40){
+                    std::cout << "leaving x boundaries, please go back" << std::endl;
+                    x.set_value(39);
+                } else if (x.get_value() < -40){
+                    std::cout << "leaving x boundaries, please go back" << std::endl;
+                    x.set_value(-39);
+                }
+                if (y.get_value() > 40){
+                    std::cout << "leaving y boundaries, please go back" << std::endl;
+                    y.set_value(39);
+                } else if (y.get_value() < -40){
+                    std::cout << "leaving y boundaries, please go back" << std::endl;
+                    y.set_value(-39);
+                }
+                if (z.get_value() > 40){
+                    std::cout << "leaving z boundaries, please go back" << std::endl;
+                    z.set_value(39);
+                } else if (z.get_value() < -40){
+                    std::cout << "leaving z boundaries, please go back" << std::endl;
+                    z.set_value(-39);
+                }
                 
 
+                if(input_node->get_x_signal() == 1){
+                    std::cout << "boop" << std::endl;
+                } else if (input_node->get_clear_flag() == 1){
+                    std::cout << "beep" << std::endl;
+                }
+             
+                my_uav->move_to(x, y, z);
+                
                 if (m_count < 60) 
                 {
                     my_cube_g1->move_to(x, y, z_cube);
