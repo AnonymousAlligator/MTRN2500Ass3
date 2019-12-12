@@ -131,7 +131,7 @@ auto main(int argc, char * argv[]) -> int
         ros_worker.add_node(my_parallelepiped_display);
 
         // Create and display a cube
-        auto const my_cube = std::make_shared<shapes::Cube>(10,0,0,0);
+        auto const my_cube = std::make_shared<shapes::Cube>(10,0,0,0,0,0,0,1,1);
         auto my_cube_display =
             std::make_shared<display::SingleShapeDisplay>("cube", 100ms);
         my_cube_display->display_object(my_cube);
@@ -273,7 +273,7 @@ auto main(int argc, char * argv[]) -> int
             // std::cout << "Program start!" << std::endl;
             auto current_time = std::chrono::steady_clock::now();
 
-            if (current_time - previous_time > 1s)
+            if (current_time - previous_time > 1.0s)
             {
                 // Meowing at rate of 1hz
                 std::cout << "meow_" << m_count << std::endl;
