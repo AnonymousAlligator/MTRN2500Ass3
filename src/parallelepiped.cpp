@@ -16,7 +16,6 @@
 namespace shapes
 {
 // Parallelepiped implementation
-
 Parallelepiped::Parallelepiped(int id, double posx, double posy, double posz, double a)
     : length_{2.0}
     , parent_frame_name_{"local_frame"}

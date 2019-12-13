@@ -55,9 +55,9 @@ SqrPyr::SqrPyr(int id, double posx, double posy, double posz, double a)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides
-    shape.scale.x = 3.0;
-    shape.scale.y = 3.0;
-    shape.scale.z = 3.0;
+    shape.scale.x = length_.get_value();
+    shape.scale.y = length_.get_value();
+    shape.scale.z = length_.get_value();
 
     // Set colour
     shape.color.r = 1.0;

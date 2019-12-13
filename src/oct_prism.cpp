@@ -43,9 +43,9 @@ OctPrism::OctPrism(int id, double posx, double posy, double posz, double a)
     shape.action = visualization_msgs::msg::Marker::ADD;
 
     // Position
-    shape.pose.position.x = posx;
-    shape.pose.position.y = posy;
-    shape.pose.position.z = posz;
+    shape.pose.position.x = 0;
+    shape.pose.position.y = 0;
+    shape.pose.position.z = 0;
 
     // Orientation in quaternion
     shape.pose.orientation.x = 0;
@@ -54,9 +54,9 @@ OctPrism::OctPrism(int id, double posx, double posy, double posz, double a)
     shape.pose.orientation.w = 1;
 
     // Scale change the dimension of the sides
-    shape.scale.x = 3.0;
-    shape.scale.y = 3.0;
-    shape.scale.z = 3.0;
+    shape.scale.x = length_.get_value();
+    shape.scale.y = length_.get_value();
+    shape.scale.z = length_.get_value();
 
     // Set colour
     shape.color.r = 1.0;
